@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="coordinatorLoginPane" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.culinaryacademy.controller.CoordinatorLoginFormController">
+   <children>
+      <Text fill="#0883e2" fontSmoothingType="LCD" layoutX="60.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coordinator Login">
+         <font>
+            <Font name="SansSerif Bold" size="32.0" />
+         </font>
+      </Text>
+      <Text fill="#444444" fontSmoothingType="LCD" layoutX="147.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back">
+         <font>
+            <Font name="SansSerif Regular" size="16.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="btnLogin" alignment="CENTER" buttonType="RAISED" contentDisplay="TEXT_ONLY" focusTraversable="false" graphicTextGap="0.0" layoutX="50.4" layoutY="450.0" onAction="#btnLoginOnAction" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #0883e2; -fx-background-radius: 20;" text="Login" textFill="WHITE" AnchorPane.leftAnchor="50.4">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnRegister" alignment="CENTER" buttonType="RAISED" contentDisplay="TEXT_ONLY" focusTraversable="false" graphicTextGap="0.0" layoutX="210.0" layoutY="450.0" onAction="#btnRegisterOnAction" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #121212; -fx-background-radius: 20;" text="Register" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="50.0" layoutY="259.0" onAction="#txtEmailOnAction" onKeyReleased="#txtUsernameOnKeyReleased" prefHeight="40.0" prefWidth="300.0" promptText="Email" style="-fx-background-color: #f1f2f6; -fx-background-radius: 5 5 0 0;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXPasswordField fx:id="txtPassword" labelFloat="true" layoutX="50.0" layoutY="349.0" onAction="#txtPWOnAction" onKeyReleased="#txtPWOnKeyReleased" prefHeight="40.0" prefWidth="300.0" promptText="Password" style="-fx-background-color: #f1f2f6; -fx-background-radius: 5 5 0 0;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXPasswordField>
+      <Hyperlink fx:id="linkAdmin" layoutX="151.0" layoutY="516.0" onAction="#linkAdminOnAction" text="Admin Portal" textFill="#0883e2">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Hyperlink>
+      <Group layoutX="230.0" layoutY="55.0">
+         <children>
+            <Text fill="#0883e2" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Culinary">
+               <font>
+                  <Font name="SansSerif Bold" size="24.0" />
+               </font>
+            </Text>
+            <Text fill="#121212" layoutX="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arts">
+               <font>
+                  <Font name="SansSerif Regular" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+   </children>
+</AnchorPane>

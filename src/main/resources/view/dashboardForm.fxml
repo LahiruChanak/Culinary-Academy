@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.culinaryacademy.controller.DashboardFormController">
+   <children>
+      <Group layoutX="39.0" layoutY="90.0">
+         <children>
+            <Pane layoutX="9.0" layoutY="9.0" prefHeight="90.0" prefWidth="175.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.7473683953285217" green="0.7473683953285217" blue="0.7473683953285217" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <Label layoutX="25.0" layoutY="55.0" text="Students" textFill="#747d8c">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblStudentsCount" layoutX="110.0" layoutY="20.0" text="0">
+                     <font>
+                        <Font name="Segoe UI Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="35.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/images/students.png" />
+                     </image>
+                  </ImageView>
+                  <Group layoutX="130.0" layoutY="25.0">
+                     <children>
+                        <HBox alignment="TOP_RIGHT" layoutY="51.0" prefHeight="5.0" prefWidth="38.0" spacing="4.0">
+                           <children>
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" layoutY="41.0" prefHeight="5.0" prefWidth="38.0" spacing="4.0">
+                           <children>
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" layoutY="31.0" prefHeight="5.0" prefWidth="38.0" spacing="4.0">
+                           <children>
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </Group>
+               </children>
+            </Pane>
+            <Pane layoutX="228.0" layoutY="9.0" prefHeight="90.0" prefWidth="175.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.7473683953285217" green="0.7473683953285217" blue="0.7473683953285217" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <Label layoutX="25.0" layoutY="55.0" text="Courses" textFill="#747d8c">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblCoursesCount" layoutX="110.0" layoutY="20.0" text="0">
+                     <font>
+                        <Font name="Segoe UI Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="35.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/images/courses.png" />
+                     </image>
+                  </ImageView>
+                  <Group layoutX="130.0" layoutY="25.0">
+                     <children>
+                        <HBox alignment="TOP_RIGHT" layoutY="51.0" prefHeight="5.0" prefWidth="38.0" spacing="4.0">
+                           <children>
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" layoutY="41.0" prefHeight="5.0" prefWidth="38.0" spacing="4.0">
+                           <children>
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" layoutY="31.0" prefHeight="5.0" prefWidth="38.0" spacing="4.0">
+                           <children>
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" layoutY="21.0" prefHeight="5.0" prefWidth="38.0" spacing="4.0" />
+                     </children>
+                  </Group>
+               </children>
+            </Pane>
+            <Pane layoutX="448.0" layoutY="9.0" prefHeight="90.0" prefWidth="175.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.7473683953285217" green="0.7473683953285217" blue="0.7473683953285217" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <Label layoutX="25.0" layoutY="55.0" text="Coordinators" textFill="#747d8c">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblCoordinatorsCount" layoutX="110.0" layoutY="20.0" text="0">
+                     <font>
+                        <Font name="Segoe UI Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="35.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../fitLife-IFMS_Layered-Architecture/src/main/resources/asserts/icon/trainer_C.png" />
+                     </image>
+                  </ImageView>
+                  <Group layoutX="130.0" layoutY="25.0">
+                     <children>
+                        <HBox alignment="TOP_RIGHT" layoutY="51.0" prefHeight="5.0" prefWidth="38.0" spacing="4.0">
+                           <children>
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" layoutY="41.0" prefHeight="5.0" prefWidth="38.0" spacing="4.0">
+                           <children>
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" layoutY="31.0" prefHeight="5.0" prefWidth="38.0" spacing="4.0">
+                           <children>
+                              <Circle fill="#dadada" radius="3.0" stroke="#e4e0e0" strokeType="INSIDE" strokeWidth="0.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" layoutY="21.0" prefHeight="5.0" prefWidth="38.0" spacing="4.0" />
+                     </children>
+                  </Group>
+               </children>
+            </Pane>
+         </children>
+      </Group>
+      <Text fx:id="txtTime" layoutX="24.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10:30 AM" wrappingWidth="230.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtDate" layoutX="24.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="January 01, 2024" wrappingWidth="230.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Pane layoutX="519.0" layoutY="20.0" prefHeight="55.0" prefWidth="190.0" style="-fx-background-color: white; -fx-background-radius: 30 0 0 30;" styleClass="pane-admin-details" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Circle fx:id="userImage" fill="WHITE" layoutX="34.0" layoutY="28.0" radius="20.0" stroke="#121212" strokeType="INSIDE" />
+            <Label fx:id="userName" layoutX="85.0" layoutY="16.0" text="User" textFill="#121212">
+               <font>
+                  <Font name="Segoe UI" size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
+               <color>
+                  <Color opacity="0.20000000298023224" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>
