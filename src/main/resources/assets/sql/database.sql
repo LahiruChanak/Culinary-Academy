@@ -7,32 +7,30 @@ CREATE TABLE student (
                           email VARCHAR(255) UNIQUE NOT NULL,
                           contact VARCHAR(20) UNIQUE NOT NULL,
                           address VARCHAR(255),
-                          joined_at DATETIME,
-                          is_active BOOLEAN
+                          joined_at DATETIME
 );
 
 
-CREATE TABLE program (
+CREATE TABLE course (
                            id INT PRIMARY KEY AUTO_INCREMENT,
-                           program_id VARCHAR(100) UNIQUE NOT NULL,
-                           program_name VARCHAR(255) NOT NULL,
+                           course_id VARCHAR(100) UNIQUE NOT NULL,
+                           course_name VARCHAR(255) NOT NULL,
                            duration_months INT,
                            fee DECIMAL(10, 2),
-                           description VARCHAR(255),
-                           is_active BOOLEAN
+                           description VARCHAR(255)
 );
 
 
 CREATE TABLE registration (
                                id INT PRIMARY KEY AUTO_INCREMENT,
                                student_id INT,
-                               program_id INT,
+                               course_id INT,
                                registration_date DATETIME,
                                status VARCHAR(50),
                                start_date DATETIME,
                                end_date DATETIME,
                                FOREIGN KEY (student_id) REFERENCES student(id) ON UPDATE CASCADE ON DELETE CASCADE,
-                               FOREIGN KEY (program_id) REFERENCES program(id) ON UPDATE CASCADE ON DELETE CASCADE
+                               FOREIGN KEY (course_id) REFERENCES course(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 

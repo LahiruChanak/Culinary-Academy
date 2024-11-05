@@ -12,9 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rootPane" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #ecf0f1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.culinaryacademy.controller.MainFormController">
+<AnchorPane fx:id="rootPane" prefHeight="650.0" prefWidth="1200.0" style="-fx-background-color: #ecf0f1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.culinaryacademy.controller.MainFormController">
    <children>
-      <Pane prefHeight="600.0" prefWidth="190.0" style="-fx-background-radius: 0 20 20 0; -fx-background-color: white;">
+      <Pane prefHeight="650.0" prefWidth="200.0" style="-fx-background-radius: 0 20 20 0; -fx-background-color: white;">
          <children>
             <Group layoutX="35.0" layoutY="54.0">
                <children>
@@ -30,7 +30,7 @@
                   </Text>
                </children>
             </Group>
-            <JFXButton fx:id="btnHome" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutY="120.0" onAction="#btnHomeOnAction" prefHeight="52.0" prefWidth="160.0" ripplerFill="#0883e2" style="-fx-background-radius: 0 30 30 0; -fx-padding: 0 0 0 20; -fx-background-color: white;" text="Dashboard">
+            <JFXButton fx:id="btnHome" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutY="104.0" onAction="#btnHomeOnAction" prefHeight="52.0" prefWidth="160.0" ripplerFill="#0883e2" style="-fx-background-radius: 0 30 30 0; -fx-padding: 0 0 0 20; -fx-background-color: white;" text="Dashboard">
                <font>
                   <Font name="Segoe UI" size="16.0" />
                </font>
@@ -48,7 +48,7 @@
                   <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.1" />
                </effect>
             </JFXButton>
-            <JFXButton fx:id="btnStudent" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutY="212.0" onAction="#btnStudentOnAction" prefHeight="52.0" prefWidth="160.0" ripplerFill="#0883e2" style="-fx-background-radius: 0 30 30 0; -fx-padding: 0 0 0 20; -fx-background-color: white;" text="Student">
+            <JFXButton fx:id="btnStudent" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutY="194.0" onAction="#btnStudentOnAction" prefHeight="52.0" prefWidth="160.0" ripplerFill="#0883e2" style="-fx-background-radius: 0 30 30 0; -fx-padding: 0 0 0 20; -fx-background-color: white;" text="Student">
                <font>
                   <Font name="Segoe UI" size="16.0" />
                </font>
@@ -66,7 +66,7 @@
                   <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.1" />
                </effect>
             </JFXButton>
-            <JFXButton fx:id="btnCourse" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutY="303.0" onAction="#btnCourseOnAction" prefHeight="52.0" prefWidth="160.0" ripplerFill="#0883e2" style="-fx-background-radius: 0 30 30 0; -fx-padding: 0 0 0 20; -fx-background-color: white;" text="Course">
+            <JFXButton fx:id="btnCourse" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutY="284.0" onAction="#btnCourseOnAction" prefHeight="52.0" prefWidth="160.0" ripplerFill="#0883e2" style="-fx-background-radius: 0 30 30 0; -fx-padding: 0 0 0 20; -fx-background-color: white;" text="Course">
                <font>
                   <Font name="Segoe UI" size="16.0" />
                </font>
@@ -84,7 +84,25 @@
                   <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.1" />
                </effect>
             </JFXButton>
-            <JFXButton fx:id="btnSettings" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutY="394.0" onAction="#btnSettingsOnAction" prefHeight="52.0" prefWidth="160.0" ripplerFill="#0883e2" style="-fx-background-radius: 0 30 30 0; -fx-padding: 0 0 0 20; -fx-background-color: white;" text="Settings">
+            <JFXButton fx:id="btnCoordinator" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutY="374.0" onAction="#btnCoordinatorOnAction" prefHeight="52.0" prefWidth="160.0" ripplerFill="#0883e2" style="-fx-background-radius: 0 30 30 0; -fx-padding: 0 0 0 20; -fx-background-color: white;" text="Coordinator">
+               <font>
+                  <Font name="Segoe UI" size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/images/coordinator.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.1" />
+               </effect>
+            </JFXButton>
+            <JFXButton fx:id="btnSettings" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutY="464.0" onAction="#btnSettingsOnAction" prefHeight="52.0" prefWidth="160.0" ripplerFill="#0883e2" style="-fx-background-radius: 0 30 30 0; -fx-padding: 0 0 0 20; -fx-background-color: white;" text="Settings">
                <font>
                   <Font name="Segoe UI" size="16.0" />
                </font>
@@ -102,7 +120,7 @@
                   <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.1" />
                </effect>
             </JFXButton>
-            <JFXButton fx:id="btnLogOut" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutY="510.0" onAction="#btnLogOutOnAction" prefHeight="52.0" prefWidth="160.0" ripplerFill="#0883e2" style="-fx-background-radius: 0 30 30 0; -fx-padding: 0 0 0 20; -fx-background-color: white;" text="Log Out">
+            <JFXButton fx:id="btnLogOut" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutY="570.0" onAction="#btnLogOutOnAction" prefHeight="52.0" prefWidth="160.0" ripplerFill="#0883e2" style="-fx-background-radius: 0 30 30 0; -fx-padding: 0 0 0 20; -fx-background-color: white;" text="Log Out">
                <font>
                   <Font name="Segoe UI" size="16.0" />
                </font>
@@ -129,6 +147,6 @@
             </DropShadow>
          </effect>
       </Pane>
-      <Pane fx:id="subPane" layoutX="190.0" prefHeight="600.0" prefWidth="710.0" style="-fx-background-color: #ecf0f1;" />
+      <Pane fx:id="subPane" layoutX="200.0" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #ecf0f1;" />
    </children>
 </AnchorPane>

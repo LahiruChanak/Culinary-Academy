@@ -64,12 +64,7 @@
       </Hyperlink>
       <Group layoutX="89.0" layoutY="149.0">
          <children>
-            <Text fill="#0883e2" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Good">
-               <font>
-                  <Font name="SansSerif Bold" size="32.0" />
-               </font>
-            </Text>
-            <Text fx:id="txtGreeting" fill="#0883e2" fontSmoothingType="LCD" layoutX="95.0" layoutY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning">
+            <Text fx:id="txtGreeting" fill="#0883e2" fontSmoothingType="LCD" layoutX="-18.0" layoutY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning">
                <font>
                   <Font name="SansSerif Bold" size="32.0" />
                </font>

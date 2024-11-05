@@ -1,14 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.culinaryacademy.controller.CoursesFormController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.culinaryacademy.controller.CoursesFormController">
+    <children>
+        <Text fill="#2d3436" fontSmoothingType="LCD" layoutX="37.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Management" wrappingWidth="300.0">
+            <font>
+                <Font name="Arial Bold" size="24.0" />
+            </font>
+        </Text>
 
+        <Pane layoutX="37.0" layoutY="82.0" prefHeight="170.0" prefWidth="779.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
+            <children>
+
+                <JFXTextField fx:id="txtMemberId" editable="false" labelFloat="true" layoutX="40.0" layoutY="35.0" prefHeight="36.0" prefWidth="200.0" promptText="Course ID">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+
+                <JFXTextField fx:id="txtName" labelFloat="true" layoutX="290.0" layoutY="35.0" onAction="#txtNameOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Course Number">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+
+                <JFXTextField fx:id="txtJoinedDate" labelFloat="true" layoutX="540.0" layoutY="115.0" onAction="#txtJoinedDateOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Description">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+
+                <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="540.0" layoutY="35.0" onAction="#txtEmailOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Course Name">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+                <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="290.0" layoutY="115.0" onAction="#txtAddressOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Course Fee">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </JFXTextField>
+            <JFXComboBox labelFloat="true" layoutX="42.0" layoutY="115.0" prefHeight="36.0" prefWidth="200.0" promptText="Duration (Months)">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXComboBox>
+            </children>
+            <effect>
+                <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
+                    <color>
+                        <Color red="0.6666666865348816" green="0.6666666865348816" blue="0.6666666865348816" />
+                    </color>
+                </DropShadow>
+            </effect>
+        </Pane>
+        <VBox layoutX="854.0" layoutY="87.0" spacing="10.0">
+            <children>
+                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="5.0" onAction="#btnAddOnAction" prefWidth="85.0" ripplerFill="#0882e1" text="Save" textFill="#151515">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/images/add_student.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton alignment="BASELINE_LEFT" onAction="#btnUpdateOnAction" prefWidth="85.0" ripplerFill="#0882e1" text="Update">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/images/update_student.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton alignment="BASELINE_LEFT" onAction="#btnDeleteOnAction" prefWidth="85.0" ripplerFill="#0882e1" text="Delete">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/images/delete-student.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton alignment="BASELINE_LEFT" onAction="#btnClearOnAction" prefWidth="85.0" ripplerFill="#0882e1" text="Clear">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/images/clear.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+            </children>
+        </VBox>
+
+      <TableView fx:id="tblCourse" layoutX="37.0" layoutY="279.0" prefHeight="344.0" prefWidth="927.0">
+         <columns>
+            <TableColumn fx:id="colId" prefWidth="100.0" text="Course ID" />
+            <TableColumn fx:id="colNumber" prefWidth="150.0" text="Course Number" />
+            <TableColumn fx:id="colName" prefWidth="135.20001220703125" text="Course Name" />
+            <TableColumn fx:id="colDuration" prefWidth="126.39996337890625" text="Duration (Months)" />
+            <TableColumn fx:id="colFee" prefWidth="223.20001220703125" text="Course Fee" />
+            <TableColumn fx:id="colDescription" prefWidth="191.99993896484375" text="Description" />
+         </columns>
+      </TableView>
+    </children>
 </AnchorPane>
