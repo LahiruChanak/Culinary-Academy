@@ -1,4 +1,6 @@
 package lk.ijse.culinaryacademy.bo.custom.impl;
 
-public interface CourseBOImpl {
+import lk.ijse.culinaryacademy.bo.custom.CourseBO;
+
+public class CourseBOImpl implements CourseBO {
 }

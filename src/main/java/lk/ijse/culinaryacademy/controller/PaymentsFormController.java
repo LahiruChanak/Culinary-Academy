@@ -7,53 +7,53 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class CoursesFormController {
+public class PaymentsFormController {
 
     @FXML
-    private JFXComboBox<?> cmbCoordinatorId;
+    private JFXComboBox<?> cmbCourseId;
 
     @FXML
-    private JFXComboBox<?> cmbDuration;
+    private JFXComboBox<?> cmbStatus;
 
     @FXML
-    private TableColumn<?, ?> colDescription;
+    private JFXComboBox<?> cmbStudentId;
 
     @FXML
-    private TableColumn<?, ?> colDuration;
+    private TableColumn<?, ?> colCourseId;
+
+    @FXML
+    private TableColumn<?, ?> colDate;
 
     @FXML
     private TableColumn<?, ?> colFee;
 
     @FXML
-    private TableColumn<?, ?> colId;
+    private TableColumn<?, ?> colPaymentId;
 
     @FXML
-    private TableColumn<?, ?> colName;
+    private TableColumn<?, ?> colStatus;
 
     @FXML
-    private TableColumn<?, ?> colCoordinatorId;
+    private TableColumn<?, ?> colStudentId;
 
     @FXML
-    private TableView<?> tblCourse;
-
-    @FXML
-    private JFXTextField txtCourseId;
-
-    @FXML
-    private JFXTextField txtDescription;
+    private TableView<?> tblPayment;
 
     @FXML
     private JFXTextField txtFee;
 
     @FXML
-    private JFXTextField txtName;
+    private JFXTextField txtPaymentDate;
+
+    @FXML
+    private JFXTextField txtPaymentId;
 
     @FXML
     void initialize() {
 
     }
 
-    //    ------------------------------------ CRUD OPERATIONS ------------------------------------
+    // ------------------------------------ CRUD OPERATIONS ------------------------------------
     @FXML
     void btnSaveOnAction(ActionEvent event) {
 
@@ -61,12 +61,10 @@ public class CoursesFormController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-
     }
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-
     }
 
     @FXML
@@ -79,22 +77,22 @@ public class CoursesFormController {
 
     // ------------------------------------ ON ACTION ------------------------------------
     @FXML
-    void txtCourseIdOnAction(ActionEvent event) {
+    void txtPaymentIdOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void txtNameOnAction(ActionEvent event) {
+    void cmbStudentIdOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void txtDescriptionOnAction(ActionEvent event) {
+    void cmbCourseIdOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void cmbDurationOnAction(ActionEvent event) {
+    void cmbStatusOnAction(ActionEvent event) {
 
     }
 
@@ -104,7 +102,7 @@ public class CoursesFormController {
     }
 
     @FXML
-    void cmbCoordinatorIdOnAction(ActionEvent event) {
+    void txtPaymentDateOnAction(ActionEvent event) {
 
     }
 

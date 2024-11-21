@@ -15,7 +15,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 
-public class MainFormController {
+public class AdminMainFormController {
 
     @FXML
     private JFXButton btnCourse;
@@ -33,7 +33,10 @@ public class MainFormController {
     private JFXButton btnStudent;
 
     @FXML
-    private JFXButton btnCoordinator;
+    private JFXButton btnPayment;
+
+    @FXML
+    private JFXButton btnUser;
 
     @FXML
     private AnchorPane rootPane;
@@ -41,7 +44,9 @@ public class MainFormController {
     @FXML
     private Pane subPane;
 
-    public void initialize() throws IOException {
+
+    @FXML
+    void initialize() throws IOException {
         setButtonActive(btnHome);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/dashboardForm.fxml"));
@@ -51,21 +56,7 @@ public class MainFormController {
         subPane.getChildren().add(registerPane);
     }
 
-    @FXML
-    void btnCourseOnAction(ActionEvent event) throws IOException {
-        setButtonActive(btnCourse);
-
-        URL resource = getClass().getResource("/view/coursesForm.fxml");
-        assert resource != null;
-        Parent load = FXMLLoader.load(resource);
-        subPane.getChildren().clear();
-        subPane.getChildren().add(load);
-        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), subPane);
-        transition.setFromX(load.getScene().getWidth());
-        transition.setToX(0);
-        transition.play();
-    }
-
+    // ---------------------------- Button Actions ----------------------------
     @FXML
     void btnHomeOnAction(ActionEvent event) throws IOException {
         setButtonActive(btnHome);
@@ -75,25 +66,8 @@ public class MainFormController {
         Parent load = FXMLLoader.load(resource);
         subPane.getChildren().clear();
         subPane.getChildren().add(load);
-        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), subPane);
-        transition.setFromX(load.getScene().getWidth());
-        transition.setToX(0);
-        transition.play();
-    }
 
-    @FXML
-    void btnSettingsOnAction(ActionEvent event) throws IOException {
-        setButtonActive(btnSettings);
-
-        URL resource = getClass().getResource("/view/settingsForm.fxml");
-        assert resource != null;
-        Parent load = FXMLLoader.load(resource);
-        subPane.getChildren().clear();
-        subPane.getChildren().add(load);
-        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), subPane);
-        transition.setFromX(load.getScene().getWidth());
-        transition.setToX(0);
-        transition.play();
+        pageTransition(load);
     }
 
     @FXML
@@ -105,37 +79,81 @@ public class MainFormController {
         Parent load = FXMLLoader.load(resource);
         subPane.getChildren().clear();
         subPane.getChildren().add(load);
-        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), subPane);
-        transition.setFromX(load.getScene().getWidth());
-        transition.setToX(0);
-        transition.play();
+
+        pageTransition(load);
     }
 
-    public void btnCoordinatorOnAction(ActionEvent actionEvent) throws IOException {
-        setButtonActive(btnCoordinator);
+    @FXML
+    void btnCourseOnAction(ActionEvent event) throws IOException {
+        setButtonActive(btnCourse);
 
-        URL resource = getClass().getResource("/view/coordinatorsForm.fxml");
+        URL resource = getClass().getResource("/view/coursesForm.fxml");
         assert resource != null;
         Parent load = FXMLLoader.load(resource);
         subPane.getChildren().clear();
         subPane.getChildren().add(load);
-        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), subPane);
-        transition.setFromX(load.getScene().getWidth());
-        transition.setToX(0);
-        transition.play();
+
+        pageTransition(load);
+    }
+
+    @FXML
+    void btnPaymentOnAction(ActionEvent actionEvent) throws IOException {
+        setButtonActive(btnPayment);
+
+        URL resource = getClass().getResource("/view/paymentsForm.fxml");
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        subPane.getChildren().clear();
+        subPane.getChildren().add(load);
+
+        pageTransition(load);
+    }
+
+    @FXML
+    void btnUserOnAction(ActionEvent actionEvent) throws IOException {
+        setButtonActive(btnUser);
+
+        URL resource = getClass().getResource("/view/userForm.fxml");
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        subPane.getChildren().clear();
+        subPane.getChildren().add(load);
+
+        pageTransition(load);
+    }
+
+    @FXML
+    void btnSettingsOnAction(ActionEvent event) throws IOException {
+        setButtonActive(btnSettings);
+
+        URL resource = getClass().getResource("/view/settingsForm.fxml");
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        subPane.getChildren().clear();
+        subPane.getChildren().add(load);
+
+        pageTransition(load);
     }
 
     @FXML
     void btnLogOutOnAction(ActionEvent event) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/credentialForm.fxml"));
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/loginForm.fxml"));
         Stage stage = (Stage) rootPane.getScene().getWindow();
         stage.setScene(new Scene(anchorPane));
         stage.setTitle("Login Form");
         stage.centerOnScreen();
     }
 
-    private void setButtonActive(JFXButton button) {
+    // ---------------------------- Pane Transition ----------------------------
+    private void pageTransition(Parent load) {
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), subPane);
+        transition.setFromX(load.getScene().getWidth());
+        transition.setToX(0);
+        transition.play();
+    }
 
+    // ---------------------------- Active Button Styles ----------------------------
+    private void setButtonActive(JFXButton button) {
         btnHome.getStyleClass().removeAll("jfx-active-button");
         btnCourse.getStyleClass().removeAll("jfx-active-button");
         btnStudent.getStyleClass().removeAll("jfx-active-button");
@@ -145,6 +163,5 @@ public class MainFormController {
         // Add Style
         button.getStyleClass().add("jfx-active-button");
     }
-
 
 }

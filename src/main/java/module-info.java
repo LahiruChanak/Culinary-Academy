@@ -1,13 +1,13 @@
 module lk.ijse.culinaryacademy {
     requires javafx.fxml;
+    requires javafx.controls;
     requires java.sql;
     requires org.hibernate.orm.core;
     requires com.jfoenix;
-    requires javafx.controls;
+    requires static lombok;
 
-    opens lk.ijse.culinaryacademy to javafx.graphics;
+    opens lk.ijse.culinaryacademy to javafx.fxml, javafx.graphics;
     opens lk.ijse.culinaryacademy.controller to javafx.fxml;
 
     exports lk.ijse.culinaryacademy;
-    exports lk.ijse.culinaryacademy.controller to javafx.fxml;
 }

@@ -8,16 +8,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 
-public class AdminRegisterFormController {
+public class RegisterFormController {
 
     @FXML
     private AnchorPane adminRegisterPane;
@@ -42,7 +40,7 @@ public class AdminRegisterFormController {
 
     @FXML
     void btnCancelOnAction(ActionEvent event) throws IOException {
-        URL resource = getClass().getResource("/view/adminLoginForm.fxml");
+        URL resource = getClass().getResource("/view/loginForm.fxml");
         assert resource != null;
         Parent load = FXMLLoader.load(resource);
         adminRegisterPane.getChildren().clear();

@@ -1,4 +1,6 @@
 package lk.ijse.culinaryacademy.bo.custom;
 
-public interface CourseBO {
+import lk.ijse.culinaryacademy.bo.SuperBO;
+
+public interface CourseBO extends SuperBO {
 }

@@ -1,60 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.culinaryacademy.controller.StudentsFormController">
+<AnchorPane prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.culinaryacademy.controller.StudentsFormController">
    <children>
-      <Text fill="#2d3436" fontSmoothingType="LCD" layoutX="37.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Management" wrappingWidth="300.0">
+      <Text fill="#2d3436" fontSmoothingType="LCD" layoutX="37.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Students Management" wrappingWidth="300.0">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Text>
-
-      <Pane layoutX="37.0" layoutY="82.0" prefHeight="166.0" prefWidth="779.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
+      <!-- Pane for student details -->
+      <Pane layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="785.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
          <children>
-
-            <JFXTextField fx:id="txtStudentId" editable="false" labelFloat="true" layoutX="40.0" layoutY="34.0" prefHeight="36.0" prefWidth="200.0" promptText="Student ID">
+            <JFXTextField fx:id="txtStudentId" editable="false" labelFloat="true" layoutX="40.0" layoutY="35.0" prefHeight="36.0" prefWidth="200.0" promptText="Student ID">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
 
-            <JFXTextField fx:id="txtName" labelFloat="true" layoutX="280.0" layoutY="34.0" onAction="#txtNameOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Student Name">
+                                    <JFXTextField fx:id="txtName" labelFloat="true" layoutX="295.0" layoutY="35.0" onAction="#txtNameOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Student Name">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
 
-            <JFXTextField fx:id="txtContact" labelFloat="true" layoutX="40.0" layoutY="114.0" onAction="#txtContactOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Contact">
+                                    <JFXTextField fx:id="txtContact" labelFloat="true" layoutX="40.0" layoutY="110.0" onAction="#txtContactOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Contact">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
 
-            <JFXTextField fx:id="txtEnrolledDate" labelFloat="true" layoutX="530.0" layoutY="114.0" onAction="#txtEnrolledDateOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Enrollment Date">
+                                    <JFXTextField fx:id="txtEnrolledDate" labelFloat="true" layoutX="550.0" layoutY="110.0" onAction="#txtEnrolledDateOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Enrollment Date">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-      
-            <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="530.0" layoutY="34.0" onAction="#txtEmailOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Email">
+
+                                    <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="550.0" layoutY="35.0" onAction="#txtEmailOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Email">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="280.0" layoutY="114.0" onAction="#txtAddressOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Address">
+            <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="295.0" layoutY="110.0" onAction="#txtAddressOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Address">
                <font>
                   <Font size="14.0" />
                </font>
@@ -69,19 +62,21 @@
          </effect>
       </Pane>
 
-      <TableView fx:id="tblStudent" layoutX="37.0" layoutY="279.0" prefHeight="344.0" prefWidth="927.0">
+                                    <!-- Table for displaying students -->
+      <TableView fx:id="tblStudent" layoutX="50.0" layoutY="285.0" prefHeight="335.0" prefWidth="910.0" stylesheets="@../assets/css/table.css">
          <columns>
             <TableColumn fx:id="colId" prefWidth="100.0" text="Student ID" />
             <TableColumn fx:id="colName" prefWidth="150.0" text="Name" />
-            <TableColumn fx:id="colEmail" prefWidth="135.20001220703125" text="Email" />
-            <TableColumn fx:id="colContact" prefWidth="126.39996337890625" text="Contact" />
-            <TableColumn fx:id="colAddress" prefWidth="223.20001220703125" text="Address" />
-            <TableColumn fx:id="colEnrolledDate" prefWidth="191.99993896484375" text="Enrollment Date" />
+            <TableColumn fx:id="colEmail" prefWidth="135.2" text="Email" />
+            <TableColumn fx:id="colContact" prefWidth="126.4" text="Contact" />
+            <TableColumn fx:id="colAddress" prefWidth="223.2" text="Address" />
+            <TableColumn fx:id="colEnrolledDate" prefWidth="174.39999999999998" text="Enrollment Date" />
          </columns>
       </TableView>
-      <VBox layoutX="855.0" layoutY="84.0" spacing="10.0">
+
+                                             <VBox layoutX="860.0" layoutY="90.0" prefHeight="126.0" prefWidth="100.0" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 5;">
          <children>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="5.0" onAction="#btnSaveOnAction" prefWidth="85.0" ripplerFill="#0882e1" text="Save">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="5.0" onAction="#btnSaveOnAction" prefWidth="100.0" ripplerFill="#0882e1" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Save">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -90,7 +85,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" onAction="#btnUpdateOnAction" prefWidth="85.0" ripplerFill="#0882e1" text="Update">
+            <JFXButton alignment="BASELINE_LEFT" onAction="#btnUpdateOnAction" prefWidth="100.0" ripplerFill="#0882e1" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Update">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -99,7 +94,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" onAction="#btnDeleteOnAction" prefWidth="85.0" ripplerFill="#0882e1" text="Delete">
+            <JFXButton alignment="BASELINE_LEFT" onAction="#btnDeleteOnAction" prefWidth="100.0" ripplerFill="#0882e1" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Delete">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -108,7 +103,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" onAction="#btnClearOnAction" prefWidth="85.0" ripplerFill="#0882e1" text="Clear">
+            <JFXButton alignment="BASELINE_LEFT" onAction="#btnClearOnAction" prefWidth="100.0" ripplerFill="#0882e1" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Clear">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -118,6 +113,13 @@
                </graphic>
             </JFXButton>
          </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
+               <color>
+                  <Color red="0.6666666865348816" green="0.6666666865348816" blue="0.6666666865348816" />
+               </color>
+            </DropShadow>
+         </effect>
       </VBox>
    </children>
 </AnchorPane>

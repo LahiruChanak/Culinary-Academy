@@ -10,14 +10,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="coordinatorLoginPane" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.culinaryacademy.controller.CoordinatorLoginFormController">
+<AnchorPane fx:id="adminLoginPane" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.culinaryacademy.controller.LoginFormController">
    <children>
-      <Text fill="#0883e2" fontSmoothingType="LCD" layoutX="60.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coordinator Login">
-         <font>
-            <Font name="SansSerif Bold" size="32.0" />
-         </font>
-      </Text>
-      <Text fill="#444444" fontSmoothingType="LCD" layoutX="147.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back">
+      <Group layoutX="220.0" layoutY="55.0">
+         <children>
+            <Text fill="#0883e2" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Culinary">
+               <font>
+                  <Font name="SansSerif Bold" size="24.0" />
+               </font>
+            </Text>
+            <Text fill="#121212" layoutX="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arts">
+               <font>
+                  <Font name="SansSerif Regular" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Text fill="#444444" fontSmoothingType="LCD" layoutX="146.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back">
          <font>
             <Font name="SansSerif Regular" size="16.0" />
          </font>
@@ -48,21 +57,16 @@
             <Font size="16.0" />
          </font>
       </JFXPasswordField>
-      <Hyperlink fx:id="linkAdmin" layoutX="151.0" layoutY="516.0" onAction="#linkAdminOnAction" text="Admin Portal" textFill="#0883e2">
+      <Hyperlink fx:id="linkCoordinator" layoutX="129.0" layoutY="515.0" onAction="#linkCoordinatorOnAction" text="Coordinator Portal" textFill="#0883e2">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Hyperlink>
-      <Group layoutX="230.0" layoutY="55.0">
+      <Group layoutX="89.0" layoutY="149.0">
          <children>
-            <Text fill="#0883e2" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Culinary">
+            <Text fx:id="txtGreeting" fill="#0883e2" fontSmoothingType="LCD" layoutX="-18.0" layoutY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning">
                <font>
-                  <Font name="SansSerif Bold" size="24.0" />
-               </font>
-            </Text>
-            <Text fill="#121212" layoutX="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arts">
-               <font>
-                  <Font name="SansSerif Regular" size="20.0" />
+                  <Font name="SansSerif Bold" size="32.0" />
                </font>
             </Text>
          </children>

@@ -16,7 +16,7 @@ public class CredentialFormController {
     private Pane subPane;
 
     public void initialize() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/adminLoginForm.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/loginForm.fxml"));
 
         Pane pane = fxmlLoader.load();
         subPane.getChildren().clear();

@@ -9,18 +9,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.culinaryacademy.bo.BOFactory;
+import lk.ijse.culinaryacademy.bo.custom.CredentialBO;
+import lk.ijse.culinaryacademy.bo.custom.impl.CredentialBOImpl;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalTime;
 
-public class AdminLoginFormController {
+public class LoginFormController {
 
     @FXML
     private AnchorPane adminLoginPane;
@@ -43,6 +48,7 @@ public class AdminLoginFormController {
     @FXML
     private JFXPasswordField txtPassword;
 
+    CredentialBO credentialBO = (CredentialBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CREDENTIAL);
 
     public void initialize() {
         setGreeting();
@@ -50,23 +56,25 @@ public class AdminLoginFormController {
     }
 
     @FXML
-    void btnLoginOnAction(ActionEvent event) {
+    void btnLoginOnAction(ActionEvent event) throws IOException {
         String email = txtEmail.getText();
         String password = txtPassword.getText();
 
-//        try {
-//            if (credentialBO.checkLoginCredential(email, password)) {
-//                CredentialBOImpl.userName = credentialBO.getUsrName(email);
-//                navigateToDashboard();
-//            }
-//        } catch (SQLException | IOException e) {
-//            new Alert(Alert.AlertType.ERROR, "An error occurred while checking login details.").show();
-//        }
+        navigateToDashboard(); // This line should be removed after testing
+
+        try {
+            if (credentialBO.checkLoginCredential(email, password)) {
+                CredentialBOImpl.userName = credentialBO.getUsrName(email);
+                navigateToDashboard();
+            }
+        } catch (SQLException | IOException e) {
+            new Alert(Alert.AlertType.ERROR, "An error occurred while checking login details.").show();
+        }
     }
 
     @FXML
     void btnRegisterOnAction(ActionEvent event) throws IOException {
-        URL resource = getClass().getResource("/view/adminRegisterForm.fxml");
+        URL resource = getClass().getResource("/view/registerForm.fxml");
         assert resource != null;
         Parent load = FXMLLoader.load(resource);
         adminLoginPane.getChildren().clear();
@@ -78,7 +86,7 @@ public class AdminLoginFormController {
     }
 
     private void navigateToDashboard() throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/mainForm.fxml"));
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/adminMainForm.fxml"));
 
         Scene scene = new Scene(rootNode);
 
