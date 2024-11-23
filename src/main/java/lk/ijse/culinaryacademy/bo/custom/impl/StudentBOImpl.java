@@ -22,12 +22,12 @@ public class StudentBOImpl implements StudentBO {
     }
 
     @Override
-    public StudentDTO searchStudent(String id) {
+    public StudentDTO searchStudent(String id) throws Exception {
         return null;
     }
 
     @Override
-    public String generateNewStudentId() {
+    public String generateNewStudentId() throws Exception {
         return "";
     }
 

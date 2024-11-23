@@ -24,36 +24,36 @@
       <!-- Pane for student details -->
       <Pane layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="785.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
          <children>
-            <JFXTextField fx:id="txtStudentId" labelFloat="true" layoutX="40.0" layoutY="35.0" onKeyReleased="#txtStudentIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Student ID">
+            <JFXTextField fx:id="txtStudentId" labelFloat="true" layoutX="40.0" layoutY="35.0" onKeyReleased="#txtStudentIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Student ID" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
 
-                                    <JFXTextField fx:id="txtName" labelFloat="true" layoutX="295.0" layoutY="35.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Student Name">
+                                    <JFXTextField fx:id="txtName" labelFloat="true" layoutX="295.0" layoutY="35.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Student Name" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
 
-                                    <JFXTextField fx:id="txtContact" labelFloat="true" layoutX="40.0" layoutY="110.0" onKeyReleased="#txtContactOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Contact">
+                                    <JFXTextField fx:id="txtContact" labelFloat="true" layoutX="40.0" layoutY="110.0" onKeyReleased="#txtContactOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Contact" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
 
-                                    <JFXTextField fx:id="txtEnrolledDate" labelFloat="true" layoutX="550.0" layoutY="110.0" onKeyReleased="#txtEnrolledDateOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Enrollment Date">
+                                    <JFXTextField fx:id="txtEnrolledDate" labelFloat="true" layoutX="550.0" layoutY="110.0" onKeyReleased="#txtEnrolledDateOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Enrollment Date" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
 
-                                    <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="550.0" layoutY="35.0" onKeyReleased="#txtEmailOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Email">
+                                    <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="550.0" layoutY="35.0" onKeyReleased="#txtEmailOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Email" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="295.0" layoutY="110.0" onKeyReleased="#txtAddressOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Address">
+            <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="295.0" layoutY="110.0" onKeyReleased="#txtAddressOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Address" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
                <font>
                   <Font size="14.0" />
                </font>

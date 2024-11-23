@@ -27,7 +27,7 @@
         <Pane layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="780.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
             <children>
 
-                <JFXTextField fx:id="txtPaymentId" editable="false" labelFloat="true" layoutX="40.0" layoutY="35.0" onAction="#txtPaymentIdOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Payment ID">
+                <JFXTextField fx:id="txtPaymentId" labelFloat="true" layoutX="40.0" layoutY="35.0" onAction="#txtPaymentIdOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Payment ID">
                <font>
                   <Font size="14.0" />
                </font>

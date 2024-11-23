@@ -10,4 +10,5 @@ module lk.ijse.culinaryacademy {
     opens lk.ijse.culinaryacademy.controller to javafx.fxml;
 
     exports lk.ijse.culinaryacademy;
+    opens lk.ijse.culinaryacademy.bo.custom to javafx.fxml;
 }

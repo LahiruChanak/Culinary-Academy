@@ -187,15 +187,25 @@ public class StudentsFormController {
         clearField();
     }
 
+    private List<StudentDTO> getAllStudents() {
+        List<StudentDTO> studentList = null;
+        try {
+            studentList = studentBO.getAllStudents();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return studentList;
+    }
+
 
     // -------------------------------- OTHER METHODS --------------------------------
     private void clearField() {
-        txtStudentId.setText("");
-        txtName.setText("");
-        txtEmail.setText("");
-        txtContact.setText("");
-        txtAddress.setText("");
-        txtEnrolledDate.setText("");
+        txtStudentId.clear();
+        txtName.clear();
+        txtEmail.clear();
+        txtContact.clear();
+        txtAddress.clear();
+        txtEnrolledDate.clear();
     }
 
     private void refreshTable() {
@@ -206,7 +216,7 @@ public class StudentsFormController {
     private void loadNextStudentId() throws Exception {
         try {
             String currentId = studentBO.currentStudentId();
-            String nextId = nextMemberId(currentId);
+            String nextId = nextId(currentId);
 
             txtStudentId.setText(nextId);
 
@@ -215,7 +225,7 @@ public class StudentsFormController {
         }
     }
 
-    private String nextMemberId(String currentId) {
+    private String nextId(String currentId) {
 //        if (currentId != null) {
 //            String[] split = currentId.split("S");
 //            int id = Integer.parseInt(split[1]);
@@ -256,16 +266,6 @@ public class StudentsFormController {
         colContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         colEnrolledDate.setCellValueFactory(new PropertyValueFactory<>("enrolledDate"));
-    }
-
-    private List<StudentDTO> getAllStudents() {
-        List<StudentDTO> studentList = null;
-        try {
-            studentList = studentBO.getAllStudents();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return studentList;
     }
 
 

@@ -27,37 +27,38 @@
         <Pane layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="780.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
             <children>
 
-                <JFXTextField fx:id="txtCourseId" editable="false" labelFloat="true" layoutX="40.0" layoutY="35.0" onAction="#txtCourseIdOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Course ID">
+                <JFXTextField fx:id="txtCourseId" labelFloat="true" layoutX="40.0" layoutY="35.0" onKeyReleased="#txtCourseIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Course ID">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </JFXTextField>
 
-                <JFXTextField fx:id="txtName" labelFloat="true" layoutX="295.0" layoutY="35.0" onAction="#txtNameOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Course Name">
+                <JFXTextField fx:id="txtName" labelFloat="true" layoutX="295.0" layoutY="35.0" onKeyReleased="#txtCourseNameOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Course Name">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </JFXTextField>
 
-                <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="550.0" layoutY="35.0" onAction="#txtDescriptionOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Description">
+                <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="550.0" layoutY="35.0" onKeyReleased="#txtDescriptionOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Description">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </JFXTextField>
-                <JFXTextField fx:id="txtFee" labelFloat="true" layoutX="295.0" layoutY="110.0" onAction="#txtFeeOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Course Fee">
+                <JFXTextField fx:id="txtFee" labelFloat="true" layoutX="295.0" layoutY="110.0" onKeyReleased="#txtFeeOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Course Fee">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </JFXTextField>
-            <JFXComboBox fx:id="cmbDuration" labelFloat="true" layoutX="42.0" layoutY="110.0" onAction="#cmbDurationOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Duration (Months)">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></JFXComboBox>
-            <JFXComboBox fx:id="cmbCoordinatorId" labelFloat="true" layoutX="555.0" layoutY="110.0" onAction="#cmbCoordinatorIdOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Coordinator ID">
+            <JFXComboBox fx:id="cmbCoordinatorId" labelFloat="true" layoutX="555.0" layoutY="110.0" onKeyReleased="#cmbCoordinatorIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Coordinator ID">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXComboBox>
+            <JFXTextField fx:id="txtDuration" editable="false" labelFloat="true" layoutX="40.0" layoutY="110.0" onKeyReleased="#txtDurationOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Duration (Months)">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
             </children>
             <effect>
                 <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
