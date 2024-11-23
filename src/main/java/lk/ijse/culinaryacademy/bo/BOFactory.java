@@ -9,12 +9,10 @@ public class BOFactory {
 
     private static BOFactory boFactory;
 
-    private BOFactory() {
+    private  BOFactory() {
     }
 
-    public static BOFactory getBoFactory() {
-        return (boFactory == null) ? (boFactory = new BOFactory()) : (boFactory);
-    }
+    public static BOFactory getBOFactory() { return (boFactory == null) ? (boFactory = new BOFactory()) : (boFactory); }
 
     public enum BOTypes{
         COURSE, CREDENTIAL, PAYMENT, STUDENT

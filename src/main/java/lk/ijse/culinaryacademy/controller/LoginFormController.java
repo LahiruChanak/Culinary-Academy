@@ -48,7 +48,7 @@ public class LoginFormController {
     @FXML
     private JFXPasswordField txtPassword;
 
-    CredentialBO credentialBO = (CredentialBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CREDENTIAL);
+    CredentialBO credentialBO = (CredentialBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.CREDENTIAL);
 
     public void initialize() {
         setGreeting();

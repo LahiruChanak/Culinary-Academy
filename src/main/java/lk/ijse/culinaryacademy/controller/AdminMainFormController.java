@@ -137,7 +137,7 @@ public class AdminMainFormController {
 
     @FXML
     void btnLogOutOnAction(ActionEvent event) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/loginForm.fxml"));
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/credentialForm.fxml"));
         Stage stage = (Stage) rootPane.getScene().getWindow();
         stage.setScene(new Scene(anchorPane));
         stage.setTitle("Login Form");

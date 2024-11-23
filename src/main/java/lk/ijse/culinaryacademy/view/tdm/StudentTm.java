@@ -1,4 +1,4 @@
-package lk.ijse.culinaryacademy.dto;
+package lk.ijse.culinaryacademy.view.tdm;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,11 +10,12 @@ import java.sql.Date;
 @NoArgsConstructor
 @Data
 
-public class StudentDTO {
+public class StudentTm {
     private String studentId;
     private String name;
     private String email;
     private String contact;
     private String address;
     private Date enrolledDate;
+
 }
