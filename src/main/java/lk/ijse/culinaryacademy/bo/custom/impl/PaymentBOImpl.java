@@ -12,6 +12,16 @@ public class PaymentBOImpl implements PaymentBO {
     }
 
     @Override
+    public boolean updatePayment(PaymentDTO paymentDTO) throws Exception {
+        return false;
+    }
+
+    @Override
+    public boolean deletePayment(String paymentId) throws Exception {
+        return false;
+    }
+
+    @Override
     public List<PaymentDTO> getAllPayments() throws Exception {
         return List.of();
     }
@@ -19,5 +29,15 @@ public class PaymentBOImpl implements PaymentBO {
     @Override
     public String currentPaymentId() throws Exception {
         return "";
+    }
+
+    @Override
+    public List<String> getStudentIds() throws Exception {
+        return List.of();
+    }
+
+    @Override
+    public List<String> getCourseIds() throws Exception {
+        return List.of();
     }
 }

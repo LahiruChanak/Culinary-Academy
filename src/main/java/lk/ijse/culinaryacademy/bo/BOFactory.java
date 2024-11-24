@@ -1,9 +1,6 @@
 package lk.ijse.culinaryacademy.bo;
 
-import lk.ijse.culinaryacademy.bo.custom.impl.CourseBOImpl;
-import lk.ijse.culinaryacademy.bo.custom.impl.CredentialBOImpl;
-import lk.ijse.culinaryacademy.bo.custom.impl.PaymentBOImpl;
-import lk.ijse.culinaryacademy.bo.custom.impl.StudentBOImpl;
+import lk.ijse.culinaryacademy.bo.custom.impl.*;
 
 public class BOFactory {
 
@@ -31,6 +28,9 @@ public class BOFactory {
 
             case STUDENT:
                 return new StudentBOImpl();
+
+            case USER:
+                return new UserBOImpl();
 
             default:
                 return null;

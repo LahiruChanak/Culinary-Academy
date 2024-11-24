@@ -1,10 +1,21 @@
 package lk.ijse.culinaryacademy.bo.custom;
 
+import lk.ijse.culinaryacademy.bo.SuperBO;
+import lk.ijse.culinaryacademy.dto.UserDTO;
+
 import java.util.List;
 
-public class UserBO {
+public interface UserBO extends SuperBO {
+    boolean addUser(UserDTO dto) throws Exception;
 
-    public List<String> getCoordinatorIds() throws Exception {
-        return null;
-    }
+    boolean updateUser(UserDTO dto) throws Exception;
+
+    boolean deleteUser(String id) throws Exception;
+
+    List<UserDTO> getAllUsers() throws Exception;
+
+    List<String> getCoordinatorIds() throws Exception;
+
+    String currentUserId() throws Exception;
+
 }

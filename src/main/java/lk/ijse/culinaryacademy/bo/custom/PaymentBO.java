@@ -6,9 +6,18 @@ import lk.ijse.culinaryacademy.dto.PaymentDTO;
 import java.util.List;
 
 public interface PaymentBO extends SuperBO {
-    boolean addPayment(PaymentDTO paymentDTO);
+    boolean addPayment(PaymentDTO paymentDTO) throws Exception;
+
+    boolean updatePayment(PaymentDTO paymentDTO) throws Exception;
+
+    boolean deletePayment(String paymentId) throws Exception;
 
     List<PaymentDTO> getAllPayments() throws Exception;
 
     String currentPaymentId() throws Exception;
+
+    List<String> getStudentIds() throws Exception;
+
+    List<String> getCourseIds() throws Exception;
+
 }

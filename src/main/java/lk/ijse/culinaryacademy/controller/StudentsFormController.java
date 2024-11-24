@@ -68,6 +68,7 @@ public class StudentsFormController {
     // Objects
     StudentBO studentBO = (StudentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.STUDENT);
 
+
     // --------------------------------- Initialize Method ---------------------------------
     public void initialize() throws Exception {
         loadNextStudentId();

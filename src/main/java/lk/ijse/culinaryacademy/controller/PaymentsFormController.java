@@ -2,15 +2,19 @@ package lk.ijse.culinaryacademy.controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.PaymentBO;
-import lk.ijse.culinaryacademy.bo.custom.StudentBO;
 import lk.ijse.culinaryacademy.dto.PaymentDTO;
+import lk.ijse.culinaryacademy.view.tdm.PaymentTm;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -48,7 +52,7 @@ public class PaymentsFormController {
     private TableColumn<?, ?> colStudentId;
 
     @FXML
-    private TableView<?> tblPayment;
+    private TableView<PaymentTm> tblPayment;
 
     @FXML
     private JFXTextField txtFee;
@@ -64,9 +68,15 @@ public class PaymentsFormController {
     // Objects
     PaymentBO paymentBO = (PaymentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PAYMENT);
 
+    // ------------------------------------ INITIALIZATION ------------------------------------
     @FXML
-    void initialize() {
-
+    void initialize() throws Exception {
+        loadNextPaymentId();
+        loadStudentIds();
+        loadCourseIds();
+        this.paymentList = getAllPayments();
+        loadPaymentTable();
+        setCellValueFactory();
     }
 
     // ------------------------------------ CRUD OPERATIONS ------------------------------------
@@ -92,6 +102,13 @@ public class PaymentsFormController {
 
         PaymentDTO paymentDTO = new PaymentDTO(paymentId, studentId, courseId, paymentDate, fee, status);
 
+        String errorMessage = isValid();
+
+        if (errorMessage != null) {
+            new Alert(Alert.AlertType.ERROR, errorMessage).show();
+            return;
+        }
+
         try {
             boolean isAdded = paymentBO.addPayment(paymentDTO);
             if (isAdded) {
@@ -106,15 +123,72 @@ public class PaymentsFormController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String paymentId = txtPaymentId.getText();
+        String studentId = cmbStudentId.getValue();
+        String courseId = cmbCourseId.getValue();
+        String paymentDateText = txtPaymentDate.getText();
+        String feeText = txtFee.getText();
+        String status = cmbStatus.getValue();
+
+        Date paymentDate;
+        double fee;
+
+        try {
+            paymentDate = Date.valueOf(paymentDateText);
+            fee = Double.parseDouble(feeText);
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Input").show();
+            return;
+        }
+
+        PaymentDTO paymentDTO = new PaymentDTO(paymentId, studentId, courseId, paymentDate, fee, status);
+
+        String errorMessage = isValid();
+
+        if (errorMessage != null) {
+            new Alert(Alert.AlertType.ERROR, errorMessage).show();
+            return;
+        }
+
+        try {
+            boolean isAdded = paymentBO.updatePayment(paymentDTO);
+            if (isAdded) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Payment Updated Successfully.").show();
+                clearField();
+                refreshTable();
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String paymentId = txtPaymentId.getText();
+
+        try {
+            boolean isDeleted = paymentBO.deletePayment(paymentId);
+            if (isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Payment Deleted Successfully.").show();
+                clearField();
+                refreshTable();
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
-    void btnClearOnAction(ActionEvent event) {
+    void btnClearOnAction(ActionEvent event) { clearField(); }
 
+    private List<PaymentDTO> getAllPayments() throws Exception {
+        List<PaymentDTO> paymentList = null;
+        try {
+            paymentList = paymentBO.getAllPayments();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return paymentList;
     }
 
     // ------------------------------------ OTHER OPERATIONS ------------------------------------
@@ -127,7 +201,7 @@ public class PaymentsFormController {
         cmbStatus.getSelectionModel().clearSelection();
     }
 
-    private void refreshTable() {
+    private void refreshTable() throws Exception {
         this.paymentList = getAllPayments();
         loadPaymentTable();
     }
@@ -153,54 +227,96 @@ public class PaymentsFormController {
         return "P001";
     }
 
-    private List<PaymentDTO> getAllPayments() {
-        List<PaymentDTO> paymentList = null;
-        try {
-            paymentList = paymentBO.getAllPayments();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return paymentList;
+    private void setCellValueFactory() {
+        colPaymentId.setCellValueFactory(new PropertyValueFactory<>("paymentId"));
+        colStudentId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
+        colCourseId.setCellValueFactory(new PropertyValueFactory<>("courseId"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("paymentDate"));
+        colFee.setCellValueFactory(new PropertyValueFactory<>("fee"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
     }
 
     private void loadPaymentTable() {
-//        tblPayment.getItems().clear();
-//        tblPayment.getItems().addAll(paymentList);
+        ObservableList<PaymentTm> tmList = FXCollections.observableArrayList();
+
+        for (PaymentDTO payment : paymentList) {
+            PaymentTm paymentTm = new PaymentTm(
+                    payment.getPaymentId(),
+                    payment.getStudentId(),
+                    payment.getCourseId(),
+                    payment.getPaymentDate(),
+                    payment.getFee(),
+                    payment.getStatus()
+            );
+
+            tmList.add(paymentTm);
+        }
+        tblPayment.setItems(tmList);
+        tblPayment.getSelectionModel().getSelectedItem();
     }
 
-    private void loadStudentIds() {
+    private void loadStudentIds() throws Exception {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<String> idList = paymentBO.getStudentIds();
+            for (String id : idList) {
+                obList.add(id);
+            }
+            cmbStudentId.setItems(obList);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void loadCourseIds() throws Exception {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<String> idList = paymentBO.getCourseIds();
+            for (String id : idList) {
+                obList.add(id);
+            }
+            cmbCourseId.setItems(obList);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
-    // ------------------------------------ ON ACTION ------------------------------------
+    // ------------------------------------ ON KEY RELEASED ------------------------------------
     @FXML
-    void txtPaymentIdOnAction(ActionEvent event) {
+    void txtPaymentIdOnKeyReleased(KeyEvent event) {
 
     }
 
     @FXML
-    void cmbStudentIdOnAction(ActionEvent event) {
+    void cmbStudentIdOnKeyReleased(KeyEvent event) {
 
     }
 
     @FXML
-    void cmbCourseIdOnAction(ActionEvent event) {
+    void cmbCourseIdOnKeyReleased(KeyEvent event) {
 
     }
 
     @FXML
-    void cmbStatusOnAction(ActionEvent event) {
+    void cmbStatusOnKeyReleased(KeyEvent event) {
 
     }
 
     @FXML
-    void txtFeeOnAction(ActionEvent event) {
+    void txtFeeOnKeyReleased(KeyEvent event) {
 
     }
 
     @FXML
-    void txtPaymentDateOnAction(ActionEvent event) {
+    void txtPaymentDateOnKeyReleased(KeyEvent event) {
 
     }
 
+    // ------------------------------------ VALIDATION ------------------------------------
+    private String isValid() {
+        return null;
+    }
 }

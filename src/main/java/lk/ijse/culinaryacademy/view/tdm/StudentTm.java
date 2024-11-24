@@ -11,6 +11,7 @@ import java.sql.Date;
 @Data
 
 public class StudentTm {
+
     private String studentId;
     private String name;
     private String email;
