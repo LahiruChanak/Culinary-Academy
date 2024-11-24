@@ -40,4 +40,9 @@ public class PaymentBOImpl implements PaymentBO {
     public List<String> getCourseIds() throws Exception {
         return List.of();
     }
+
+    @Override
+    public PaymentDTO searchByPaymentId(String paymentId) throws Exception {
+        return null;
+    }
 }

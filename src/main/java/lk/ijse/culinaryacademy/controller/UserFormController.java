@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.UserBO;
+import lk.ijse.culinaryacademy.dto.CourseDTO;
 import lk.ijse.culinaryacademy.dto.UserDTO;
 import lk.ijse.culinaryacademy.view.tdm.UserTm;
 
@@ -24,7 +25,7 @@ import java.util.List;
 public class UserFormController {
 
     @FXML
-    private JFXComboBox<?> cmbRole;
+    private JFXComboBox<String> cmbRole;
 
     @FXML
     private TableColumn<?, ?> colEmail;
@@ -56,6 +57,9 @@ public class UserFormController {
     @FXML
     private JFXTextField txtUserId;
 
+    @FXML
+    private JFXTextField txtSearch;
+
     private List<UserDTO> userList = new ArrayList<>();
 
     // Objects
@@ -78,7 +82,7 @@ public class UserFormController {
         String userId = txtUserId.getText();
         String name = txtName.getText();
         String email = txtEmail.getText();
-        String role = cmbRole.getValue().toString();
+        String role = cmbRole.getValue();
         String password = txtPassword.getText();
         String confirmPassword = txtConfirmPassword.getText();
 
@@ -115,7 +119,7 @@ public class UserFormController {
         String userId = txtUserId.getText();
         String name = txtName.getText();
         String email = txtEmail.getText();
-        String role = cmbRole.getValue().toString();
+        String role = cmbRole.getValue();
         String password = txtPassword.getText();
         String confirmPassword = txtConfirmPassword.getText();
 
@@ -134,7 +138,7 @@ public class UserFormController {
         }
 
         try {
-            boolean isAdded = userBO.addUser(dto);
+            boolean isAdded = userBO.updateUser(dto);
 
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "User Updated Successfully.").show();
@@ -191,6 +195,26 @@ public class UserFormController {
     private void refreshTable() {
         this.userList = getAllUsers();
         loadUserTable();
+    }
+
+    @FXML
+    private void txtSearchOnAction(ActionEvent event) throws Exception {
+        String userId = txtSearch.getText();
+
+        try {
+            UserDTO dto = userBO.searchByUserId(userId);
+
+            if (dto != null) {
+                txtUserId.setText(dto.getUserId());
+                txtName.setText(dto.getName());
+                txtEmail.setText(dto.getEmail());
+                cmbRole.setValue(dto.getRole());
+            } else {
+                new Alert(Alert.AlertType.INFORMATION, "User not found.").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     private void loadNextUserId() throws Exception {

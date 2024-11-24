@@ -10,6 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
@@ -32,7 +33,7 @@
                   <Font size="14.0" />
                </font>
                 </JFXTextField>
-            <JFXComboBox fx:id="cmbStudentId" labelFloat="true" layoutX="295.0" layoutY="35.0" onMouseReleased="#cmbStudentIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Student ID">
+            <JFXComboBox fx:id="cmbStudentId" labelFloat="true" layoutX="295.0" layoutY="35.0" onKeyReleased="#cmbStudentIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Student ID">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></JFXComboBox>
@@ -125,5 +126,19 @@
             </DropShadow>
          </effect>
       </VBox>
+      <HBox layoutX="635.0" layoutY="30.0" spacing="5.0" styleClass="hBox" stylesheets="@../assets/css/search.css">
+         <children>
+            <JFXTextField fx:id="txtSearch" onAction="#txtSearchOnAction" prefHeight="25.0" promptText="Enter Search" />
+            <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" onAction="#txtSearchOnAction" ripplerFill="GREY" styleClass="search-button" stylesheets="@../assets/css/search.css">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/images/search.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </HBox>
     </children>
 </AnchorPane>

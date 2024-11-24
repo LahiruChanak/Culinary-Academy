@@ -1,25 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
+<AnchorPane prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #f0f4f8;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.culinaryacademy.controller.SettingsFormController">
+    <Text fill="#2d3436" fontSmoothingType="LCD" layoutX="37.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" wrappingWidth="300.0">
+        <font>
+            <Font name="Arial Bold" size="24.0" />
+        </font>
+    </Text>
+    <Pane layoutX="40.0" layoutY="100.0" prefWidth="930.0" styleClass="pane" stylesheets="@../assets/css/settingsPage.css">
+        <children>
+            <VBox layoutX="30.0" layoutY="30.0" prefWidth="870.0" spacing="30.0">
 
-<AnchorPane prefHeight="600.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.culinaryacademy.controller.SettingsFormController">
-    <VBox spacing="20" alignment="CENTER" layoutX="50" layoutY="50">
-        <Label text="Update Password" style="-fx-font-weight: bold; -fx-text-fill: #333333;"/>
-        
-        <Label text="Current Password:"/>
-        <PasswordField fx:id="currentPasswordField" promptText="Enter current password" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc;"/>
-        
-        <Label text="New Password:"/>
-        <PasswordField fx:id="newPasswordField" promptText="Enter new password" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc;"/>
-        
-        <Label text="Confirm New Password:"/>
-        <PasswordField fx:id="confirmPasswordField" promptText="Confirm new password" style="-fx-background-color: #f0f0f0; -fx-border-color: #cccccc;"/>
-        
-        <Button text="Update Password" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"/>
-    </VBox>
+                <!-- Email Change Dropdown -->
+                <TitledPane fx:id="titledPaneEmail" expanded="false" styleClass="titledPane" stylesheets="@../assets/css/settingsPage.css" text="Change Email">
+                    <VBox spacing="10.0" style="-fx-padding: 15;">
+                  <VBox spacing="35.0" style="-fx-padding: 10 0;">
+                     <children>
+                              <JFXTextField fx:id="txtCurrentEmail" onKeyReleased="#txtCurrentEmailOnKeyReleased" promptText="Enter current email" />
+                              <JFXTextField fx:id="txtNewEmail" onKeyPressed="#txtNewEmailOnKeyReleased" onKeyReleased="#txtNewEmailOnKeyReleased" promptText="Enter new email" />
+                              <JFXTextField fx:id="txtConfirmEmail" onKeyReleased="#txtConfirmEmailOnKeyReleased" promptText="Re-enter new email" />
+                     </children>
+                  </VBox>
+                        <JFXButton onAction="#btnEmailChangeOnAction" style="-fx-background-color: #2196f3; -fx-text-fill: white; -fx-border-radius: 5; -fx-background-radius: 5;" text="Change" />
+                    </VBox>
+                    <font>
+                        <Font name="Segoe UI Bold" size="12.0" />
+                    </font>
+                </TitledPane>
+
+                <!-- Password Change Dropdown -->
+                <TitledPane fx:id="titledPanePassword" expanded="false" styleClass="titledPane" stylesheets="@../assets/css/settingsPage.css" text="Change Password">
+                    <VBox spacing="10.0" style="-fx-padding: 15;">
+                  <VBox spacing="35.0" style="-fx-padding: 10 0;">
+                     <children>
+                              <JFXPasswordField fx:id="txtCurrentPassword" onKeyReleased="#txtCurrentPasswordOnKeyReleased" promptText="Enter current password" />
+                              <JFXPasswordField fx:id="txtNewPassword" onKeyReleased="#txtNewPasswordOnKeyReleased" promptText="Enter new password" />
+                              <JFXPasswordField fx:id="txtConfirmPassword" onKeyReleased="#txtConfirmPasswordOnKeyReleased" promptText="Re-enter new password" />
+                     </children>
+                  </VBox>
+                        <JFXButton onAction="#btnPWChangeOnAction" style="-fx-background-color: #ff5722; -fx-text-fill: white; -fx-border-radius: 5; -fx-background-radius: 5;" text="Change" />
+                    </VBox>
+                    <font>
+                        <Font name="Segoe UI Bold" size="12.0" />
+                    </font>
+                </TitledPane>
+
+            </VBox>
+        </children>
+    </Pane>
 </AnchorPane>

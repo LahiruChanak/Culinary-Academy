@@ -36,4 +36,19 @@ public class UserBOImpl implements UserBO {
     public String currentUserId() throws Exception {
         return "";
     }
+
+    @Override
+    public boolean changeEmail(String currentEmail, String newEmail, String confirmEmail) throws Exception {
+        return false;
+    }
+
+    @Override
+    public boolean changePassword(String currentPassword, String newPassword, String confirmPassword) throws Exception {
+        return false;
+    }
+
+    @Override
+    public UserDTO searchByUserId(String userId) throws Exception {
+        return null;
+    }
 }

@@ -22,27 +22,17 @@ public class CourseBOImpl implements CourseBO {
     }
 
     @Override
-    public CourseDTO searchCourse(String id) throws Exception {
-        return null;
-    }
-
-    @Override
-    public String generateNewCourseId() throws Exception {
-        return "";
-    }
-
-    @Override
     public String currentCourseId() throws Exception {
         return "";
     }
 
     @Override
-    public List<String> getCoordinatorIds() throws Exception {
+    public List<CourseDTO> getAllCourses() throws Exception {
         return List.of();
     }
 
     @Override
-    public List<CourseDTO> getAllCourses() throws Exception {
-        return List.of();
+    public CourseDTO searchByCourseId(String courseId) throws Exception {
+        return null;
     }
 }

@@ -18,4 +18,9 @@ public interface UserBO extends SuperBO {
 
     String currentUserId() throws Exception;
 
+    boolean changeEmail(String currentEmail, String newEmail, String confirmEmail) throws Exception;
+
+    boolean changePassword(String currentPassword, String newPassword, String confirmPassword) throws Exception;
+
+    UserDTO searchByUserId(String userId) throws Exception;
 }

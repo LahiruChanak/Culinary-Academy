@@ -62,6 +62,9 @@ public class CoursesFormController {
     @FXML
     private JFXTextField txtDuration;
 
+    @FXML
+    private JFXTextField txtSearch;
+
     private List<CourseDTO> courseList = new ArrayList<>();
 
     // Objects
@@ -211,6 +214,28 @@ public class CoursesFormController {
     private void refreshTable() {
         this.courseList = getAllCourses();
         loadCourseTable();
+    }
+
+    @FXML
+    private void txtSearchOnAction(ActionEvent event) throws Exception {
+        String courseId = txtSearch.getText();
+
+        try {
+            CourseDTO dto = courseBO.searchByCourseId(courseId);
+
+            if (dto != null) {
+                txtCourseId.setText(dto.getCourseId());
+                txtName.setText(dto.getCourseName());
+                txtDuration.setText(String.valueOf(dto.getDuration()));
+                txtFee.setText(String.valueOf(dto.getFee()));
+                txtDescription.setText(dto.getDescription());
+                cmbCoordinatorId.setValue(dto.getCoordinatorId());
+            } else {
+                new Alert(Alert.AlertType.INFORMATION, "Course not found.").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     private void loadNextCourseId() throws Exception {

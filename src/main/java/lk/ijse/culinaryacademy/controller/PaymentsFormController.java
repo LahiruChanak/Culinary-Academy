@@ -63,6 +63,9 @@ public class PaymentsFormController {
     @FXML
     private JFXTextField txtPaymentId;
 
+    @FXML
+    private JFXTextField txtSearch;
+
     private List<PaymentDTO> paymentList = new ArrayList<>();
 
     // Objects
@@ -204,6 +207,28 @@ public class PaymentsFormController {
     private void refreshTable() throws Exception {
         this.paymentList = getAllPayments();
         loadPaymentTable();
+    }
+
+    @FXML
+    private void txtSearchOnAction(ActionEvent event) throws Exception {
+        String paymentId = txtSearch.getText();
+
+        try {
+            PaymentDTO dto = paymentBO.searchByPaymentId(paymentId);
+
+            if (dto != null) {
+                txtPaymentId.setText(dto.getPaymentId());
+                cmbStudentId.setValue(dto.getStudentId());
+                cmbCourseId.setValue(dto.getCourseId());
+                txtPaymentDate.setText(dto.getPaymentDate().toString());
+                txtFee.setText(String.valueOf(dto.getFee()));
+                cmbStatus.setValue(dto.getStatus());
+            } else {
+                new Alert(Alert.AlertType.INFORMATION, "Payment not found.").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     private void loadNextPaymentId() throws Exception {

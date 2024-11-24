@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.StudentBO;
+import lk.ijse.culinaryacademy.dto.CourseDTO;
 import lk.ijse.culinaryacademy.dto.StudentDTO;
 import lk.ijse.culinaryacademy.view.tdm.StudentTm;
 
@@ -62,6 +63,9 @@ public class StudentsFormController {
 
     @FXML
     private JFXTextField txtName;
+
+    @FXML
+    private JFXTextField txtSearch;
 
     private List<StudentDTO> studentList = new ArrayList<>();
 
@@ -212,6 +216,28 @@ public class StudentsFormController {
     private void refreshTable() {
         this.studentList = getAllStudents();
         loadStudentTable();
+    }
+
+    @FXML
+    private void txtSearchOnAction(ActionEvent event) throws Exception {
+        String studentId = txtSearch.getText();
+
+        try {
+            StudentDTO dto = studentBO.searchByStudentId(studentId);
+
+            if (dto != null) {
+                txtStudentId.setText(dto.getStudentId());
+                txtName.setText(dto.getName());
+                txtEmail.setText(dto.getEmail());
+                txtContact.setText(dto.getContact());
+                txtAddress.setText(dto.getAddress());
+                txtEnrolledDate.setText(dto.getEnrolledDate().toString());
+            } else {
+                new Alert(Alert.AlertType.INFORMATION, "Student not found.").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     private void loadNextStudentId() throws Exception {
