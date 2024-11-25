@@ -39,6 +39,9 @@ public class AdminMainFormController {
     private JFXButton btnUser;
 
     @FXML
+    private JFXButton btnEnrolment;
+
+    @FXML
     private AnchorPane rootPane;
 
     @FXML
@@ -75,6 +78,19 @@ public class AdminMainFormController {
         setButtonActive(btnStudent);
 
         URL resource = getClass().getResource("/view/studentsForm.fxml");
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        subPane.getChildren().clear();
+        subPane.getChildren().add(load);
+
+        pageTransition(load);
+    }
+
+    @FXML
+    void btnEnrolmentOnAction(ActionEvent event) throws IOException {
+        setButtonActive(btnEnrolment);
+
+        URL resource = getClass().getResource("/view/enrolmentForm.fxml");
         assert resource != null;
         Parent load = FXMLLoader.load(resource);
         subPane.getChildren().clear();
@@ -157,6 +173,9 @@ public class AdminMainFormController {
         btnHome.getStyleClass().removeAll("jfx-active-button");
         btnCourse.getStyleClass().removeAll("jfx-active-button");
         btnStudent.getStyleClass().removeAll("jfx-active-button");
+        btnEnrolment.getStyleClass().removeAll("jfx-active-button");
+        btnUser.getStyleClass().removeAll("jfx-active-button");
+        btnPayment.getStyleClass().removeAll("jfx-active-button");
         btnSettings.getStyleClass().removeAll("jfx-active-button");
         btnLogOut.getStyleClass().removeAll("jfx-active-button");
 

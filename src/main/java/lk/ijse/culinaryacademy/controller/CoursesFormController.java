@@ -101,7 +101,7 @@ public class CoursesFormController {
             return;
         }
 
-        CourseDTO dto = new CourseDTO(courseId, courseName, duration, fee, description, coordinatorId);
+        CourseDTO dto = new CourseDTO(courseId, courseName, description, duration, fee, coordinatorId);
 
         String errorMessage = isValid();
 
@@ -144,7 +144,7 @@ public class CoursesFormController {
             return;
         }
 
-        CourseDTO dto = new CourseDTO(courseId, courseName, duration, fee, description, coordinatorId);
+        CourseDTO dto = new CourseDTO(courseId, courseName, description, duration, fee, coordinatorId);
 
         String errorMessage = isValid();
 
@@ -280,9 +280,9 @@ public class CoursesFormController {
             CourseTm courseTm = new CourseTm(
                     dto.getCourseId(),
                     dto.getCourseName(),
+                    dto.getDescription(),
                     dto.getDuration(),
                     dto.getFee(),
-                    dto.getDescription(),
                     dto.getCoordinatorId()
             );
 

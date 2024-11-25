@@ -16,9 +16,5 @@ public interface PaymentBO extends SuperBO {
 
     String currentPaymentId() throws Exception;
 
-    List<String> getStudentIds() throws Exception;
-
-    List<String> getCourseIds() throws Exception;
-
     PaymentDTO searchByPaymentId(String paymentId) throws Exception;
 }

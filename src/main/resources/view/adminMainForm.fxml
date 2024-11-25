@@ -32,7 +32,7 @@
                   </Text>
                </children>
             </Group>
-            <VBox layoutX="-15.0" layoutY="110.0" prefHeight="436.0" prefWidth="180.0" spacing="35.0">
+            <VBox layoutX="-15.0" layoutY="100.0" prefHeight="436.0" prefWidth="180.0" spacing="25.0">
                <children>
                   <JFXButton fx:id="btnHome" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="5.0" onAction="#btnHomeOnAction" prefHeight="52.0" prefWidth="180.0" ripplerFill="#0883e2" styleClass="dashboard-button" stylesheets="@../assets/css/button.css" text="Dashboard">
                      <font>
@@ -60,6 +60,24 @@
                         <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/images/student.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.1" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton fx:id="btnEnrolment" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutX="10.0" layoutY="97.0" onAction="#btnEnrolmentOnAction" prefHeight="52.0" prefWidth="180.0" ripplerFill="#0883e2" styleClass="dashboard-button" stylesheets="@../assets/css/button.css" text="Enrollment">
+                     <font>
+                        <Font name="Segoe UI" size="16.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/images/enrolment.png" />
                            </image>
                         </ImageView>
                      </graphic>

@@ -12,9 +12,9 @@ public class CourseDTO {
 
     private String courseId;
     private String courseName;
+    private String description;
     private int duration;
     private double fee;
-    private String description;
     private String coordinatorId;
 
 }

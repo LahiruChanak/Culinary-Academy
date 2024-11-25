@@ -10,8 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 public class User {
-    private String Id;
+    private String userId;
     private String name;
     private String email;
-    private String passwordHash;
+    private String password;
+    private String role;
+
 }

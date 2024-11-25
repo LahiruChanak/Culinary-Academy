@@ -76,7 +76,7 @@
             <TableColumn fx:id="colCourseId" prefWidth="135.20001220703125" text="Course ID" />
             <TableColumn fx:id="colStatus" prefWidth="126.39996337890625" text="Status" />
             <TableColumn fx:id="colFee" prefWidth="223.20001220703125" text="Payment Fee" />
-            <TableColumn fx:id="colDate" prefWidth="167.19998779296873" text="Payments Date" />
+            <TableColumn fx:id="colDate" prefWidth="167.19998779296873" text="Payment Date" />
          </columns>
       </TableView>
       <VBox layoutX="860.0" layoutY="90.0" prefHeight="126.0" prefWidth="100.0" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 5;">

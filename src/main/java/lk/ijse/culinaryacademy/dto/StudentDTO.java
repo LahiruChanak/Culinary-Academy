@@ -11,10 +11,12 @@ import java.sql.Date;
 @Data
 
 public class StudentDTO {
+
     private String studentId;
     private String name;
     private String email;
     private String contact;
     private String address;
     private Date enrolledDate;
+
 }

@@ -11,7 +11,8 @@ import lombok.NoArgsConstructor;
 public class Course {
     private String courseId;
     private String courseName;
-    private int durationMonths;
-    private double fee;
     private String description;
+    private int duration;
+    private double fee;
+    private String coordinatorId;
 }

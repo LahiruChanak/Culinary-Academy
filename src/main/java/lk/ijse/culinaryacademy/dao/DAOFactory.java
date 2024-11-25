@@ -1,9 +1,6 @@
 package lk.ijse.culinaryacademy.dao;
 
-import lk.ijse.culinaryacademy.dao.custom.Impl.CourseDAOImpl;
-import lk.ijse.culinaryacademy.dao.custom.Impl.CredentialDAOImpl;
-import lk.ijse.culinaryacademy.dao.custom.Impl.PaymentDAOImpl;
-import lk.ijse.culinaryacademy.dao.custom.Impl.StudentDAOImpl;
+import lk.ijse.culinaryacademy.dao.custom.Impl.*;
 
 public class DAOFactory {
 
@@ -16,7 +13,7 @@ public class DAOFactory {
     }
 
     public enum DAOTypes{
-        COURSE, CREDENTIAL, PAYMENT, STUDENT
+        COURSE, CREDENTIAL, PAYMENT, STUDENT, ENROLMENT, USER
     }
 
     //Object Creation Logic
@@ -34,6 +31,12 @@ public class DAOFactory {
 
             case STUDENT:
                 return new StudentDAOImpl();
+
+            case ENROLMENT:
+                return new EnrolmentDAOImpl();
+
+            case USER:
+                return new UserDAOImpl();
 
             default:
                 return null;

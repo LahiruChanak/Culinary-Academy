@@ -2,6 +2,9 @@ package lk.ijse.culinaryacademy.controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,13 +14,19 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Duration;
 import lk.ijse.culinaryacademy.bo.BOFactory;
+import lk.ijse.culinaryacademy.bo.custom.CourseBO;
 import lk.ijse.culinaryacademy.bo.custom.PaymentBO;
+import lk.ijse.culinaryacademy.bo.custom.StudentBO;
 import lk.ijse.culinaryacademy.dto.PaymentDTO;
 import lk.ijse.culinaryacademy.view.tdm.PaymentTm;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,11 +79,14 @@ public class PaymentsFormController {
 
     // Objects
     PaymentBO paymentBO = (PaymentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PAYMENT);
+    StudentBO studentBO = (StudentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.STUDENT);
+    CourseBO courseBO = (CourseBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.COURSE);
 
     // ------------------------------------ INITIALIZATION ------------------------------------
     @FXML
     void initialize() throws Exception {
         loadNextPaymentId();
+        setPaymentDate();
         loadStudentIds();
         loadCourseIds();
         this.paymentList = getAllPayments();
@@ -92,11 +104,11 @@ public class PaymentsFormController {
         String feeText = txtFee.getText();
         String status = cmbStatus.getValue();
 
-        Date paymentDate;
+        LocalDateTime paymentDate;
         double fee;
 
         try {
-            paymentDate = Date.valueOf(paymentDateText);
+            paymentDate = LocalDateTime.parse(paymentDateText);
             fee = Double.parseDouble(feeText);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Invalid Input").show();
@@ -117,6 +129,8 @@ public class PaymentsFormController {
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Payment Added Successfully.").show();
                 clearField();
+                loadNextPaymentId();
+                setPaymentDate();
                 refreshTable();
             }
         } catch (Exception e) {
@@ -133,11 +147,11 @@ public class PaymentsFormController {
         String feeText = txtFee.getText();
         String status = cmbStatus.getValue();
 
-        Date paymentDate;
+        LocalDateTime paymentDate;
         double fee;
 
         try {
-            paymentDate = Date.valueOf(paymentDateText);
+            paymentDate = LocalDateTime.parse((paymentDateText));
             fee = Double.parseDouble(feeText);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Invalid Input").show();
@@ -158,6 +172,8 @@ public class PaymentsFormController {
             if (isAdded) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Payment Updated Successfully.").show();
                 clearField();
+                loadNextPaymentId();
+                setPaymentDate();
                 refreshTable();
             }
         } catch (Exception e) {
@@ -174,6 +190,8 @@ public class PaymentsFormController {
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Payment Deleted Successfully.").show();
                 clearField();
+                loadNextPaymentId();
+                setPaymentDate();
                 refreshTable();
             }
         } catch (Exception e) {
@@ -182,7 +200,9 @@ public class PaymentsFormController {
     }
 
     @FXML
-    void btnClearOnAction(ActionEvent event) { clearField(); }
+    void btnClearOnAction(ActionEvent event) {
+        clearField();
+    }
 
     private List<PaymentDTO> getAllPayments() throws Exception {
         List<PaymentDTO> paymentList = null;
@@ -252,6 +272,17 @@ public class PaymentsFormController {
         return "P001";
     }
 
+    private void setPaymentDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+            txtPaymentDate.setText(LocalDateTime.now().format(formatter));
+        }));
+
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+    }
+
     private void setCellValueFactory() {
         colPaymentId.setCellValueFactory(new PropertyValueFactory<>("paymentId"));
         colStudentId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
@@ -283,7 +314,7 @@ public class PaymentsFormController {
     private void loadStudentIds() throws Exception {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> idList = paymentBO.getStudentIds();
+            List<String> idList = studentBO.getStudentIds();
             for (String id : idList) {
                 obList.add(id);
             }
@@ -297,7 +328,7 @@ public class PaymentsFormController {
     private void loadCourseIds() throws Exception {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> idList = paymentBO.getCourseIds();
+            List<String> idList = courseBO.getCourseIds();
             for (String id : idList) {
                 obList.add(id);
             }
