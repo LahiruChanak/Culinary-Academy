@@ -1,0 +1,51 @@
+/* -------------------------- DASHBOARD BUTTONS --------------------------- */
+.dashboard-button {
+    -fx-background-color: #fff;
+    -fx-border-width: 0;
+    -fx-text-fill: #121212;
+    -fx-padding: 0 0 0 35;
+    -fx-background-radius: 0 30 30 0;
+    -fx-alignment: baseline-left;
+    -fx-font-size: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 25, 0, 0, 5);
+}
+
+.dashboard-button:hover {
+    -fx-background-color: #ddd;
+    -fx-translate-x: 15;
+}
+
+.dashboard-button.active {
+    -fx-background-color: #27a4ff;
+    -fx-translate-x: 15;
+}
+
+/* -------------------------- SETTINGS & LOGOUT BUTTONS --------------------------- */
+.options-button {
+    -fx-background-color: #fff;
+    -fx-border-width: 0;
+    -fx-text-fill: #121212;
+    -fx-padding: 5 15;
+    -fx-background-radius: 20;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 25, 0, 0, 0);
+}
+
+.options-button:hover {
+    -fx-background-color: #ddd;
+}
+
+/* -------------------------- CRUD OPERATIONS BUTTONS --------------------------- */
+.crud-button {
+    -fx-background-color: #fff;
+    -fx-border-width: 0;
+    -fx-text-fill: #121212;
+    -fx-padding: 4 4 4 10;
+    -fx-background-radius: 15;
+    -fx-alignment: baseline-left;
+    -fx-font-size: 12;
+}
+
+.crud-button:hover {
+    -fx-background-color: #ddd;
+}

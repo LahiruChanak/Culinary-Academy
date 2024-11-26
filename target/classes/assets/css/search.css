@@ -1,0 +1,15 @@
+.hBox {
+    -fx-padding: 5 5 5 15;
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 15, 0, 0, 0);
+}
+
+.search-button {
+    -fx-background-color: #fff;
+    -fx-border-width: 0;
+    -fx-text-fill: #121212;
+    -fx-padding: 5;
+    -fx-background-radius: 20;
+    -fx-alignment: center;
+}

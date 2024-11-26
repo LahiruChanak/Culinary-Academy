@@ -4,131 +4,67 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a230f554-5232-4b71-980c-cec299f8634e" name="Changes" comment="orm coursework codes">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-    </list>
-    <list id="032b4549-207f-4f0b-9ace-a57e276f554f" name="Changes by supunmadhuranga" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/bo/custom/impl/CourseBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/bo/custom/impl/CourseBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/bo/custom/impl/PaymentBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/bo/custom/impl/PaymentBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/entity/Enrolment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/entity/Enrolment.java" afterDir="false" />
+    <list default="true" id="3c28d797-9b9d-4592-9559-a6c1ac283686" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/css/table.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/css/table.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="CSS File" />
-        <option value="FxmlFile" />
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;LahiruChanak&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "LahiruChanak"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/LahiruChanak/Culinary-Academy.git&quot;,
-    &quot;accountId&quot;: &quot;76395e42-ba9d-4a30-b032-ff887f93e535&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/LahiruChanak/Culinary-Academy.git",
+    "accountId": "76395e42-ba9d-4a30-b032-ff887f93e535"
   }
-}</component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
-}</component>
-  <component name="ProjectId" id="2o9cpKDlSXbFPM9zJd74mmnEIQD" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2pNdZPWqILdpgpmuXQaUxa8zhfM" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.CustomException.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Launcher.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LauncherWrapper.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.culinary-academy-system [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.culinary-academy-system [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.culinary-academy-system [validate].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/IdeaProjects/Culinary-Academy/src/main/java/lk/ijse/culinaryacademy/lib/mysql-connector-j-8.0.32.jar&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.LauncherWrapper.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "application.passwordSafe",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="lk.ijse.culinaryacademy.controller" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\java\lk\ijse\culinaryacademy\lib" />
-      <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\resources\assets\images" />
-      <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src" />
-      <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\resources\view" />
-      <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\resources\assets\css" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\resources" />
-      <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\resources\view" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="lk.ijse.culinaryacademy.bo" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="lk.ijse.culinaryacademy.util" />
-      <recent name="lk.ijse.culinaryacademy.config" />
-      <recent name="lk.ijse.culinaryacademy.view.tdm" />
-      <recent name="lk.ijse.culinaryacademy.bo.custom.impl" />
-      <recent name="lk.ijse.culinaryacademy.bo.custom" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager">
     <configuration name="LauncherWrapper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lk.ijse.culinaryacademy.LauncherWrapper" />
@@ -160,150 +96,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a230f554-5232-4b71-980c-cec299f8634e" name="Changes" comment="" />
-      <created>1730285421999</created>
+      <changelist id="3c28d797-9b9d-4592-9559-a6c1ac283686" name="Changes" comment="" />
+      <created>1732610521404</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1730285421999</updated>
-      <workItem from="1730285422903" duration="51000" />
-      <workItem from="1730285497513" duration="4483000" />
-      <workItem from="1730352681436" duration="746000" />
-      <workItem from="1730614638592" duration="18121000" />
-      <workItem from="1730688639540" duration="1813000" />
-      <workItem from="1730775893606" duration="8592000" />
-      <workItem from="1730785014422" duration="9661000" />
-      <workItem from="1730810868574" duration="10273000" />
-      <workItem from="1730858507164" duration="13223000" />
-      <workItem from="1732008205186" duration="9013000" />
-      <workItem from="1732071351513" duration="2164000" />
-      <workItem from="1732170133001" duration="24718000" />
-      <workItem from="1732243485570" duration="84000" />
-      <workItem from="1732243820162" duration="6194000" />
-      <workItem from="1732285769294" duration="698000" />
-      <workItem from="1732328451747" duration="1528000" />
-      <workItem from="1732330068384" duration="27000" />
-      <workItem from="1732330136675" duration="22138000" />
-      <workItem from="1732425537218" duration="28775000" />
-      <workItem from="1732503021138" duration="109000" />
-      <workItem from="1732504476959" duration="38000" />
-      <workItem from="1732507820335" duration="9411000" />
-      <workItem from="1732535049548" duration="14172000" />
-      <workItem from="1732557504891" duration="1040000" />
-      <workItem from="1732586952052" duration="10584000" />
-      <workItem from="1732601311836" duration="6194000" />
-      <workItem from="1732607563207" duration="1128000" />
+      <updated>1732610521404</updated>
+      <workItem from="1732610522444" duration="1174000" />
     </task>
-    <task id="LOCAL-00001" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1730831005497</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1730831005497</updated>
-    </task>
-    <task id="LOCAL-00002" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732204909401</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1732204909401</updated>
-    </task>
-    <task id="LOCAL-00003" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732345324628</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1732345324628</updated>
-    </task>
-    <task id="LOCAL-00004" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732345371178</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1732345371178</updated>
-    </task>
-    <task id="LOCAL-00005" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732345416015</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1732345416015</updated>
-    </task>
-    <task id="LOCAL-00006" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732380592543</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1732380592543</updated>
-    </task>
-    <task id="LOCAL-00007" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732447366123</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1732447366123</updated>
-    </task>
-    <task id="LOCAL-00008" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732467585953</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1732467585953</updated>
-    </task>
-    <task id="LOCAL-00009" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732557623216</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1732557623216</updated>
-    </task>
-    <task id="LOCAL-00010" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732604142709</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1732604142709</updated>
-    </task>
-    <task id="LOCAL-00011" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732609083347</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1732609083347</updated>
-    </task>
-    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="orm coursework codes" />
-    <option name="LAST_COMMIT_MESSAGE" value="orm coursework codes" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

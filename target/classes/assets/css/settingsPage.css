@@ -1,0 +1,103 @@
+/* settingsPage.css */
+
+/* General Pane Styling */
+.pane {
+    -fx-background-color: #ffffff;
+    -fx-border-width: 2;
+    -fx-background-radius: 10;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 15, 0, 0, 0);
+}
+
+/* TitledPane Styling */
+.titledPane {
+    -fx-border-color: #ccc;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-background-color: #ffffff;
+    -fx-padding: 5;
+}
+
+.titledPane .title {
+    -fx-background-color: #fff;
+    -fx-text-fill: #121212;
+    -fx-font-size: 16;
+    -fx-font-family: "Segoe UI Bold";
+    -fx-padding: 10;
+    -fx-border-radius: 8 8 0 0;
+    /*-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 25, 0, 0, 5);*/
+}
+.titledPane > .title .arrow {
+    -fx-background-color: #444;
+    -fx-shape: "M 0 0 L 5 5 L 10 0 Z";
+    -fx-scale-shape: true;
+}
+.titledPane > .content {
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 15;
+    -fx-border-color: #dfe6e9;
+    -fx-border-width: 1 0 0 0;
+    -fx-border-radius: 0 0 8 8;
+}
+
+/* JFXTextField Styling */
+.jfx-text-field {
+    -fx-font-size: 14;
+    -jfx-focus-color: #2980b9;
+    -jfx-unfocus-color: #bdc3c7;
+    -jfx-label-float: true;
+}
+
+/* JFXPasswordField Styling */
+.jfx-password-field {
+    -fx-font-size: 14;
+    -jfx-focus-color: #e67e22;
+    -jfx-unfocus-color: #bdc3c7;
+    -jfx-label-float: true;
+}
+
+/* JFXButton Styling */
+.jfx-button {
+    -fx-font-size: 14;
+    -fx-padding: 10 20;
+    -fx-background-radius: 5;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 1);
+}
+.jfx-button:hover {
+    -fx-opacity: 0.9;
+}
+.jfx-button:pressed {
+    -fx-effect: none;
+    -fx-opacity: 0.8;
+}
+
+/* VBox Styling */
+.vbox {
+    -fx-padding: 20;
+    -fx-background-color: #f9fafb;
+    -fx-border-color: #dfe6e9;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-spacing: 20;
+}
+
+/* Label Styling */
+.label {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14;
+    -fx-text-fill: #34495e;
+}
+
+/* Submit Button Colors */
+.jfx-button.submit-password {
+    -fx-background-color: #ff5722;
+    -fx-background-radius: 10;
+    -fx-padding: 0 10;
+}
+.jfx-button.submit-email {
+    -fx-background-color: #2196f3;
+    -fx-background-radius: 10;
+    -fx-padding: 0 10;
+}
