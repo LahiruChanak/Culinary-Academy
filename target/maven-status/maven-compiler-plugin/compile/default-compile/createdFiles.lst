@@ -14,7 +14,6 @@ module-info.class
 lk\ijse\culinaryacademy\dto\StudentDTO.class
 lk\ijse\culinaryacademy\bo\BOFactory.class
 lk\ijse\culinaryacademy\bo\custom\CredentialBO.class
-lk\ijse\culinaryacademy\bo\BOFactory$1.class
 lk\ijse\culinaryacademy\bo\BOFactory$BOTypes.class
 lk\ijse\culinaryacademy\entity\Enrolment.class
 lk\ijse\culinaryacademy\Launcher.class

@@ -22,9 +22,7 @@ import lk.ijse.culinaryacademy.bo.custom.StudentBO;
 import lk.ijse.culinaryacademy.dto.PaymentDTO;
 import lk.ijse.culinaryacademy.view.tdm.PaymentTm;
 
-import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -82,6 +80,7 @@ public class PaymentsFormController {
     StudentBO studentBO = (StudentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.STUDENT);
     CourseBO courseBO = (CourseBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.COURSE);
 
+
     // ------------------------------------ INITIALIZATION ------------------------------------
     @FXML
     void initialize() throws Exception {
@@ -89,6 +88,7 @@ public class PaymentsFormController {
         setPaymentDate();
         loadStudentIds();
         loadCourseIds();
+        loadStatus();
         this.paymentList = getAllPayments();
         loadPaymentTable();
         setCellValueFactory();
@@ -200,7 +200,7 @@ public class PaymentsFormController {
     }
 
     @FXML
-    void btnClearOnAction(ActionEvent event) {
+    void btnClearOnAction(ActionEvent event) throws Exception {
         clearField();
     }
 
@@ -214,14 +214,18 @@ public class PaymentsFormController {
         return paymentList;
     }
 
+
     // ------------------------------------ OTHER OPERATIONS ------------------------------------
-    private void clearField() {
+    private void clearField() throws Exception {
         txtPaymentId.clear();
         cmbStudentId.getSelectionModel().clearSelection();
         cmbCourseId.getSelectionModel().clearSelection();
         txtPaymentDate.clear();
         txtFee.clear();
         cmbStatus.getSelectionModel().clearSelection();
+
+        loadNextPaymentId();
+        setPaymentDate();
     }
 
     private void refreshTable() throws Exception {
@@ -243,6 +247,8 @@ public class PaymentsFormController {
                 txtPaymentDate.setText(dto.getPaymentDate().toString());
                 txtFee.setText(String.valueOf(dto.getFee()));
                 cmbStatus.setValue(dto.getStatus());
+
+                txtSearch.clear();
             } else {
                 new Alert(Alert.AlertType.INFORMATION, "Payment not found.").show();
             }
@@ -264,11 +270,11 @@ public class PaymentsFormController {
     }
 
     private String nextId(String currentId) {
-//        if (currentId != null) {
-//            String[] split = currentId.split("P");
-//            int id = Integer.parseInt(split[1]);
-//            return "P" + String.format("%03d", ++id);
-//        }
+        if (currentId != null) {
+            String[] split = currentId.split("P");
+            int id = Integer.parseInt(split[1]);
+            return "P" + String.format("%03d", ++id);
+        }
         return "P001";
     }
 
@@ -337,6 +343,13 @@ public class PaymentsFormController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void loadStatus() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        obList.add("Upfront Payment");
+        obList.add("Full Payment");
+        cmbStatus.setItems(obList);
     }
 
 

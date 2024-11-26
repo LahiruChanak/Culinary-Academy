@@ -16,6 +16,6 @@ public class CourseTm {
     private String description;
     private int duration;
     private double fee;
-    private String coordinatorId;
+    private String courseLevel;
 
 }

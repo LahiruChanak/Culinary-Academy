@@ -32,7 +32,7 @@ public class CourseBOImpl implements CourseBO {
                 dto.getDescription(),
                 dto.getDuration(),
                 dto.getFee(),
-                dto.getCoordinatorId(),
+                dto.getCourseLevel(),
                 enrolment,
                 payment
         ));
@@ -46,7 +46,7 @@ public class CourseBOImpl implements CourseBO {
                 dto.getDescription(),
                 dto.getDuration(),
                 dto.getFee(),
-                dto.getCoordinatorId(),
+                dto.getCourseLevel(),
                 enrolment,
                 payment
         ));
@@ -74,7 +74,7 @@ public class CourseBOImpl implements CourseBO {
                     c.getDescription(),
                     c.getDuration(),
                     c.getFee(),
-                    c.getCoordinatorId()
+                    c.getCourseLevel()
             )
             );
         }
@@ -90,7 +90,7 @@ public class CourseBOImpl implements CourseBO {
                 c.getDescription(),
                 c.getDuration(),
                 c.getFee(),
-                c.getCoordinatorId()
+                c.getCourseLevel()
         );
     }
 

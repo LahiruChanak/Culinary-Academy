@@ -10,9 +10,9 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "student")
 public class Student {

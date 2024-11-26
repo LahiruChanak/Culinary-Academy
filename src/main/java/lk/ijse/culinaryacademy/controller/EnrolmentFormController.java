@@ -31,10 +31,10 @@ import java.util.List;
 public class EnrolmentFormController {
 
     @FXML
-    private JFXComboBox<?> cmbCourseId;
+    private JFXComboBox<String> cmbCourseId;
 
     @FXML
-    private JFXComboBox<?> cmbStudentId;
+    private JFXComboBox<String> cmbStudentId;
 
     @FXML
     private TableColumn<?, ?> colCourseId;
@@ -58,6 +58,9 @@ public class EnrolmentFormController {
     private TableView<EnrolmentTm> tblEnrolment;
 
     @FXML
+    private Text txtStudentName;
+
+    @FXML
     private Text txtCourseName;
 
     @FXML
@@ -68,9 +71,6 @@ public class EnrolmentFormController {
 
     @FXML
     private JFXTextField txtSearch;
-
-    @FXML
-    private Text txtStudentName;
 
     private List<EnrolmentDTO> enrolmentList = new ArrayList<>();
 
@@ -87,6 +87,8 @@ public class EnrolmentFormController {
     void initialize() throws Exception {
         loadNextEnrolmentId();
         setEnrolledDate();
+        loadStudentId();
+        loadCourseId();
         this.enrolmentList = getAllEnrolments();
         loadEnrolmentTable();
         setCellValueFactory();
@@ -194,7 +196,7 @@ public class EnrolmentFormController {
     }
 
     @FXML
-    void btnClearOnAction(ActionEvent event) {
+    void btnClearOnAction(ActionEvent event) throws Exception {
         clearField();
     }
 
@@ -209,11 +211,16 @@ public class EnrolmentFormController {
     }
 
     // ---------------------------------------- OTHER METHODS ----------------------------------------
-    private void clearField() {
+    private void clearField() throws Exception {
         txtEnrolmentId.clear();
         cmbStudentId.getSelectionModel().clearSelection();
         cmbCourseId.getSelectionModel().clearSelection();
+        txtStudentName.setText("Student Name");
+        txtCourseName.setText("Course Name");
         txtEnrolledDate.clear();
+
+        loadNextEnrolmentId();
+        setEnrolledDate();
     }
 
     private void refreshTable() {
@@ -233,6 +240,8 @@ public class EnrolmentFormController {
                 cmbStudentId.getSelectionModel().select(Integer.parseInt(dto.getStudentId()));
                 cmbCourseId.getSelectionModel().select(Integer.parseInt(dto.getCourseId()));
                 txtEnrolledDate.setText(dto.getEnrolledDate().toString());
+
+                txtSearch.clear();
             } else {
                 new Alert(Alert.AlertType.INFORMATION, "Enrolment not found.").show();
             }
@@ -254,11 +263,11 @@ public class EnrolmentFormController {
     }
 
     private String nextId(String currentId) {
-//        if (currentId != null) {
-//            String[] split = currentId.split("E");
-//            int id = Integer.parseInt(split[1]);
-//            return "E" + String.format("%03d", ++id);
-//        }
+        if (currentId != null) {
+            String[] split = currentId.split("E");
+            int id = Integer.parseInt(split[1]);
+            return "E" + String.format("%03d", ++id);
+        }
         return "E001";
     }
 
@@ -300,7 +309,7 @@ public class EnrolmentFormController {
     // ---------------------------------------- ON ACTION ----------------------------------------
     @FXML
     void cmbCourseIdOnAction(ActionEvent event) throws Exception {
-        String courseId = cmbCourseId.getSelectionModel().getSelectedItem().toString();
+        String courseId = cmbCourseId.getSelectionModel().getSelectedItem();
 
         try {
             String courseName = courseBO.searchByCourseId(courseId).getCourseName();
@@ -314,7 +323,7 @@ public class EnrolmentFormController {
 
     @FXML
     void cmbStudentIdOnAction(ActionEvent event) throws Exception {
-        String studentId = cmbStudentId.getSelectionModel().getSelectedItem().toString();
+        String studentId = cmbStudentId.getSelectionModel().getSelectedItem();
 
         try {
             String studentName = studentBO.searchByStudentId(studentId).getName();
@@ -326,6 +335,35 @@ public class EnrolmentFormController {
         }
     }
 
+    @FXML
+    void loadStudentId() throws Exception {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<String> idList = studentBO.getStudentIds();
+            for (String id : idList) {
+                obList.add(id);
+            }
+            cmbStudentId.setItems(obList);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void loadCourseId() throws Exception {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<String> idList = courseBO.getCourseIds();
+            for (String id : idList) {
+                obList.add(id);
+            }
+            cmbCourseId.setItems(obList);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     // ---------------------------------------- ON KEY RELEASED ----------------------------------------
     @FXML

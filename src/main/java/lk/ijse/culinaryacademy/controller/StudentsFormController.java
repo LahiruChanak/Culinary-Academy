@@ -1,7 +1,6 @@
 package lk.ijse.culinaryacademy.controller;
 
 import com.jfoenix.controls.JFXTextField;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,7 +12,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.StudentBO;
-import lk.ijse.culinaryacademy.dto.CourseDTO;
 import lk.ijse.culinaryacademy.dto.StudentDTO;
 import lk.ijse.culinaryacademy.entity.Enrolment;
 import lk.ijse.culinaryacademy.entity.Payment;
@@ -22,7 +20,6 @@ import lk.ijse.culinaryacademy.view.tdm.StudentTm;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -78,6 +75,7 @@ public class StudentsFormController {
 
     Enrolment enrolment = new Enrolment();
     Payment payment = new Payment();
+
 
     // --------------------------------- Initialize Method ---------------------------------
     public void initialize() throws Exception {
@@ -194,7 +192,7 @@ public class StudentsFormController {
     }
 
     @FXML
-    void btnClearOnAction(ActionEvent event) {
+    void btnClearOnAction(ActionEvent event) throws Exception {
         clearField();
     }
 
@@ -210,13 +208,16 @@ public class StudentsFormController {
 
 
     // -------------------------------- OTHER METHODS --------------------------------
-    private void clearField() {
+    private void clearField() throws Exception {
         txtStudentId.clear();
         txtName.clear();
         txtEmail.clear();
         txtContact.clear();
         txtAddress.clear();
         txtEnrolledDate.clear();
+
+        loadNextStudentId();
+        setEnrolledDate();
     }
 
     private void refreshTable() {
@@ -238,6 +239,8 @@ public class StudentsFormController {
                 txtContact.setText(dto.getContact());
                 txtAddress.setText(dto.getAddress());
                 txtEnrolledDate.setText(dto.getEnrolledDate().toString());
+
+                txtSearch.clear();
             } else {
                 new Alert(Alert.AlertType.INFORMATION, "Student not found.").show();
             }
@@ -259,11 +262,11 @@ public class StudentsFormController {
     }
 
     private String nextId(String currentId) {
-//        if (currentId != null) {
-//            String[] split = currentId.split("S");
-//            int id = Integer.parseInt(split[1]);
-//            return "S" + String.format("%03d", ++id);
-//        }
+        if (currentId != null) {
+            String[] split = currentId.split("S");
+            int id = Integer.parseInt(split[1]);
+            return "S" + String.format("%03d", ++id);
+        }
         return "S001";
     }
 

@@ -24,7 +24,7 @@ import java.util.List;
 public class CoursesFormController {
 
     @FXML
-    private JFXComboBox<String> cmbCoordinatorId;
+    private JFXComboBox<String> cmbCourseLevel;
 
     @FXML
     private TableColumn<?, ?> colDescription;
@@ -42,7 +42,7 @@ public class CoursesFormController {
     private TableColumn<?, ?> colName;
 
     @FXML
-    private TableColumn<?, ?> colCoordinatorId;
+    private TableColumn<?, ?> colCourseLevel;
 
     @FXML
     private TableView<CourseTm> tblCourse;
@@ -74,7 +74,7 @@ public class CoursesFormController {
     @FXML
     void initialize() throws Exception {
         loadNextCourseId();
-        loadCoordinatorIds();
+        loadCourseLevels();
         this.courseList = getAllCourses();
         loadCourseTable();
         setCellValueFactory();
@@ -88,7 +88,7 @@ public class CoursesFormController {
         String description = txtDescription.getText();
         String durationText = txtDuration.getText();
         String feeText = txtFee.getText();
-        String coordinatorId = cmbCoordinatorId.getValue();
+        String level = cmbCourseLevel.getValue();
 
         int duration;
         double fee;
@@ -101,7 +101,7 @@ public class CoursesFormController {
             return;
         }
 
-        CourseDTO dto = new CourseDTO(courseId, courseName, description, duration, fee, coordinatorId);
+        CourseDTO dto = new CourseDTO(courseId, courseName, description, duration, fee, level);
 
         String errorMessage = isValid();
 
@@ -131,7 +131,7 @@ public class CoursesFormController {
         String description = txtDescription.getText();
         String durationText = txtDuration.getText();
         String feeText = txtFee.getText();
-        String coordinatorId = cmbCoordinatorId.getValue();
+        String level = cmbCourseLevel.getValue();
 
         int duration;
         double fee;
@@ -144,7 +144,7 @@ public class CoursesFormController {
             return;
         }
 
-        CourseDTO dto = new CourseDTO(courseId, courseName, description, duration, fee, coordinatorId);
+        CourseDTO dto = new CourseDTO(courseId, courseName, description, duration, fee, level);
 
         String errorMessage = isValid();
 
@@ -186,7 +186,7 @@ public class CoursesFormController {
     }
 
     @FXML
-    void btnClearOnAction(ActionEvent event) {
+    void btnClearOnAction(ActionEvent event) throws Exception {
         clearField();
     }
 
@@ -202,13 +202,15 @@ public class CoursesFormController {
 
 
     // ------------------------------------ OTHER OPERATIONS ------------------------------------
-    private void clearField() {
+    private void clearField() throws Exception {
         txtCourseId.clear();
         txtName.clear();
         txtDescription.clear();
         txtDuration.clear();
         txtFee.clear();
-        cmbCoordinatorId.getSelectionModel().clearSelection();
+        cmbCourseLevel.getSelectionModel().clearSelection();
+
+        loadNextCourseId();
     }
 
     private void refreshTable() {
@@ -229,7 +231,9 @@ public class CoursesFormController {
                 txtDuration.setText(String.valueOf(dto.getDuration()));
                 txtFee.setText(String.valueOf(dto.getFee()));
                 txtDescription.setText(dto.getDescription());
-                cmbCoordinatorId.setValue(dto.getCoordinatorId());
+                cmbCourseLevel.setValue(dto.getCourseLevel());
+
+                txtSearch.clear();
             } else {
                 new Alert(Alert.AlertType.INFORMATION, "Course not found.").show();
             }
@@ -251,26 +255,17 @@ public class CoursesFormController {
     }
 
     private String nextId(String currentId) {
-//        if (currentId != null) {
-//            String[] split = currentId.split("C");
-//            int id = Integer.parseInt(split[1]);
-//            return "C" + String.format("%03d", ++id);
-//        }
+        if (currentId != null) {
+            String[] split = currentId.split("C");
+            int id = Integer.parseInt(split[1]);
+            return "C" + String.format("%03d", ++id);
+        }
         return "C001";
     }
 
-    private void loadCoordinatorIds() throws Exception {
-        ObservableList<String> obList = FXCollections.observableArrayList();
-        try {
-            List<String> idList = userBO.getCoordinatorIds();
-            for (String id : idList) {
-                obList.add(id);
-            }
-            cmbCoordinatorId.setItems(obList);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    private void loadCourseLevels() throws Exception {
+        ObservableList<String> courseLevels = FXCollections.observableArrayList("Advanced", "Expert", "Intermediate", "Beginner");
+        cmbCourseLevel.setItems(courseLevels);
     }
 
     private void loadCourseTable() {
@@ -283,7 +278,7 @@ public class CoursesFormController {
                     dto.getDescription(),
                     dto.getDuration(),
                     dto.getFee(),
-                    dto.getCoordinatorId()
+                    dto.getCourseLevel()
             );
 
             tmList.add(courseTm);
@@ -299,7 +294,7 @@ public class CoursesFormController {
         colDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
         colFee.setCellValueFactory(new PropertyValueFactory<>("fee"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-        colCoordinatorId.setCellValueFactory(new PropertyValueFactory<>("coordinatorId"));
+        colCourseLevel.setCellValueFactory(new PropertyValueFactory<>("courseLevel"));
     }
 
 
@@ -329,10 +324,6 @@ public class CoursesFormController {
 
     }
 
-    @FXML
-    void cmbCoordinatorIdOnKeyReleased(KeyEvent event) {
-
-    }
 
     // ------------------------------------ VALIDATION ------------------------------------
     public String isValid() {

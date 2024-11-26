@@ -170,7 +170,9 @@ public class UserFormController {
     }
 
     @FXML
-    void btnClearOnAction(ActionEvent event) { clearField(); }
+    void btnClearOnAction(ActionEvent event) throws Exception {
+        clearField();
+    }
 
     private List<UserDTO> getAllUsers() {
         List<UserDTO> userList = null;
@@ -184,12 +186,14 @@ public class UserFormController {
 
 
     // ---------------------------- OTHER OPERATIONS ----------------------------
-    private void clearField() {
+    private void clearField() throws Exception {
         txtUserId.clear();
         txtName.clear();
         txtEmail.clear();
         txtPassword.clear();
         txtConfirmPassword.clear();
+
+        loadNextUserId();
     }
 
     private void refreshTable() {
@@ -209,6 +213,8 @@ public class UserFormController {
                 txtName.setText(dto.getName());
                 txtEmail.setText(dto.getEmail());
                 cmbRole.setValue(dto.getRole());
+
+                txtSearch.clear();
             } else {
                 new Alert(Alert.AlertType.INFORMATION, "User not found.").show();
             }

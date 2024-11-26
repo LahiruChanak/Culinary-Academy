@@ -3,6 +3,7 @@ package lk.ijse.culinaryacademy.dao.custom.Impl;
 
 import lk.ijse.culinaryacademy.config.SessionFactoryConfig;
 import lk.ijse.culinaryacademy.dao.custom.StudentDAO;
+import lk.ijse.culinaryacademy.entity.Course;
 import lk.ijse.culinaryacademy.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -54,16 +55,15 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public String currentId() throws Exception {
-//        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
-//            String hql = "SELECT s.studentId FROM Student s ORDER BY s.studentId DESC LIMIT 1";
-//            Query<String> query = session.createQuery(hql, String.class);
-//            query.setMaxResults(1);
-//            return query.uniqueResult();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-        return null;
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            String hql = "SELECT s.studentId FROM Student s ORDER BY s.studentId DESC";
+            Query<String> query = session.createQuery(hql, String.class);
+            query.setMaxResults(1);
+            return query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
@@ -79,10 +79,9 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public Student searchById(String studentId) throws Exception {
-        try(Session session = SessionFactoryConfig.getInstance().getSession()){
-            System.out.println(session.get(Student.class, studentId));
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
             return session.get(Student.class, studentId);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

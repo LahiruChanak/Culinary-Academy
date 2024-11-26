@@ -30,8 +30,8 @@ public class Course {
     @Column(name = "fee" , length = 100)
     private double fee;
 
-    @Column(name = "coordinator_id" , length = 100)
-    private String coordinatorId;
+    @Column(name = "course_level" , length = 100)
+    private String courseLevel;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Enrolment> enrolment;
