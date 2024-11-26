@@ -17,6 +17,8 @@ import lk.ijse.culinaryacademy.bo.custom.CourseBO;
 import lk.ijse.culinaryacademy.bo.custom.EnrolmentBO;
 import lk.ijse.culinaryacademy.bo.custom.StudentBO;
 import lk.ijse.culinaryacademy.dto.EnrolmentDTO;
+import lk.ijse.culinaryacademy.entity.Course;
+import lk.ijse.culinaryacademy.entity.Student;
 import lk.ijse.culinaryacademy.view.tdm.EnrolmentTm;
 
 import java.sql.Date;
@@ -76,6 +78,9 @@ public class EnrolmentFormController {
     EnrolmentBO enrolmentBO = (EnrolmentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.ENROLMENT);
     CourseBO courseBO = (CourseBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.COURSE);
     StudentBO studentBO = (StudentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.STUDENT);
+
+    Student student = new Student();
+    Course course = new Course();
 
     // ---------------------------------------- Initialize Method ----------------------------------------
     @FXML

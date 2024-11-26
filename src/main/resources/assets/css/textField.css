@@ -1,22 +1,22 @@
 .floating-text-field {
-    -fx-padding: 10 0 0 0; /* Padding to avoid overlap with label */
-    -fx-border-color: transparent; /* Hide default border */
-    -fx-background-color: transparent; /* Make background transparent */
-    -fx-font-size: 16px; /* Font size */
+    -fx-padding: 10 0 0 0;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-font-size: 16px;
 }
 
 .floating-label {
-    -fx-font-size: 16px; /* Font size */
-    -fx-text-fill: gray; /* Color of the label */
-    -fx-opacity: 0.5; /* Initial opacity */
-    -fx-layout-y: 0; /* Position the label */
-    -fx-transition: all 0.2s ease; /* Smooth transition */
+    -fx-font-size: 16px;
+    -fx-text-fill: gray;
+    -fx-opacity: 0.5;
+    -fx-layout-y: 0;
+    -fx-transition: all 0.2s ease;
 }
 
 .floating-text-field:focused + .floating-label,
 .floating-text-field:default + .floating-label {
-    -fx-layout-y: 0; /* Move label up */
-    -fx-opacity: 1; /* Full opacity */
-    -fx-font-size: 12px; /* Smaller font size when floating */
-    -fx-text-fill: blue; /* Change color when focused */
+    -fx-layout-y: 0;
+    -fx-opacity: 1;
+    -fx-font-size: 12px;
+    -fx-text-fill: blue;
 }

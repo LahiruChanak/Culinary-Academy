@@ -24,5 +24,6 @@ public class EnrolmentDTO {
         this.studentId = studentId;
         this.courseId = courseId;
         this.enrolledDate = enrolledDate;
+
     }
 }

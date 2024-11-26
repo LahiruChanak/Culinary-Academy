@@ -25,7 +25,6 @@ public class SessionFactoryConfig {
 
         // Step 02 - Create Metadata Object
         Metadata metadata = new MetadataSources(registry)
-                .addAnnotatedClass(Coordinator.class)
                 .addAnnotatedClass(Course.class)
                 .addAnnotatedClass(Enrolment.class)
                 .addAnnotatedClass(Payment.class)

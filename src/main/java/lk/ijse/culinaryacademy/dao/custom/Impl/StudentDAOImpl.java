@@ -12,21 +12,14 @@ import java.util.List;
 
 public class StudentDAOImpl implements StudentDAO {
 
-    Session session;
-
-//    @Override
-//    public void setSession(Session session) {
-//        this.session = session;
-//    }
-
     @Override
     public boolean add(Student student) throws Exception {
-        try(Session session = SessionFactoryConfig.getInstance().getSession()){
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
             Transaction transaction = session.beginTransaction();
             session.save(student);
             transaction.commit();
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -34,12 +27,12 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public boolean update(Student student) throws Exception {
-        try(Session session = SessionFactoryConfig.getInstance().getSession()){
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
             Transaction transaction = session.beginTransaction();
             session.update(student);
             transaction.commit();
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -47,12 +40,12 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public boolean delete(String studentId) throws Exception {
-        try(Session session = SessionFactoryConfig.getInstance().getSession()){
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
             Transaction transaction = session.beginTransaction();
             session.delete(session.get(Student.class, studentId));
             transaction.commit();
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -60,15 +53,16 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public String currentId() throws Exception {
-        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
-            String hql = "select s.studentId from Student s order by s.studentId desc";
-            Query<String> query = session.createQuery(hql, String.class);
-            query.setMaxResults(1);
-            return query.uniqueResult();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+//        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+//            String hql = "SELECT s.studentId FROM Student s ORDER BY s.studentId DESC LIMIT 1";
+//            Query<String> query = session.createQuery(hql, String.class);
+//            query.setMaxResults(1);
+//            return query.uniqueResult();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+        return null;
     }
 
     @Override

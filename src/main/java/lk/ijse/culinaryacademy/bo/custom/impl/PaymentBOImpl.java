@@ -21,8 +21,10 @@ public class PaymentBOImpl implements PaymentBO {
                 dto.getCourseId(),
                 dto.getPaymentDate(),
                 dto.getFee(),
-                dto.getStatus())
-        );
+                dto.getStatus(),
+                student,
+                course
+        ));
     }
 
     @Override
@@ -33,8 +35,10 @@ public class PaymentBOImpl implements PaymentBO {
                 paymentDTO.getCourseId(),
                 paymentDTO.getPaymentDate(),
                 paymentDTO.getFee(),
-                paymentDTO.getStatus())
-        );
+                paymentDTO.getStatus(),
+                student,
+                course
+        ));
     }
 
     @Override

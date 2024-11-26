@@ -15,6 +15,10 @@ public class CourseBOImpl implements CourseBO {
 
     CourseDAO courseDAO = (CourseDAO) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.COURSE);
 
+    private List<Enrolment> enrolment;
+
+    private List<Payment> payment;
+
     @Override
     public boolean addCourse(CourseDTO dto) throws Exception {
         return courseDAO.add(new Course(

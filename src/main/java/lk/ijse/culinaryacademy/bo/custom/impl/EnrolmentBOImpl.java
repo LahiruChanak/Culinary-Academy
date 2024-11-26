@@ -4,7 +4,9 @@ import lk.ijse.culinaryacademy.bo.custom.EnrolmentBO;
 import lk.ijse.culinaryacademy.dao.DAOFactory;
 import lk.ijse.culinaryacademy.dao.custom.EnrolmentDAO;
 import lk.ijse.culinaryacademy.dto.EnrolmentDTO;
+import lk.ijse.culinaryacademy.entity.Course;
 import lk.ijse.culinaryacademy.entity.Enrolment;
+import lk.ijse.culinaryacademy.entity.Student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,8 @@ import java.util.List;
 public class EnrolmentBOImpl implements EnrolmentBO {
 
     EnrolmentDAO enrolmentDAO = (EnrolmentDAO) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.ENROLMENT);
+    private Student student;
+    private Course course;
 
     @Override
     public boolean addEnrolment(EnrolmentDTO dto) throws Exception {
@@ -19,7 +23,9 @@ public class EnrolmentBOImpl implements EnrolmentBO {
                 dto.getEnrolmentId(),
                 dto.getStudentId(),
                 dto.getCourseId(),
-                dto.getEnrolledDate()
+                dto.getEnrolledDate(),
+                student,
+                course
         ));
     }
 
@@ -29,7 +35,9 @@ public class EnrolmentBOImpl implements EnrolmentBO {
                 dto.getEnrolmentId(),
                 dto.getStudentId(),
                 dto.getCourseId(),
-                dto.getEnrolledDate()
+                dto.getEnrolledDate(),
+                student,
+                course
         ));
     }
 
