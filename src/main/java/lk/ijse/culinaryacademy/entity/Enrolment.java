@@ -25,7 +25,7 @@ public class Enrolment {
     @Column(name = "course_id")
     private String courseId;
 
-    @Column(name = "enrolled_date")
+    @Column(name = "enrolled_date" , length = 100)
     private Date enrolledDate;
 
     // Many-to-One relationship with Student

@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDAOImpl implements StudentDAO {
@@ -40,12 +41,12 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public boolean delete(String studentId) throws Exception {
-        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+        try(Session session = SessionFactoryConfig.getInstance().getSession()){
             Transaction transaction = session.beginTransaction();
-            session.delete(session.get(Student.class, studentId));
+            session.delete(searchById(studentId));
             transaction.commit();
             return true;
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
             return false;
         }
@@ -67,16 +68,35 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public List<Student> getAll() throws Exception {
-        return List.of();
+        ArrayList<Student> students = new ArrayList<>();
+        try(Session session = SessionFactoryConfig.getInstance().getSession()){
+            students = (ArrayList<Student>) session.createQuery("FROM Student").list();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return students;
     }
 
     @Override
     public Student searchById(String studentId) throws Exception {
-        return null;
+        try(Session session = SessionFactoryConfig.getInstance().getSession()){
+            System.out.println(session.get(Student.class, studentId));
+            return session.get(Student.class, studentId);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
     public List<String> getIds() throws Exception {
-        return List.of();
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            String hql = "SELECT s.studentId FROM Student s ORDER BY s.studentId";
+            Query<String> query = session.createQuery(hql, String.class);
+            return query.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

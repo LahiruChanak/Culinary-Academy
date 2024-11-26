@@ -17,22 +17,22 @@ import java.time.LocalDateTime;
 public class Payment {
 
     @Id
-    @Column(name = "payment_id")
+    @Column(name = "payment_id" , length = 100)
     private String paymentId;
 
-    @Column(name = "student_id")
+    @Column(name = "student_id" , length = 100)
     private String studentId;
 
-    @Column(name = "course_id")
+    @Column(name = "course_id" , length = 100)
     private String courseId;
 
-    @Column(name = "payment_date")
+    @Column(name = "payment_date" , length = 100)
     private LocalDateTime paymentDate;
 
-    @Column(name = "fee")
+    @Column(name = "fee" , length = 100)
     private double fee;
 
-    @Column(name = "status")
+    @Column(name = "status" , length = 100)
     private String status;
 
     // Many-to-One relationship with Student

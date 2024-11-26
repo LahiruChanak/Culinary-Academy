@@ -27,8 +27,8 @@ public class StudentBOImpl implements StudentBO {
                 dto.getContact(),
                 dto.getAddress(),
                 dto.getEnrolledDate(),
-                enrolment,
-                payment
+                null,
+                null
         ));
     }
 
@@ -41,8 +41,8 @@ public class StudentBOImpl implements StudentBO {
                 dto.getContact(),
                 dto.getAddress(),
                 dto.getEnrolledDate(),
-                enrolment,
-                payment
+                null,
+                null
         ));
     }
 
@@ -67,8 +67,10 @@ public class StudentBOImpl implements StudentBO {
                     s.getEmail(),
                     s.getContact(),
                     s.getAddress(),
-                    s.getEnrolledDate())
-            );
+                    s.getEnrolledDate(),
+                    null,
+                    null
+            ));
         }
         return allStudents;
     }
@@ -82,7 +84,9 @@ public class StudentBOImpl implements StudentBO {
                 s.getEmail(),
                 s.getContact(),
                 s.getAddress(),
-                s.getEnrolledDate()
+                s.getEnrolledDate(),
+                null,
+                null
         );
     }
 

@@ -15,22 +15,22 @@ import java.util.List;
 public class Course {
 
     @Id
-    @Column(name = "course_id")
+    @Column(name = "course_id" , length = 100)
     private String courseId;
 
-    @Column(name = "course_name")
+    @Column(name = "course_name" , length = 100)
     private String courseName;
 
-    @Column(name = "description")
+    @Column(name = "description" , length = 100)
     private String description;
 
-    @Column(name = "duration")
+    @Column(name = "duration" , length = 100)
     private int duration;
 
-    @Column(name = "fee")
+    @Column(name = "fee" , length = 100)
     private double fee;
 
-    @Column(name = "coordinator_id")
+    @Column(name = "coordinator_id" , length = 100)
     private String coordinatorId;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

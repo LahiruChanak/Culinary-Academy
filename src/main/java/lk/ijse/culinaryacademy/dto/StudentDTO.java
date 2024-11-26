@@ -1,5 +1,7 @@
 package lk.ijse.culinaryacademy.dto;
 
+import lk.ijse.culinaryacademy.entity.Enrolment;
+import lk.ijse.culinaryacademy.entity.Payment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,5 +20,6 @@ public class StudentDTO {
     private String contact;
     private String address;
     private Date enrolledDate;
-
+    private Enrolment enrolment;
+    private Payment payment;
 }

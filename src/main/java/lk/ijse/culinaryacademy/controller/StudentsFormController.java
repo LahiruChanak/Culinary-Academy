@@ -15,6 +15,8 @@ import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.StudentBO;
 import lk.ijse.culinaryacademy.dto.CourseDTO;
 import lk.ijse.culinaryacademy.dto.StudentDTO;
+import lk.ijse.culinaryacademy.entity.Enrolment;
+import lk.ijse.culinaryacademy.entity.Payment;
 import lk.ijse.culinaryacademy.view.tdm.StudentTm;
 
 import java.sql.Date;
@@ -74,6 +76,8 @@ public class StudentsFormController {
     // Objects
     StudentBO studentBO = (StudentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.STUDENT);
 
+    Enrolment enrolment = new Enrolment();
+    Payment payment = new Payment();
 
     // --------------------------------- Initialize Method ---------------------------------
     public void initialize() throws Exception {
@@ -104,7 +108,7 @@ public class StudentsFormController {
             return;
         }
 
-        StudentDTO dto = new StudentDTO(studentId, name, email, contact, address, enrolledDate);
+        StudentDTO dto = new StudentDTO(studentId, name, email, contact, address, enrolledDate, enrolment, payment);
 
         String errorMessage = isValid();
 
@@ -146,7 +150,7 @@ public class StudentsFormController {
             return;
         }
 
-        StudentDTO dto = new StudentDTO(studentId, name, email, contact, address, enrolledDate);
+        StudentDTO dto = new StudentDTO(studentId, name, email, contact, address, enrolledDate, enrolment, payment);
 
         String errorMessage = isValid();
 
