@@ -6,8 +6,13 @@ import lk.ijse.culinaryacademy.dao.custom.CourseDAO;
 import lk.ijse.culinaryacademy.dto.CourseDTO;
 import lk.ijse.culinaryacademy.dto.StudentDTO;
 import lk.ijse.culinaryacademy.entity.Course;
+import lk.ijse.culinaryacademy.entity.Enrolment;
+import lk.ijse.culinaryacademy.entity.Payment;
 import lk.ijse.culinaryacademy.entity.Student;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +32,9 @@ public class CourseBOImpl implements CourseBO {
                 dto.getDescription(),
                 dto.getDuration(),
                 dto.getFee(),
-                dto.getCoordinatorId()
+                dto.getCoordinatorId(),
+                enrolment,
+                payment
         ));
     }
 
@@ -39,7 +46,9 @@ public class CourseBOImpl implements CourseBO {
                 dto.getDescription(),
                 dto.getDuration(),
                 dto.getFee(),
-                dto.getCoordinatorId()
+                dto.getCoordinatorId(),
+                enrolment,
+                payment
         ));
     }
 

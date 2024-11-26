@@ -4,14 +4,22 @@ import lk.ijse.culinaryacademy.bo.custom.PaymentBO;
 import lk.ijse.culinaryacademy.dao.DAOFactory;
 import lk.ijse.culinaryacademy.dao.custom.PaymentDAO;
 import lk.ijse.culinaryacademy.dto.PaymentDTO;
+import lk.ijse.culinaryacademy.entity.Course;
 import lk.ijse.culinaryacademy.entity.Payment;
+import lk.ijse.culinaryacademy.entity.Student;
 
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentBOImpl implements PaymentBO {
 
     PaymentDAO paymentDAO = (PaymentDAO) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.PAYMENT);
+    private Student student;
+    private Course course;
+
 
     @Override
     public boolean addPayment(PaymentDTO dto) throws Exception {

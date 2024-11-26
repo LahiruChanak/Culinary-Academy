@@ -16,13 +16,13 @@ import java.sql.Date;
 public class Enrolment {
 
     @Id
-    @Column(name = "enrolment_id")
+    @Column(name = "enrolment_id", length = 100)
     private String enrolmentId;
 
-    @Column(name = "student_id")
+    @Column(name = "student_id" , length = 100)
     private String studentId;
 
-    @Column(name = "course_id")
+    @Column(name = "course_id" , length = 100)
     private String courseId;
 
     @Column(name = "enrolled_date" , length = 100)
