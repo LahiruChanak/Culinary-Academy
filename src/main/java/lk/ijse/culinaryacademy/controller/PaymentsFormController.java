@@ -97,33 +97,42 @@ public class PaymentsFormController {
     // ------------------------------------ CRUD OPERATIONS ------------------------------------
     @FXML
     void btnSaveOnAction(ActionEvent event) {
+        // Get input data from the form
         String paymentId = txtPaymentId.getText();
         String studentId = cmbStudentId.getValue();
         String courseId = cmbCourseId.getValue();
-        String paymentDateText = txtPaymentDate.getText();
         String feeText = txtFee.getText();
         String status = cmbStatus.getValue();
 
-        LocalDateTime paymentDate;
-        double fee;
+        // Auto-generate the current date and time
+        LocalDateTime paymentDate = LocalDateTime.now();
+        double fee = 0;
 
+        // Validate and parse the fee input
         try {
-            paymentDate = LocalDateTime.parse(paymentDateText);
             fee = Double.parseDouble(feeText);
-        } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Input").show();
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Fee Amount. Please enter a valid number.").show();
             return;
         }
 
+        // Check if ComboBox values are selected
+        if (courseId == null || status == null) {
+            new Alert(Alert.AlertType.ERROR, "Please select both Course and Payment status.").show();
+            return;
+        }
+
+        // Create a PaymentDTO object
         PaymentDTO paymentDTO = new PaymentDTO(paymentId, studentId, courseId, paymentDate, fee, status);
 
+        // Validate fields
         String errorMessage = isValid();
-
         if (errorMessage != null) {
             new Alert(Alert.AlertType.ERROR, errorMessage).show();
             return;
         }
 
+        // Try to add the payment to the database
         try {
             boolean isAdded = paymentBO.addPayment(paymentDTO);
             if (isAdded) {
@@ -134,9 +143,10 @@ public class PaymentsFormController {
                 refreshTable();
             }
         } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            new Alert(Alert.AlertType.ERROR, "Error while saving payment: " + e.getMessage()).show();
         }
     }
+
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
@@ -352,6 +362,55 @@ public class PaymentsFormController {
         cmbStatus.setItems(obList);
     }
 
+    @FXML
+    private void cmbStatusOnAction(ActionEvent event) {
+
+        if (cmbStatus.getValue() != null && cmbCourseId.getValue() != null) {
+            setPaymentFee();
+        } else {
+//            new Alert(Alert.AlertType.ERROR, "Please select both Course and Payment status.").show();
+        }
+    }
+
+    private void setPaymentFee() {
+        String paymentStatus = cmbStatus.getValue();
+        String courseId = cmbCourseId.getValue();
+
+        try {
+            double fee = courseBO.searchByCourseId(courseId).getFee();
+
+            // If it's Full Payment, set fee and disable editing
+            if (paymentStatus.equals("Full Payment")) {
+                txtFee.setText(String.valueOf(fee));
+            } else {
+                String upfrontFeeText = txtFee.getText().trim();
+
+                // Check if upfront fee is entered
+                if (upfrontFeeText.isEmpty()) {
+                    new Alert(Alert.AlertType.ERROR, "Please enter an upfront payment amount.").show();
+                    return;
+                }
+
+                try {
+                    double upfrontFee = Double.parseDouble(upfrontFeeText);
+
+                    // Validate the upfront payment (must be at least 10% of total fee)
+                    if (upfrontFee < 0 || upfrontFee < fee / 10) {
+                        new Alert(Alert.AlertType.ERROR, "Upfront payment must be " + fee / 10 + " or more.").show();
+                    } else if (upfrontFee <= fee) {
+                        txtFee.setText(String.valueOf(fee - upfrontFee));
+                    } else {
+                        new Alert(Alert.AlertType.ERROR, "Upfront payment exceeds total fee. Please check.").show();
+                    }
+                } catch (NumberFormatException e) {
+                    new Alert(Alert.AlertType.ERROR, "Invalid upfront payment amount. Please enter a valid number.").show();
+                }
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Error retrieving course fee: " + e.getMessage()).show();
+        }
+    }
+
 
     // ------------------------------------ ON KEY RELEASED ------------------------------------
     @FXML
@@ -366,11 +425,6 @@ public class PaymentsFormController {
 
     @FXML
     void cmbCourseIdOnKeyReleased(KeyEvent event) {
-
-    }
-
-    @FXML
-    void cmbStatusOnKeyReleased(KeyEvent event) {
 
     }
 

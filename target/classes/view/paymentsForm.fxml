@@ -42,7 +42,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXComboBox>
-            <JFXComboBox fx:id="cmbStatus" labelFloat="true" layoutX="46.0" layoutY="110.0" onKeyReleased="#cmbStatusOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Status">
+            <JFXComboBox fx:id="cmbStatus" labelFloat="true" layoutX="46.0" layoutY="110.0" onAction="#cmbStatusOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Status">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
