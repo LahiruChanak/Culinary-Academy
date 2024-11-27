@@ -28,7 +28,7 @@
         <!-- Pane for student details -->
         <Pane layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="785.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
             <children>
-                <JFXTextField fx:id="txtUsername" labelFloat="true" layoutX="40.0" layoutY="35.0" onKeyReleased="#txtUserIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Username">
+                <JFXTextField fx:id="txtUsername" labelFloat="true" layoutX="40.0" layoutY="35.0" onKeyReleased="#txtUsernameOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Username">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -45,7 +45,7 @@
                         <Font size="14.0" />
                     </font>
                 </JFXTextField>
-            <JFXComboBox fx:id="cmbRole" labelFloat="true" layoutX="40.0" layoutY="110.0" onKeyReleased="#cmbRoleOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Role">
+            <JFXComboBox fx:id="cmbRole" labelFloat="true" layoutX="40.0" layoutY="110.0" prefHeight="36.0" prefWidth="200.0" promptText="Role">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
