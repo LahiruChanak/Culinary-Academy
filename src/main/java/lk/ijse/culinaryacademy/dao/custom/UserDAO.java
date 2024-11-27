@@ -9,7 +9,7 @@ public interface UserDAO extends CrudDAO<User> {
 
     boolean changePassword(String currentPassword, String newPassword, String confirmPassword) throws Exception;
 
-    boolean checkLogin(String username, String password) throws Exception;
+    User checkLogin(String username, String password) throws Exception;
 
     boolean checkRegister(String username, String name, String email, String password, String confirmPassword, String role) throws Exception;
 

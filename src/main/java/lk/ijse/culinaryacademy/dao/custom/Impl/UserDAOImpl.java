@@ -124,13 +124,13 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public boolean checkLogin(String username, String password) throws Exception {
+    public User checkLogin(String username, String password) throws Exception {
         try (Session session = SessionFactoryConfig.getInstance().getSession()) {
             String hql = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password";
             Query<User> query = session.createQuery(hql, User.class);
             query.setParameter("username", username);
             query.setParameter("password", password);
-            return query.uniqueResult() != null;
+            return query.uniqueResult(); // Return the User object if found
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception("Error while checking login credentials", e);

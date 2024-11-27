@@ -17,6 +17,7 @@ import javafx.util.Duration;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.UserBO;
 import lk.ijse.culinaryacademy.bo.custom.impl.UserBOImpl;
+import lk.ijse.culinaryacademy.entity.User;
 
 import java.io.IOException;
 import java.net.URL;
@@ -64,9 +65,19 @@ public class LoginFormController {
         }
 
         try {
-            if (userBO.checkLoginCredential(username, password)) {
-                UserBOImpl.userName = userBO.getUsrName(username);
-                navigateToDashboard();
+            User user = userBO.checkLoginCredential(username, password); // Get the User object
+            if (user != null) {
+                UserBOImpl.userName = user.getUsername(); // Assuming you have a method to get the username
+                String role = user.getRole(); // Assuming you have a method to get the user's role
+
+                // Navigate based on the user's role
+                if ("Admin".equalsIgnoreCase(role)) {
+                    navigateToDashboard("/view/adminMainForm.fxml"); // navigate to the admin dashboard
+                } else if ("Coordinator".equalsIgnoreCase(role)) {
+                    navigateToDashboard("/view/coordinatorMainForm.fxml"); // navigate to the coordinator dashboard
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Unknown role: " + role).show();
+                }
             } else {
                 new Alert(Alert.AlertType.ERROR, "Invalid username or password. Please try again.").show();
             }
@@ -91,8 +102,8 @@ public class LoginFormController {
 
 
     // ---------------------------- OTHER METHODS ----------------------------
-    private void navigateToDashboard() throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/adminMainForm.fxml"));
+    private void navigateToDashboard(String url) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource(url));
 
         Scene scene = new Scene(rootNode);
 

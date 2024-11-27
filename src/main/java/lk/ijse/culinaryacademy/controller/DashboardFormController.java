@@ -5,19 +5,20 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.shape.Circle;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.CourseBO;
 import lk.ijse.culinaryacademy.bo.custom.PaymentBO;
 import lk.ijse.culinaryacademy.bo.custom.StudentBO;
-import lk.ijse.culinaryacademy.bo.custom.UserBO;
 import lk.ijse.culinaryacademy.bo.custom.impl.UserBOImpl;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class DashboardFormController {
 
@@ -37,13 +38,12 @@ public class DashboardFormController {
     private Text txtTime;
 
     @FXML
-    private Circle userImage;
+    private ImageView imgUser;
 
     @FXML
     private Label userName;
 
     // Objects
-    UserBO userBO = (UserBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.USER);
     StudentBO studentBO = (StudentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.STUDENT);
     CourseBO courseBO = (CourseBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.COURSE);
     PaymentBO paymentBO = (PaymentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PAYMENT);
@@ -71,8 +71,8 @@ public class DashboardFormController {
     }
 
     private void updateTime() {
-        Timeline timeline = new Timeline(new KeyFrame(javafx.util.Duration.ZERO, e -> {
-            txtTime.setText(new SimpleDateFormat("HH:mm:ss").format(new java.util.Date()));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            txtTime.setText(new SimpleDateFormat("HH:mm:ss").format(new Date()));
         }),
                 new KeyFrame(Duration.seconds(1)));
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -103,7 +103,7 @@ public class DashboardFormController {
 
     // ---------------------------- USER FUNCTIONS ----------------------------
     public void setUserName() {
-        userName.setText(UserBOImpl.userName); // Set the username
-//        userImage.setImage(new Image("/lk/ijse/culinaryacademy/assets/user.png"));
+        userName.setText(UserBOImpl.userName);
     }
+
 }

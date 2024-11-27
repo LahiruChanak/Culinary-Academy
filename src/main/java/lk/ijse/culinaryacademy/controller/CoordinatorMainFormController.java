@@ -1,11 +1,16 @@
 package lk.ijse.culinaryacademy.controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -30,7 +35,7 @@ public class CoordinatorMainFormController {
     private JFXButton btnStudent;
 
     @FXML
-    private JFXButton btnUser;
+    private JFXButton btnEnrolment;
 
     @FXML
     private AnchorPane rootPane;
@@ -60,6 +65,14 @@ public class CoordinatorMainFormController {
 
     }
 
+    public void btnEnrolmentOnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void btnCourseOnAction(ActionEvent actionEvent) {
+
+    }
+
     @FXML
     void btnPaymentOnAction(ActionEvent event) {
 
@@ -71,14 +84,28 @@ public class CoordinatorMainFormController {
     }
 
     @FXML
-    void btnLogOutOnAction(ActionEvent event) {
+    void btnLogOutOnAction(ActionEvent event) throws IOException {
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/credentialForm.fxml"));
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        stage.setScene(new Scene(anchorPane));
+        stage.setTitle("Login Form");
+        stage.centerOnScreen();
+    }
 
+    // ---------------------------- Pane Transition ----------------------------
+    private void pageTransition(Parent load) {
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), subPane);
+        transition.setFromX(load.getScene().getWidth());
+        transition.setToX(0);
+        transition.play();
     }
 
     // Set Active Button style
     private void setButtonActive(JFXButton button) {
         btnHome.getStyleClass().removeAll("jfx-active-button");
         btnCourse.getStyleClass().removeAll("jfx-active-button");
+        btnEnrolment.getStyleClass().removeAll("jfx-active-button");
+        btnPayment.getStyleClass().removeAll("jfx-active-button");
         btnStudent.getStyleClass().removeAll("jfx-active-button");
         btnSettings.getStyleClass().removeAll("jfx-active-button");
         btnLogOut.getStyleClass().removeAll("jfx-active-button");
