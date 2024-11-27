@@ -1,19 +1,22 @@
 package lk.ijse.culinaryacademy.controller;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import lk.ijse.culinaryacademy.bo.BOFactory;
+import lk.ijse.culinaryacademy.bo.custom.UserBO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 
 public class RegisterFormController {
 
@@ -21,23 +24,26 @@ public class RegisterFormController {
     private AnchorPane adminRegisterPane;
 
     @FXML
-    private JFXButton btnCancel;
+    private MFXTextField txtUsername;
 
     @FXML
-    private JFXButton btnSignUp;
+    private MFXTextField txtEmail; ;
 
     @FXML
-    private JFXPasswordField txtConfirmPW;
+    private MFXPasswordField txtConfirmPassword;
 
     @FXML
-    private JFXTextField txtEmail;
+    private MFXPasswordField txtPassword;
 
     @FXML
-    private JFXTextField txtName;
+    private MFXTextField txtName;
 
-    @FXML
-    private JFXPasswordField txtPassword;
 
+    // Objects
+    UserBO userBO = (UserBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.USER);
+
+
+    // --------------------------------- MAIN FUNCTIONS ---------------------------------
     @FXML
     void btnCancelOnAction(ActionEvent event) throws IOException {
         URL resource = getClass().getResource("/view/loginForm.fxml");
@@ -52,55 +58,55 @@ public class RegisterFormController {
     }
 
     @FXML
-    void btnSignUpOnAction(ActionEvent event) {
+    void btnSignUpOnAction(ActionEvent event) throws Exception {
+        String username = txtUsername.getText();
         String name = txtName.getText();
         String email = txtEmail.getText();
         String password = txtPassword.getText();
-        String confirmPassword = txtConfirmPW.getText();
+        String confirmPassword = txtConfirmPassword.getText();
 
-//        try {
-//            boolean isTrue = credentialBO.checkRegisterCredential(name, email, password, confirmPassword);
-//            if (isTrue) {
-//                new Alert(Alert.AlertType.INFORMATION, "Registration Successfully.").show();
-//                clearField();
-//            }
-//        } catch (SQLException e) {
-//            new Alert(Alert.AlertType.ERROR, "Incorrect Register Details.").show();
-//        }
+        try {
+            boolean isTrue = userBO.checkRegisterCredential(username, name, email, password, confirmPassword);
+            if (isTrue) {
+                new Alert(Alert.AlertType.INFORMATION, "Registration Successfully.").show();
+                clearField();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Incorrect Register Details.").show();
+        }
     }
 
+
+    // --------------------------------- OTHER METHODS ---------------------------------
     private void clearField() {
+        txtUsername.clear();
         txtName.clear();
         txtEmail.clear();
         txtPassword.clear();
-        txtConfirmPW.clear();
-    }
-
-    @FXML
-    void txtEmailOnAction(ActionEvent event) {
-
+        txtConfirmPassword.clear();
     }
 
 
+    // --------------------------------- ON ACTION ---------------------------------
+    @FXML
+    void txUsernameOnAction(ActionEvent event) { txtName.requestFocus(); }
 
     @FXML
-    void txtNameOnAction(ActionEvent event) {
-
-    }
-
+    void txtNameOnAction(ActionEvent event) { txtEmail.requestFocus(); }
 
     @FXML
-    void txtPasswordOnAction(ActionEvent event) {
-
-    }
+    void txtEmailOnAction(ActionEvent event) { txtPassword.requestFocus(); }
 
     @FXML
-    void txtConfirmPWOnAction(ActionEvent event) {
-
-    }
+    void txtPasswordOnAction(ActionEvent event) { txtConfirmPassword.requestFocus(); }
 
     @FXML
-    void txtEmailOnKeyReleased(KeyEvent event) {
+    void txtConfirmPasswordOnAction(ActionEvent event) throws Exception { btnSignUpOnAction(event); }
+
+
+    // --------------------------------- ON KEY RELEASED ---------------------------------
+    @FXML
+    void txtUsernameOnKeyReleased(KeyEvent event) {
 
     }
 
@@ -110,12 +116,23 @@ public class RegisterFormController {
     }
 
     @FXML
-    void txtPWOnKeyReleased(KeyEvent event) {
+    void txtEmailOnKeyReleased(KeyEvent event) {
 
     }
 
     @FXML
-    void setTxtConfirmPWOnKeyReleased(KeyEvent event) {
+    void txtPasswordOnKeyReleased(KeyEvent event) {
 
+    }
+
+    @FXML
+    void txtConfirmPasswordOnKeyReleased(KeyEvent event) {
+
+    }
+
+
+    // --------------------------------- VALIDATION ---------------------------------
+    public String isValid() {
+        return null;
     }
 }

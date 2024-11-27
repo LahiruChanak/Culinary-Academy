@@ -16,7 +16,7 @@ public class UserBOImpl implements UserBO {
     @Override
     public boolean addUser(UserDTO dto) throws Exception {
         return userDAO.add(new User(
-                dto.getUserId(),
+                dto.getUsername(),
                 dto.getName(),
                 dto.getEmail(),
                 dto.getRole(),
@@ -27,7 +27,7 @@ public class UserBOImpl implements UserBO {
     @Override
     public boolean updateUser(UserDTO dto) throws Exception {
         return userDAO.update(new User(
-                dto.getUserId(),
+                dto.getUsername(),
                 dto.getName(),
                 dto.getEmail(),
                 dto.getRole(),
@@ -47,7 +47,7 @@ public class UserBOImpl implements UserBO {
 
         for (User u : all) {
             allUsers.add(new UserDTO(
-                    u.getUserId(),
+                    u.getUsername(),
                     u.getName(),
                     u.getEmail(),
                     u.getRole(),
@@ -55,11 +55,6 @@ public class UserBOImpl implements UserBO {
             );
         }
         return allUsers;
-    }
-
-    @Override
-    public List<String> getCoordinatorIds() throws Exception {
-        return userDAO.getIds();
     }
 
     @Override
@@ -78,14 +73,29 @@ public class UserBOImpl implements UserBO {
     }
 
     @Override
-    public UserDTO searchByUserId(String userId) throws Exception {
-        User u = userDAO.searchById(userId);
+    public UserDTO searchByName(String name) throws Exception {
+        User u = userDAO.searchByName(name);
         return new UserDTO(
-                u.getUserId(),
+                u.getUsername(),
                 u.getName(),
                 u.getEmail(),
                 u.getRole(),
                 u.getPassword()
         );
+    }
+
+    @Override
+    public boolean checkLoginCredential(String email, String password) throws Exception {
+        return userDAO.checkLogin(email, password);
+    }
+
+    @Override
+    public String getUsrName(String email) throws Exception {
+        return userDAO.getUserName(email);
+    }
+
+    @Override
+    public boolean checkRegisterCredential(String username, String name, String email, String password, String confirmPassword) throws Exception {
+        return userDAO.checkRegister(username, name, email, password, confirmPassword);
     }
 }

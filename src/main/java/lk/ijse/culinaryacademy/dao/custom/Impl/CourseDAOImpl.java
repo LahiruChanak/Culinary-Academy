@@ -1,7 +1,6 @@
 package lk.ijse.culinaryacademy.dao.custom.Impl;
 
 
-import javafx.scene.control.Alert;
 import lk.ijse.culinaryacademy.config.SessionFactoryConfig;
 import lk.ijse.culinaryacademy.dao.custom.CourseDAO;
 import lk.ijse.culinaryacademy.entity.Course;
@@ -99,4 +98,8 @@ public class CourseDAOImpl implements CourseDAO {
         }
     }
 
+    @Override
+    public Course searchByName(String courseId) throws Exception {
+        return null;
+    }
 }

@@ -53,20 +53,106 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean changeEmail(String currentEmail, String newEmail, String confirmEmail) throws Exception {
-        return false;
+        if (!newEmail.equals(confirmEmail)) {
+            return false;
+        }
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            Transaction transaction = session.beginTransaction();
+            String hql = "UPDATE User u SET u.email = :newEmail WHERE u.email = :currentEmail";
+            Query query = session.createQuery(hql);
+            query.setParameter("newEmail", newEmail);
+            query.setParameter("currentEmail", currentEmail);
+            int result = query.executeUpdate();
+            transaction.commit();
+            return result > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
     public boolean changePassword(String currentPassword, String newPassword, String confirmPassword) throws Exception {
-        return false;
+        if (!newPassword.equals(confirmPassword)) {
+            return false;
+        }
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            Transaction transaction = session.beginTransaction();
+            String hql = "UPDATE User u SET u.password = :newPassword WHERE u.password = :currentPassword";
+            Query query = session.createQuery(hql);
+            query.setParameter("newPassword", newPassword);
+            query.setParameter("currentPassword", currentPassword);
+            int result = query.executeUpdate();
+            transaction.commit();
+            return result > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
-    public User searchById(String userId) throws Exception {
-        try(Session session = SessionFactoryConfig.getInstance().getSession()){
-            System.out.println(session.get(Student.class, userId));
-            return session.get(User.class, userId);
-        }catch (Exception e){
+    public boolean checkLogin(String email, String password) throws Exception {
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            String hql = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
+            Query<User> query = session.createQuery(hql, User.class);
+            query.setParameter("email", email);
+            query.setParameter("password", password);
+            return query.uniqueResult() != null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean checkRegister(String username, String name, String email, String password, String confirmPassword) throws Exception {
+        // Check if the password mismatches
+        if (!password.equals(confirmPassword)) {
+            return false;
+        }
+
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            try {
+                User user = new User();
+                user.setUsername(username);
+                user.setName(name);
+                user.setEmail(email);
+                user.setPassword(password);
+
+                session.save(user);
+                transaction.commit();
+                return true;
+            } catch (Exception e) {
+                transaction.rollback();
+                throw new Exception("Error occurred while registering the user: " + e.getMessage(), e);
+            }
+        }
+    }
+
+    @Override
+    public String getUserName(String email) throws Exception {
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            String hql = "SELECT u.name FROM User u WHERE u.email = :email";
+            Query<String> query = session.createQuery(hql, String.class);
+            query.setParameter("email", email);
+            return query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public User searchByName(String name) throws Exception {
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            String hql = "SELECT u FROM User u WHERE u.name = :name";
+            Query<User> query = session.createQuery(hql, User.class);
+            query.setParameter("name", name);
+            return query.uniqueResult();
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -86,7 +172,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public List<String> getIds() throws Exception {
         try (Session session = SessionFactoryConfig.getInstance().getSession()) {
-            String hql = "SELECT u.userId FROM User u ORDER BY u.userId";
+            String hql = "SELECT u.username FROM User u ORDER BY u.username";
             Query<String> query = session.createQuery(hql, String.class);
             return query.list();
         } catch (Exception e) {
@@ -96,9 +182,14 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public User searchById(String id) throws Exception {
+        return null;
+    }
+
+    @Override
     public String currentId() throws Exception {
         try (Session session = SessionFactoryConfig.getInstance().getSession()) {
-            String hql = "SELECT u.userId FROM User u ORDER BY u.userId DESC";
+            String hql = "SELECT u.username FROM User u ORDER BY u.username DESC";
             Query<String> query = session.createQuery(hql, String.class);
             query.setMaxResults(1);
             return query.uniqueResult();

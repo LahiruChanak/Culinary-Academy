@@ -14,13 +14,18 @@ public interface UserBO extends SuperBO {
 
     List<UserDTO> getAllUsers() throws Exception;
 
-    List<String> getCoordinatorIds() throws Exception;
-
     String currentUserId() throws Exception;
 
     boolean changeEmail(String currentEmail, String newEmail, String confirmEmail) throws Exception;
 
     boolean changePassword(String currentPassword, String newPassword, String confirmPassword) throws Exception;
 
-    UserDTO searchByUserId(String userId) throws Exception;
+    UserDTO searchByName(String name) throws Exception;
+
+    boolean checkLoginCredential(String email, String password) throws Exception;
+
+    String getUsrName(String email) throws Exception;
+
+    boolean checkRegisterCredential(String username, String name, String email, String password, String confirmPassword) throws Exception;
+
 }

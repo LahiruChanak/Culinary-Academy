@@ -14,7 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.UserBO;
-import lk.ijse.culinaryacademy.dto.CourseDTO;
 import lk.ijse.culinaryacademy.dto.UserDTO;
 import lk.ijse.culinaryacademy.view.tdm.UserTm;
 
@@ -31,7 +30,7 @@ public class UserFormController {
     private TableColumn<?, ?> colEmail;
 
     @FXML
-    private TableColumn<?, ?> colId;
+    private TableColumn<?, ?> colUsername;
 
     @FXML
     private TableColumn<?, ?> colName;
@@ -55,7 +54,7 @@ public class UserFormController {
     private JFXPasswordField txtPassword;
 
     @FXML
-    private JFXTextField txtUserId;
+    private JFXTextField txtUsername;
 
     @FXML
     private JFXTextField txtSearch;
@@ -69,7 +68,8 @@ public class UserFormController {
     // ---------------------------- Initialize Method ----------------------------
     @FXML
     void initialize() throws Exception {
-        loadNextUserId();
+//        loadNextUserId();
+        loadRoles();
         this.userList = getAllUsers();
         loadUserTable();
         setCellValueFactory();
@@ -79,7 +79,7 @@ public class UserFormController {
     // ---------------------------- CRUD OPERATIONS ----------------------------
     @FXML
     void btnSaveOnAction(ActionEvent event) throws Exception {
-        String userId = txtUserId.getText();
+        String userId = txtUsername.getText();
         String name = txtName.getText();
         String email = txtEmail.getText();
         String role = cmbRole.getValue();
@@ -107,7 +107,7 @@ public class UserFormController {
                 new Alert(Alert.AlertType.CONFIRMATION, "User Added Successfully.").show();
                 clearField();
                 refreshTable();
-                loadNextUserId();
+//                loadNextUserId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -116,7 +116,7 @@ public class UserFormController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) throws Exception {
-        String userId = txtUserId.getText();
+        String userId = txtUsername.getText();
         String name = txtName.getText();
         String email = txtEmail.getText();
         String role = cmbRole.getValue();
@@ -144,7 +144,7 @@ public class UserFormController {
                 new Alert(Alert.AlertType.CONFIRMATION, "User Updated Successfully.").show();
                 clearField();
                 refreshTable();
-                loadNextUserId();
+//                loadNextUserId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -153,7 +153,7 @@ public class UserFormController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) throws Exception {
-        String userId = txtUserId.getText();
+        String userId = txtUsername.getText();
 
         try {
             boolean isDeleted = userBO.deleteUser(userId);
@@ -162,7 +162,7 @@ public class UserFormController {
                 new Alert(Alert.AlertType.CONFIRMATION, "User Deleted Successfully.").show();
                 clearField();
                 refreshTable();
-                loadNextUserId();
+//                loadNextUserId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -187,13 +187,15 @@ public class UserFormController {
 
     // ---------------------------- OTHER OPERATIONS ----------------------------
     private void clearField() throws Exception {
-        txtUserId.clear();
+        txtUsername.clear();
         txtName.clear();
         txtEmail.clear();
         txtPassword.clear();
         txtConfirmPassword.clear();
 
-        loadNextUserId();
+        txtPassword.setDisable(false);
+        txtConfirmPassword.setDisable(false);
+//        loadNextUserId();
     }
 
     private void refreshTable() {
@@ -203,16 +205,19 @@ public class UserFormController {
 
     @FXML
     private void txtSearchOnAction(ActionEvent event) throws Exception {
-        String userId = txtSearch.getText();
+        String name = txtSearch.getText();
 
         try {
-            UserDTO dto = userBO.searchByUserId(userId);
+            UserDTO dto = userBO.searchByName(name);
 
             if (dto != null) {
-                txtUserId.setText(dto.getUserId());
+                txtUsername.setText(dto.getUsername());
                 txtName.setText(dto.getName());
                 txtEmail.setText(dto.getEmail());
                 cmbRole.setValue(dto.getRole());
+
+                txtPassword.setDisable(true);
+                txtConfirmPassword.setDisable(true);
 
                 txtSearch.clear();
             } else {
@@ -223,33 +228,33 @@ public class UserFormController {
         }
     }
 
-    private void loadNextUserId() throws Exception {
-        try {
-            String currentId = userBO.currentUserId();
-            String nextId = nextId(currentId);
-
-            txtUserId.setText(nextId);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private String nextId(String currentId) {
+//    private void loadNextUserId() throws Exception {
+//        try {
+//            String currentId = userBO.currentUserId();
+//            String nextId = nextId(currentId);
+//
+//            txtUsername.setText(nextId);
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    private String nextId(String currentId) {
 //        if (currentId != null) {
 //            String[] split = currentId.split("U");
 //            int id = Integer.parseInt(split[1]);
 //            return "U" + String.format("%03d", ++id);
 //        }
-        return "U001";
-    }
+//        return "U001";
+//    }
 
     private void loadUserTable() {
         ObservableList<UserTm> tmList = FXCollections.observableArrayList();
 
         for (UserDTO dto : userList) {
             UserTm userTm = new UserTm(
-                    dto.getUserId(),
+                    dto.getUsername(),
                     dto.getName(),
                     dto.getEmail(),
                     dto.getRole()
@@ -263,10 +268,15 @@ public class UserFormController {
     }
 
     private void setCellValueFactory() {
-        colId.setCellValueFactory(new PropertyValueFactory<>("userId"));
+        colUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colRole.setCellValueFactory(new PropertyValueFactory<>("role"));
+    }
+
+    private void loadRoles() {
+        ObservableList<String> roles = FXCollections.observableArrayList("Admin", "Coordinator");
+        cmbRole.setItems(roles);
     }
 
 

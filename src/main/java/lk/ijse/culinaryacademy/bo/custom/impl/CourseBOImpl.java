@@ -83,7 +83,7 @@ public class CourseBOImpl implements CourseBO {
 
     @Override
     public CourseDTO searchByCourseId(String courseId) throws Exception {
-        Course c = courseDAO.searchById(courseId);
+        Course c = courseDAO.searchByName(courseId);
         return new CourseDTO(
                 c.getCourseId(),
                 c.getCourseName(),

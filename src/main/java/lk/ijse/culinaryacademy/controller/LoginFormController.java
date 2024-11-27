@@ -1,8 +1,7 @@
 package lk.ijse.culinaryacademy.controller;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,14 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.culinaryacademy.bo.BOFactory;
-import lk.ijse.culinaryacademy.bo.custom.CredentialBO;
+import lk.ijse.culinaryacademy.bo.custom.UserBO;
 import lk.ijse.culinaryacademy.bo.custom.impl.CredentialBOImpl;
 
 import java.io.IOException;
@@ -31,40 +29,46 @@ public class LoginFormController {
     private AnchorPane adminLoginPane;
 
     @FXML
-    private JFXButton btnLogin;
-
-    @FXML
-    private JFXButton btnRegister;
-
-    @FXML
-    private Hyperlink linkCoordinator;
-
-    @FXML
-    private JFXTextField txtEmail;
-
-    @FXML
     private Text txtGreeting;
 
     @FXML
-    private JFXPasswordField txtPassword;
+    private MFXTextField txtUsername;
 
-    CredentialBO credentialBO = (CredentialBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.CREDENTIAL);
+    @FXML
+    private MFXPasswordField txtPassword;
+
+
+    UserBO userBO = (UserBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.USER);
+
 
     public void initialize() {
         setGreeting();
-        txtEmail.requestFocus();
+        txtUsername.requestFocus();
     }
 
+    // ---------------------------- MAIN FUNCTIONS ----------------------------
     @FXML
-    void btnLoginOnAction(ActionEvent event) throws IOException {
-        String email = txtEmail.getText();
+    void btnLoginOnAction(ActionEvent event) throws Exception {
+        String username = txtUsername.getText();
         String password = txtPassword.getText();
 
         navigateToDashboard(); // This line should be removed after testing
 
+        if (username.isEmpty() || password.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Please fill all the fields.").show();
+            return;
+        }
+
+        String errorMessage = isValid();
+
+        if (errorMessage != null) {
+            new Alert(Alert.AlertType.ERROR, errorMessage).show();
+            return;
+        }
+
         try {
-            if (credentialBO.checkLoginCredential(email, password)) {
-                CredentialBOImpl.userName = credentialBO.getUsrName(email);
+            if (userBO.checkLoginCredential(username, password)) {
+                CredentialBOImpl.userName = userBO.getUsrName(username);
                 navigateToDashboard();
             }
         } catch (SQLException | IOException e) {
@@ -85,6 +89,8 @@ public class LoginFormController {
         transition.play();
     }
 
+
+    // ---------------------------- OTHER METHODS ----------------------------
     private void navigateToDashboard() throws IOException {
         AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/adminMainForm.fxml"));
 
@@ -102,37 +108,33 @@ public class LoginFormController {
         txtGreeting.setText(greeting);
     }
 
-    @FXML
-    void linkCoordinatorOnAction(ActionEvent event) throws IOException {
-        URL resource = getClass().getResource("/view/coordinatorLoginForm.fxml");
-        assert resource != null;
-        Parent load = FXMLLoader.load(resource);
-        adminLoginPane.getChildren().clear();
-        adminLoginPane.getChildren().add(load);
-        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), adminLoginPane);
-        transition.setFromX(load.getScene().getWidth());
-        transition.setToX(0);
-        transition.play();
-    }
 
+    // ---------------------------- ON ACTION ----------------------------
     @FXML
-    void txtEmailOnAction(ActionEvent event) {
+    void txUsernameOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void txtPWOnAction(ActionEvent event) {
+    void txtPasswordOnAction(ActionEvent event) {
 
     }
 
-    @FXML
-    void txtPWOnKeyReleased(KeyEvent event) {
-
-    }
-
+    // ---------------------------- ON KEY RELEASED ----------------------------
     @FXML
     void txtUsernameOnKeyReleased(KeyEvent event) {
 
+    }
+
+    @FXML
+    void txtPasswordOnKeyReleased(KeyEvent event) {
+
+    }
+
+
+    // ---------------------------- VALIDATION ----------------------------
+    public String isValid() {
+        return null;
     }
 
 }
