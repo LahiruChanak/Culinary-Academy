@@ -1,5 +1,6 @@
 package lk.ijse.culinaryacademy.bo.custom;
 
+import javafx.scene.control.Label;
 import lk.ijse.culinaryacademy.bo.SuperBO;
 import lk.ijse.culinaryacademy.dto.UserDTO;
 
@@ -22,10 +23,10 @@ public interface UserBO extends SuperBO {
 
     UserDTO searchByName(String name) throws Exception;
 
-    boolean checkLoginCredential(String email, String password) throws Exception;
+    boolean checkLoginCredential(String username, String password) throws Exception;
 
-    String getUsrName(String email) throws Exception;
+    boolean checkRegisterCredential(String username, String name, String email, String password, String confirmPassword, String role) throws Exception;
 
-    boolean checkRegisterCredential(String username, String name, String email, String password, String confirmPassword) throws Exception;
+    String getUsrName(String username) throws Exception;
 
 }

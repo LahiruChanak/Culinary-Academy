@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXPasswordField?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -16,42 +18,6 @@
                 <Font name="SansSerif Bold" size="32.0" />
             </font>
         </Text>
-      <JFXTextField fx:id="txtName" labelFloat="true" layoutX="40.0" layoutY="202.0" onAction="#txtNameOnAction" onKeyReleased="#txtNameOnKeyReleased" prefHeight="40.0" prefWidth="320.0" promptText="Name" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </JFXTextField>
-      <JFXPasswordField fx:id="txtPassword" labelFloat="true" layoutX="40.0" layoutY="342.0" onAction="#txtPasswordOnAction" onKeyReleased="#txtPWOnKeyReleased" prefHeight="40.0" prefWidth="320.0" promptText="Password" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </JFXPasswordField>
-      <JFXPasswordField fx:id="txtConfirmPW" labelFloat="true" layoutX="40.0" layoutY="412.0" onAction="#txtConfirmPWOnAction" onKeyReleased="#setTxtConfirmPWOnKeyReleased" prefHeight="40.0" prefWidth="320.0" promptText="Confirm Password" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </JFXPasswordField>
-      <JFXButton fx:id="btnSignUp" buttonType="RAISED" layoutX="50.0" layoutY="486.0" onAction="#btnSignUpOnAction" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #0883e2; -fx-background-radius: 20;" text="Sign Up" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton fx:id="btnCancel" buttonType="RAISED" layoutX="210.0" layoutY="486.0" onAction="#btnCancelOnAction" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #121212; -fx-background-radius: 20;" text="Cancel" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="40.0" layoutY="272.0" onAction="#txtEmailOnAction" onKeyReleased="#txtEmailOnKeyReleased" prefHeight="40.0" prefWidth="320.0" promptText="Email" style="-fx-background-color: #f1f2f6; -fx-background-radius: 10;">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </JFXTextField>
       <Group layoutX="230.0" layoutY="55.0">
          <children>
             <Text fill="#0883e2" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Culinary">
@@ -66,5 +32,34 @@
             </Text>
          </children>
       </Group>
+      <VBox layoutX="50.0" layoutY="202.0" prefWidth="300.0" spacing="20.0">
+         <children>
+            <MFXTextField fx:id="txtUsername" floatMode="BORDER" floatingText="Username" layoutX="10.0" layoutY="10.0" onAction="#txUsernameOnAction" onKeyReleased="#txtUsernameOnKeyReleased" prefWidth="300.0" />
+            <MFXTextField fx:id="txtName" floatMode="BORDER" floatingText="Name" onAction="#txtNameOnAction" onKeyReleased="#txtNameOnKeyReleased" prefWidth="300.0" />
+            <MFXTextField fx:id="txtEmail" floatMode="BORDER" floatingText="Email" onAction="#txtEmailOnAction" onKeyReleased="#txtEmailOnKeyReleased" prefWidth="300.0" />
+            <MFXPasswordField fx:id="txtPassword" allowPaste="true" floatMode="BORDER" floatingText="Password" onAction="#txtPasswordOnAction" onKeyReleased="#txtPasswordOnKeyReleased" prefWidth="300.0" />
+            <MFXPasswordField fx:id="txtConfirmPassword" allowPaste="true" floatMode="BORDER" floatingText="Confirm Password" onAction="#txtConfirmPasswordOnAction" onKeyReleased="#txtConfirmPasswordOnKeyReleased" prefWidth="300.0" />
+         </children>
+      </VBox>
+      <HBox layoutX="53.0" layoutY="502.0" spacing="15.0">
+         <children>
+            <JFXButton fx:id="btnSignUp" buttonType="RAISED" onAction="#btnSignUpOnAction" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #0883e2; -fx-background-radius: 20;" text="Sign Up" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btnCancel" buttonType="RAISED" onAction="#btnCancelOnAction" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #121212; -fx-background-radius: 20;" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </HBox>
     </children>
 </AnchorPane>

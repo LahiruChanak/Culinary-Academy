@@ -8,9 +8,6 @@ import lk.ijse.culinaryacademy.entity.Course;
 import lk.ijse.culinaryacademy.entity.Payment;
 import lk.ijse.culinaryacademy.entity.Student;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,5 +85,10 @@ public class PaymentBOImpl implements PaymentBO {
                 s.getFee(),
                 s.getStatus()
         );
+    }
+
+    @Override
+    public double getTotalPayments() throws Exception {
+        return paymentDAO.getTotalPayments();
     }
 }

@@ -98,4 +98,16 @@ public class StudentDAOImpl implements StudentDAO {
             return null;
         }
     }
+
+    @Override
+    public int getCount() throws Exception {
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            String hql = "SELECT COUNT(s.studentId) FROM Student s";
+            Query<Long> query = session.createQuery(hql, Long.class);
+            return query.uniqueResult().intValue();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

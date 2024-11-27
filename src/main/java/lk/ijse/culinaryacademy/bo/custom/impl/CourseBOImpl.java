@@ -98,4 +98,9 @@ public class CourseBOImpl implements CourseBO {
     public List<String> getCourseIds() throws Exception {
         return courseDAO.getIds();
     }
+
+    @Override
+    public int getCourseCount() throws Exception {
+        return courseDAO.getCount();
+    }
 }

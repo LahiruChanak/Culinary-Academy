@@ -5,12 +5,14 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.KeyEvent;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.UserBO;
 
 import java.sql.SQLException;
+import java.util.Optional;
 
 public class SettingsFormController {
 
@@ -65,7 +67,7 @@ public class SettingsFormController {
 
     // ------------------------------------ EMAIL & PASSWORD CHANGE BUTTONS ------------------------------------
     @FXML
-    void btnEmailChangeOnAction(ActionEvent event) throws Exception {
+    void btnEmailChangeOnAction(ActionEvent event) {
         String currentEmail = txtCurrentEmail.getText();
         String newEmail = txtNewEmail.getText();
         String confirmEmail = txtConfirmEmail.getText();
@@ -77,15 +79,29 @@ public class SettingsFormController {
             return;
         }
 
-        try {
-            boolean isAdded = userBO.changeEmail(currentEmail, newEmail, confirmEmail);
+        // Confirmation Alert
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setTitle("Confirm Email Change");
+        confirmationAlert.setHeaderText("Are you sure you want to change your email?");
 
-            if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Email Changed Successfully.").show();
-                clearField();
+        Optional<ButtonType> result = confirmationAlert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            try {
+                boolean isAdded = userBO.changeEmail(currentEmail, newEmail, confirmEmail);
+
+                if (isAdded) {
+                    new Alert(Alert.AlertType.INFORMATION, "Email Changed Successfully.").show();
+                    clearField();
+                }
+            } catch (IllegalArgumentException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            } catch (Exception e) {
+                new Alert(Alert.AlertType.ERROR, "An error occurred while changing the email.").show();
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } else {
+            // User chose CANCEL or closed the dialog
+            new Alert(Alert.AlertType.INFORMATION, "Email change cancelled.").show();
         }
     }
 
@@ -102,15 +118,29 @@ public class SettingsFormController {
             return;
         }
 
-        try {
-            boolean isAdded = userBO.changePassword(currentPassword, newPassword, confirmPassword);
+        // Confirmation Alert
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setTitle("Confirm Password Change");
+        confirmationAlert.setHeaderText("Are you sure you want to change your password?");
 
-            if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Password Changed Successfully.").show();
-                clearField();
+        Optional<ButtonType> result = confirmationAlert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            try {
+                boolean isAdded = userBO.changePassword(currentPassword, newPassword, confirmPassword);
+
+                if (isAdded) {
+                    new Alert(Alert.AlertType.INFORMATION, "Password Changed Successfully.").show();
+                    clearField();
+                }
+            } catch (IllegalArgumentException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            } catch (Exception e) {
+                new Alert(Alert.AlertType.ERROR, "An error occurred while changing the password.").show();
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } else {
+            // User chose CANCEL or closed the dialog
+            new Alert(Alert.AlertType.INFORMATION, "Password change cancelled.").show();
         }
     }
 

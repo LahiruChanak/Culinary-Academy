@@ -11,6 +11,8 @@ import java.util.List;
 
 public class UserBOImpl implements UserBO {
 
+    public static String userName;
+
     UserDAO userDAO = (UserDAO) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.USER);
 
     @Override
@@ -85,17 +87,17 @@ public class UserBOImpl implements UserBO {
     }
 
     @Override
-    public boolean checkLoginCredential(String email, String password) throws Exception {
-        return userDAO.checkLogin(email, password);
+    public boolean checkLoginCredential(String username, String password) throws Exception {
+        return userDAO.checkLogin(username, password);
     }
 
     @Override
-    public String getUsrName(String email) throws Exception {
-        return userDAO.getUserName(email);
+    public String getUsrName(String username) throws Exception {
+        return userDAO.getUsrName(username);
     }
 
     @Override
-    public boolean checkRegisterCredential(String username, String name, String email, String password, String confirmPassword) throws Exception {
-        return userDAO.checkRegister(username, name, email, password, confirmPassword);
+    public boolean checkRegisterCredential(String username, String name, String email, String password, String confirmPassword, String role) throws Exception {
+        return userDAO.checkRegister(username, name, email, password, confirmPassword, role);
     }
 }

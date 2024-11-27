@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.UserBO;
-import lk.ijse.culinaryacademy.bo.custom.impl.CredentialBOImpl;
+import lk.ijse.culinaryacademy.bo.custom.impl.UserBOImpl;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,15 +52,12 @@ public class LoginFormController {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
 
-        navigateToDashboard(); // This line should be removed after testing
-
         if (username.isEmpty() || password.isEmpty()) {
             new Alert(Alert.AlertType.ERROR, "Please fill all the fields.").show();
             return;
         }
 
         String errorMessage = isValid();
-
         if (errorMessage != null) {
             new Alert(Alert.AlertType.ERROR, errorMessage).show();
             return;
@@ -68,11 +65,14 @@ public class LoginFormController {
 
         try {
             if (userBO.checkLoginCredential(username, password)) {
-                CredentialBOImpl.userName = userBO.getUsrName(username);
+                UserBOImpl.userName = userBO.getUsrName(username);
                 navigateToDashboard();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Invalid username or password. Please try again.").show();
             }
         } catch (SQLException | IOException e) {
-            new Alert(Alert.AlertType.ERROR, "An error occurred while checking login details.").show();
+            new Alert(Alert.AlertType.ERROR, "An error occurred while checking login details: " + e.getMessage()).show();
+            e.printStackTrace();
         }
     }
 

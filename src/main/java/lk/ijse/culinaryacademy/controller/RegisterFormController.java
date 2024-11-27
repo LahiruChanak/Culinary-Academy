@@ -65,8 +65,10 @@ public class RegisterFormController {
         String password = txtPassword.getText();
         String confirmPassword = txtConfirmPassword.getText();
 
+        String role = "Admin";
+
         try {
-            boolean isTrue = userBO.checkRegisterCredential(username, name, email, password, confirmPassword);
+            boolean isTrue = userBO.checkRegisterCredential(username, name, email, password, confirmPassword, role);
             if (isTrue) {
                 new Alert(Alert.AlertType.INFORMATION, "Registration Successfully.").show();
                 clearField();

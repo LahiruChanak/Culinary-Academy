@@ -2,8 +2,8 @@ package lk.ijse.culinaryacademy.dao.custom.Impl;
 
 import lk.ijse.culinaryacademy.config.SessionFactoryConfig;
 import lk.ijse.culinaryacademy.dao.custom.UserDAO;
-import lk.ijse.culinaryacademy.entity.Student;
 import lk.ijse.culinaryacademy.entity.User;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -54,59 +54,91 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public boolean changeEmail(String currentEmail, String newEmail, String confirmEmail) throws Exception {
         if (!newEmail.equals(confirmEmail)) {
-            return false;
+            throw new IllegalArgumentException("New email and confirmation email do not match.");
         }
+
+        if (newEmail == null || newEmail.isEmpty()) {
+            throw new IllegalArgumentException("New email cannot be empty.");
+        }
+
         try (Session session = SessionFactoryConfig.getInstance().getSession()) {
             Transaction transaction = session.beginTransaction();
-            String hql = "UPDATE User u SET u.email = :newEmail WHERE u.email = :currentEmail";
-            Query query = session.createQuery(hql);
-            query.setParameter("newEmail", newEmail);
-            query.setParameter("currentEmail", currentEmail);
-            int result = query.executeUpdate();
-            transaction.commit();
-            return result > 0;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+
+            try {
+                String hql = "UPDATE User u SET u.email = :newEmail WHERE u.email = :currentEmail";
+                Query query = session.createQuery(hql);
+                query.setParameter("newEmail", newEmail);
+                query.setParameter("currentEmail", currentEmail);
+
+                int result = query.executeUpdate();
+
+                if (result > 0) {
+                    transaction.commit();
+                    return true;
+                } else {
+                    transaction.rollback();
+                    throw new IllegalArgumentException("Current email does not exist.");
+                }
+            } catch (HibernateException e) {
+                e.printStackTrace();
+                transaction.rollback();
+                throw new Exception("Error updating email", e);
+            }
         }
     }
 
     @Override
     public boolean changePassword(String currentPassword, String newPassword, String confirmPassword) throws Exception {
         if (!newPassword.equals(confirmPassword)) {
-            return false;
+            throw new IllegalArgumentException("New password and confirmation password do not match.");
         }
+
+        if (newPassword == null || newPassword.isEmpty()) {
+            throw new IllegalArgumentException("New password cannot be empty.");
+        }
+
         try (Session session = SessionFactoryConfig.getInstance().getSession()) {
             Transaction transaction = session.beginTransaction();
-            String hql = "UPDATE User u SET u.password = :newPassword WHERE u.password = :currentPassword";
-            Query query = session.createQuery(hql);
-            query.setParameter("newPassword", newPassword);
-            query.setParameter("currentPassword", currentPassword);
-            int result = query.executeUpdate();
-            transaction.commit();
-            return result > 0;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+
+            try {
+                String hql = "UPDATE User u SET u.password = :newPassword WHERE u.password = :currentPassword";
+                Query query = session.createQuery(hql);
+                query.setParameter("newPassword", newPassword);
+                query.setParameter("currentPassword", currentPassword);
+
+                int result = query.executeUpdate();
+
+                if (result > 0) {
+                    transaction.commit();
+                    return true;
+                } else {
+                    transaction.rollback();
+                    throw new IllegalArgumentException("Current password does not exist.");
+                }
+            } catch (HibernateException e) {
+                e.printStackTrace();
+                transaction.rollback();
+                throw new Exception("Error updating password", e);
+            }
         }
     }
 
     @Override
-    public boolean checkLogin(String email, String password) throws Exception {
+    public boolean checkLogin(String username, String password) throws Exception {
         try (Session session = SessionFactoryConfig.getInstance().getSession()) {
-            String hql = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
+            String hql = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password";
             Query<User> query = session.createQuery(hql, User.class);
-            query.setParameter("email", email);
+            query.setParameter("username", username);
             query.setParameter("password", password);
             return query.uniqueResult() != null;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            throw new Exception("Error while checking login credentials", e);
         }
     }
 
     @Override
-    public boolean checkRegister(String username, String name, String email, String password, String confirmPassword) throws Exception {
+    public boolean checkRegister(String username, String name, String email, String password, String confirmPassword, String role) throws Exception {
         // Check if the password mismatches
         if (!password.equals(confirmPassword)) {
             return false;
@@ -121,6 +153,7 @@ public class UserDAOImpl implements UserDAO {
                 user.setName(name);
                 user.setEmail(email);
                 user.setPassword(password);
+                user.setRole(role);
 
                 session.save(user);
                 transaction.commit();
@@ -133,11 +166,11 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public String getUserName(String email) throws Exception {
+    public String getUsrName(String username) throws Exception {
         try (Session session = SessionFactoryConfig.getInstance().getSession()) {
-            String hql = "SELECT u.name FROM User u WHERE u.email = :email";
+            String hql = "SELECT u.name FROM User u WHERE u.username = :username";
             Query<String> query = session.createQuery(hql, String.class);
-            query.setParameter("email", email);
+            query.setParameter("username", username);
             return query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();

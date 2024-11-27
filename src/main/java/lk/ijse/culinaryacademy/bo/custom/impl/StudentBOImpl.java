@@ -94,4 +94,9 @@ public class StudentBOImpl implements StudentBO {
     public List<String> getStudentIds() throws Exception {
         return studentDAO.getIds();
     }
+
+    @Override
+    public int getStudentCount() throws Exception {
+        return studentDAO.getCount();
+    }
 }

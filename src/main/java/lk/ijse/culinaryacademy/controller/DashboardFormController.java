@@ -8,6 +8,12 @@ import javafx.scene.control.Label;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import lk.ijse.culinaryacademy.bo.BOFactory;
+import lk.ijse.culinaryacademy.bo.custom.CourseBO;
+import lk.ijse.culinaryacademy.bo.custom.PaymentBO;
+import lk.ijse.culinaryacademy.bo.custom.StudentBO;
+import lk.ijse.culinaryacademy.bo.custom.UserBO;
+import lk.ijse.culinaryacademy.bo.custom.impl.UserBOImpl;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -16,7 +22,7 @@ import java.time.format.DateTimeFormatter;
 public class DashboardFormController {
 
     @FXML
-    private Label lblCoordinatorsCount;
+    private Text lblPaymentsTotal;
 
     @FXML
     private Label lblCoursesCount;
@@ -36,10 +42,32 @@ public class DashboardFormController {
     @FXML
     private Label userName;
 
+    // Objects
+    UserBO userBO = (UserBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.USER);
+    StudentBO studentBO = (StudentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.STUDENT);
+    CourseBO courseBO = (CourseBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.COURSE);
+    PaymentBO paymentBO = (PaymentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.PAYMENT);
+
+    private int studentCount;
+    private int courseCount;
+    private double paymentsTotal;
 
     public void initialize() {
         updateTime();
         updateDate();
+
+        try {
+            studentCount = studentBO.getStudentCount();
+            courseCount = courseBO.getCourseCount();
+            paymentsTotal = paymentBO.getTotalPayments();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        setStudentsCount(studentCount);
+        setCoursesCount(courseCount);
+        setPayments(paymentsTotal);
+        setUserName();
     }
 
     private void updateTime() {
@@ -56,5 +84,26 @@ public class DashboardFormController {
         LocalDate currentDate = LocalDate.now();
         String formattedDate = currentDate.format(formatter);
         txtDate.setText(formattedDate);
+    }
+
+
+    // ---------------------------- COUNT FUNCTIONS ----------------------------
+    public void setPayments(double total) {
+        lblPaymentsTotal.setText(String.valueOf(total));
+    }
+
+    public void setCoursesCount(int count) {
+        lblCoursesCount.setText(String.valueOf(count));
+    }
+
+    public void setStudentsCount(int count) {
+        lblStudentsCount.setText(String.valueOf(count));
+    }
+
+
+    // ---------------------------- USER FUNCTIONS ----------------------------
+    public void setUserName() {
+        userName.setText(UserBOImpl.userName); // Set the username
+//        userImage.setImage(new Image("/lk/ijse/culinaryacademy/assets/user.png"));
     }
 }

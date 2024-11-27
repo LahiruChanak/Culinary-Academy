@@ -21,16 +21,16 @@ public class User {
     @Column(name = "username" , length = 100)
     private String username;
 
-    @Column(name = "name" , length = 100)
+    @Column(name = "name" , length = 100, nullable = false)
     private String name;
 
     @Column(name = "email" , length = 100, unique = true, nullable = false)
     private String email;
 
-    @Column(name = "role" , length = 100)
+    @Column(name = "role" , length = 100, nullable = false)
     private String role;
 
-    @Column(name = "password" , length = 100)
+    @Column(name = "password" , length = 100, nullable = false)
     private String password;
 
 }

@@ -98,4 +98,16 @@ public class PaymentDAOImpl implements PaymentDAO {
             return null;
         }
     }
+
+    @Override
+    public double getTotalPayments() throws Exception {
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            String hql = "SELECT SUM(p.fee) FROM Payment p";
+            Query<Double> query = session.createQuery(hql, Double.class);
+            return query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

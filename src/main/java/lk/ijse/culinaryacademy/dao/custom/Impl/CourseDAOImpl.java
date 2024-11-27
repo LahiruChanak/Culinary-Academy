@@ -102,4 +102,16 @@ public class CourseDAOImpl implements CourseDAO {
     public Course searchByName(String courseId) throws Exception {
         return null;
     }
+
+    @Override
+    public int getCount() throws Exception {
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            String hql = "SELECT COUNT(c.courseId) FROM Course c";
+            Query<Long> query = session.createQuery(hql, Long.class);
+            return Math.toIntExact(query.uniqueResult());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }
