@@ -15,6 +15,8 @@ import javafx.scene.input.KeyEvent;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.UserBO;
 import lk.ijse.culinaryacademy.dto.UserDTO;
+import lk.ijse.culinaryacademy.util.Regex;
+import lk.ijse.culinaryacademy.util.TextField;
 import lk.ijse.culinaryacademy.view.tdm.UserTm;
 
 import java.sql.SQLException;
@@ -282,37 +284,50 @@ public class UserFormController {
 
     // ---------------------------- ON KEY RELEASE ----------------------------
     @FXML
-    void cmbRoleOnKeyReleased(KeyEvent event) {
-
-    }
-
-    @FXML
     void txtConfirmPasswordOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.PASSWORD, txtConfirmPassword);
     }
 
     @FXML
     void txtEmailOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.EMAIL, txtEmail);
     }
 
     @FXML
     void txtNameOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.NAME, txtName);
     }
 
     @FXML
-    void txtUserIdOnKeyReleased(KeyEvent event) {
-
+    void txtUsernameOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(TextField.USERNAME, txtUsername);
     }
 
     @FXML
     void txtPasswordOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.PASSWORD, txtPassword);
     }
 
     // ---------------------------- VALIDATION ----------------------------
     public String isValid() {
-        return null;
+        String message = "";
+
+        if (!Regex.setTextColor(TextField.USERNAME, txtUsername))
+            message += "Username must be between 3 and 16 characters long.\n\n";
+
+        if (!Regex.setTextColor(TextField.NAME, txtName))
+            message += "Name must be at least 3 letters.\n\n";
+
+        if (!Regex.setTextColor(TextField.EMAIL, txtEmail))
+            message += "Enter valid email address.\n\n";
+
+        if (!Regex.setTextColor(TextField.PASSWORD, txtPassword))
+            message += """
+                    Please enter password following type,
+                    \t* Contains at least one alphabetic character and one digit.
+                    \t* Include special characters such as @$!%*?&.
+                    \t* Password at least 8 characters long.""";
+
+        return message.isEmpty() ? null : message;
     }
 }

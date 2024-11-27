@@ -33,11 +33,11 @@
                   <Font size="14.0" />
                </font>
                 </JFXTextField>
-            <JFXComboBox fx:id="cmbStudentId" labelFloat="true" layoutX="295.0" layoutY="35.0" onKeyReleased="#cmbStudentIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Student ID">
+            <JFXComboBox fx:id="cmbStudentId" labelFloat="true" layoutX="295.0" layoutY="35.0" prefHeight="36.0" prefWidth="200.0" promptText="Student ID">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></JFXComboBox>
-            <JFXComboBox fx:id="cmbCourseId" labelFloat="true" layoutX="555.0" layoutY="35.0" onKeyReleased="#cmbCourseIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Course ID">
+            <JFXComboBox fx:id="cmbCourseId" labelFloat="true" layoutX="555.0" layoutY="35.0" prefHeight="36.0" prefWidth="200.0" promptText="Course ID">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -54,7 +54,7 @@
                     </font>
                 </JFXTextField>
       
-                            <JFXTextField fx:id="txtPaymentDate" editable="false" labelFloat="true" layoutX="555.0" layoutY="110.0" onKeyReleased="#txtPaymentDateOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Payment Date">
+                            <JFXTextField fx:id="txtPaymentDate" editable="false" labelFloat="true" layoutX="555.0" layoutY="110.0" prefHeight="36.0" prefWidth="200.0" promptText="Payment Date">
                     <font>
                         <Font size="14.0" />
                     </font>

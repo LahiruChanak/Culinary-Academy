@@ -15,6 +15,8 @@ import lk.ijse.culinaryacademy.bo.custom.StudentBO;
 import lk.ijse.culinaryacademy.dto.StudentDTO;
 import lk.ijse.culinaryacademy.entity.Enrolment;
 import lk.ijse.culinaryacademy.entity.Payment;
+import lk.ijse.culinaryacademy.util.Regex;
+import lk.ijse.culinaryacademy.util.TextField;
 import lk.ijse.culinaryacademy.view.tdm.StudentTm;
 
 import java.sql.Date;
@@ -308,38 +310,58 @@ public class StudentsFormController {
     // -------------------------------- ON KEY RELEASED METHODS --------------------------------
     @FXML
     void txtStudentIdOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.STUDENTID, txtStudentId);
     }
 
     @FXML
     void txtNameOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.NAME, txtName);
     }
 
     @FXML
     void txtEmailOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.EMAIL, txtEmail);
     }
 
     @FXML
     void txtContactOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.CONTACT, txtContact);
     }
 
     @FXML
     void txtAddressOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.ADDRESS, txtAddress);
     }
 
     @FXML
     void txtEnrolledDateOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.DATE, txtEnrolledDate);
     }
 
 
     // -------------------------------- VALIDATION --------------------------------
     public String isValid() {
-        return null;
+        String message = "";
+
+        if (!Regex.setTextColor(TextField.STUDENTID, txtStudentId))
+            message += "Student ID must be starts with 'S' and exactly three digits.\n\n";
+
+        if (!Regex.setTextColor(TextField.NAME, txtName))
+            message += "Name must be at least 3 letters.\n\n";
+
+        if (!Regex.setTextColor(TextField.EMAIL, txtEmail))
+            message += "Enter valid email address.\n\n";
+
+        if (!Regex.setTextColor(TextField.CONTACT, txtContact))
+            message += "Contact must be starts with either +94, or 07\n\n";
+
+        if (!Regex.setTextColor(TextField.ADDRESS, txtAddress))
+            message += "Address must be at least 4 characters long.\n\n";
+
+        if (!Regex.setTextColor(TextField.DATE, txtEnrolledDate))
+            message += "Enter valid date (yyyy-MM-dd).\n\n";
+
+        return message.isEmpty() ? null : message;
     }
 
 }

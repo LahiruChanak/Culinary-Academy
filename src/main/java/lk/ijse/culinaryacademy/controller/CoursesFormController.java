@@ -15,6 +15,8 @@ import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.CourseBO;
 import lk.ijse.culinaryacademy.bo.custom.UserBO;
 import lk.ijse.culinaryacademy.dto.CourseDTO;
+import lk.ijse.culinaryacademy.util.Regex;
+import lk.ijse.culinaryacademy.util.TextField;
 import lk.ijse.culinaryacademy.view.tdm.CourseTm;
 
 import java.sql.SQLException;
@@ -301,33 +303,50 @@ public class CoursesFormController {
     // ------------------------------------ ON KEY RELEASED ------------------------------------
     @FXML
     void txtCourseIdOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.COURSEID, txtCourseId);
     }
 
     @FXML
     void txtCourseNameOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.NAME, txtName);
     }
 
     @FXML
     void txtDescriptionOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.DESCRIPTION, txtDescription);
     }
 
     @FXML
     void txtDurationOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.DURATION, txtDuration);
     }
 
     @FXML
     void txtFeeOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.FEE, txtFee);
     }
 
 
     // ------------------------------------ VALIDATION ------------------------------------
     public String isValid() {
-        return null;
+        String message = "";
+
+        if (!Regex.setTextColor(TextField.COURSEID, txtCourseId))
+            message += "Course ID must be starts with 'C' and exactly three digits.\n\n";
+
+        if (!Regex.setTextColor(TextField.NAME, txtName))
+            message += "Course Name must be at least 3 letters.\n\n";
+
+        if (!Regex.setTextColor(TextField.DESCRIPTION, txtDescription))
+            message += "Description must be at least 10 letters.\n\n";
+
+        if (!Regex.setTextColor(TextField.DURATION, txtDuration))
+            message += "Duration must be a positive number.\n\n";
+
+        if (!Regex.setTextColor(TextField.FEE, txtFee))
+            message += "Fee must be a positive number.\n\n";
+
+        return message.isEmpty() ? null : message;
     }
 
 }

@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -40,8 +41,14 @@
       </Text>
       <VBox layoutX="56.0" layoutY="270.0" prefWidth="300.0" spacing="40.0">
          <children>
-            <MFXTextField fx:id="txtUsername" floatMode="BORDER" floatingText="Username" onAction="#txUsernameOnAction" onKeyReleased="#txtUsernameOnKeyReleased" prefWidth="300.0" />
-            <MFXPasswordField fx:id="txtPassword" allowPaste="true" floatMode="BORDER" floatingText="Password" onAction="#txtPasswordOnAction" onKeyReleased="#txtPasswordOnKeyReleased" prefWidth="300.0" />
+            <MFXTextField fx:id="txtUsername" floatMode="BORDER" floatingText="Username" onAction="#txUsernameOnAction" prefWidth="300.0">
+               <textFill>
+                  <Color red="0.07058823853731155" green="0.07058823853731155" blue="0.07058823853731155" opacity="0.8700000047683716" />
+               </textFill></MFXTextField>
+            <MFXPasswordField fx:id="txtPassword" allowPaste="true" floatMode="BORDER" floatingText="Password" onAction="#txtPasswordOnAction" prefWidth="300.0">
+               <textFill>
+                  <Color red="0.07058823853731155" green="0.07058823853731155" blue="0.07058823853731155" opacity="0.8700000047683716" />
+               </textFill></MFXPasswordField>
          </children>
       </VBox>
       <HBox layoutX="63.0" layoutY="465.0" spacing="10.0">

@@ -58,17 +58,11 @@ public class LoginFormController {
             return;
         }
 
-        String errorMessage = isValid();
-        if (errorMessage != null) {
-            new Alert(Alert.AlertType.ERROR, errorMessage).show();
-            return;
-        }
-
         try {
-            User user = userBO.checkLoginCredential(username, password); // Get the User object
+            User user = userBO.checkLoginCredential(username, password);
             if (user != null) {
-                UserBOImpl.userName = user.getUsername(); // Assuming you have a method to get the username
-                String role = user.getRole(); // Assuming you have a method to get the user's role
+                UserBOImpl.userName = user.getUsername(); // get the username of the logged-in user
+                String role = user.getRole(); // get the user's role for the which dashboard to navigate
 
                 // Navigate based on the user's role
                 if ("Admin".equalsIgnoreCase(role)) {
@@ -115,37 +109,24 @@ public class LoginFormController {
 
     private void setGreeting() {
         LocalTime time = LocalTime.now();
-        String greeting = (time.getHour() < 12) ? "Good Morning !" : (time.getHour() < 16) ? "Good Afternoon !" : "Good Evening !";
-        txtGreeting.setText(greeting);
+        String greeting = (time.getHour() < 12) ? "Morning" : (time.getHour() < 16) ? "Afternoon" : "Evening";
+        txtGreeting.setText("Good " + greeting + " !");
     }
 
 
     // ---------------------------- ON ACTION ----------------------------
     @FXML
     void txUsernameOnAction(ActionEvent event) {
-
+        txtPassword.requestFocus();
     }
 
     @FXML
     void txtPasswordOnAction(ActionEvent event) {
-
-    }
-
-    // ---------------------------- ON KEY RELEASED ----------------------------
-    @FXML
-    void txtUsernameOnKeyReleased(KeyEvent event) {
-
-    }
-
-    @FXML
-    void txtPasswordOnKeyReleased(KeyEvent event) {
-
-    }
-
-
-    // ---------------------------- VALIDATION ----------------------------
-    public String isValid() {
-        return null;
+        try {
+            btnLoginOnAction(event);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

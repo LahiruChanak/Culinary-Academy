@@ -10,6 +10,8 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.input.KeyEvent;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.UserBO;
+import lk.ijse.culinaryacademy.util.Regex;
+import lk.ijse.culinaryacademy.util.TextField;
 
 import java.sql.SQLException;
 import java.util.Optional;
@@ -157,39 +159,50 @@ public class SettingsFormController {
 
     // ------------------------------------ ON KEY RELEASE ------------------------------------
     @FXML
-    void txtConfirmEmailOnKeyReleased(KeyEvent event) {
-
-    }
-
-    @FXML
-    void txtConfirmPasswordOnKeyReleased(KeyEvent event) {
-
-    }
-
-    @FXML
     void txtCurrentEmailOnKeyReleased(KeyEvent event) {
-
-    }
-
-    @FXML
-    void txtCurrentPasswordOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.EMAIL, txtCurrentEmail);
     }
 
     @FXML
     void txtNewEmailOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(TextField.EMAIL, txtNewEmail);
+    }
 
+    @FXML
+    void txtConfirmEmailOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(TextField.EMAIL, txtConfirmEmail);
+    }
+
+    @FXML
+    void txtCurrentPasswordOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(TextField.PASSWORD, txtCurrentPassword);
     }
 
     @FXML
     void txtNewPasswordOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.PASSWORD, txtNewPassword);
     }
 
+    @FXML
+    void txtConfirmPasswordOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(TextField.PASSWORD, txtConfirmPassword);
+    }
 
     // ------------------------------------ VALIDATION ------------------------------------
     public String isValid() {
-        return null;
+        String message = "";
+
+        if (!Regex.setTextColor(TextField.EMAIL, txtCurrentEmail))
+            message += "Enter valid email address.\n\n";
+
+        if (!Regex.setTextColor(TextField.PASSWORD, txtCurrentPassword))
+            message += """
+                    Please enter password following type,
+                    \t* Contains at least one alphabetic character and one digit.
+                    \t* Include special characters such as @$!%*?&.
+                    \t* Password at least 8 characters long.""";
+
+        return message.isEmpty() ? null : message;
     }
 
 }

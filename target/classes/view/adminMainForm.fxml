@@ -32,7 +32,7 @@
                   </Text>
                </children>
             </Group>
-            <VBox layoutX="-15.0" layoutY="100.0" prefHeight="436.0" prefWidth="180.0" spacing="25.0">
+            <VBox layoutX="-15.0" layoutY="100.0" spacing="25.0">
                <children>
                   <JFXButton fx:id="btnHome" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="5.0" onAction="#btnHomeOnAction" prefHeight="52.0" prefWidth="180.0" ripplerFill="#0883e2" styleClass="dashboard-button" stylesheets="@../assets/css/button.css" text="Dashboard">
                      <font>

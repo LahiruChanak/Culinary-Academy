@@ -20,6 +20,8 @@ import lk.ijse.culinaryacademy.bo.custom.CourseBO;
 import lk.ijse.culinaryacademy.bo.custom.PaymentBO;
 import lk.ijse.culinaryacademy.bo.custom.StudentBO;
 import lk.ijse.culinaryacademy.dto.PaymentDTO;
+import lk.ijse.culinaryacademy.util.Regex;
+import lk.ijse.culinaryacademy.util.TextField;
 import lk.ijse.culinaryacademy.view.tdm.PaymentTm;
 
 import java.sql.SQLException;
@@ -415,31 +417,24 @@ public class PaymentsFormController {
     // ------------------------------------ ON KEY RELEASED ------------------------------------
     @FXML
     void txtPaymentIdOnKeyReleased(KeyEvent event) {
-
-    }
-
-    @FXML
-    void cmbStudentIdOnKeyReleased(KeyEvent event) {
-
-    }
-
-    @FXML
-    void cmbCourseIdOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.PAYMENTID, txtPaymentId);
     }
 
     @FXML
     void txtFeeOnKeyReleased(KeyEvent event) {
-
-    }
-
-    @FXML
-    void txtPaymentDateOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.FEE, txtFee);
     }
 
     // ------------------------------------ VALIDATION ------------------------------------
     private String isValid() {
-        return null;
+        String message = "";
+
+        if (!Regex.setTextColor(TextField.PAYMENTID, txtPaymentId))
+            message += "Payment ID must be starts with 'P' and exactly three digits.\n\n";
+
+        if (!Regex.setTextColor(TextField.FEE, txtFee))
+            message += "Fee must be a positive number.\n\n";
+
+        return message.isEmpty() ? null : message;
     }
 }

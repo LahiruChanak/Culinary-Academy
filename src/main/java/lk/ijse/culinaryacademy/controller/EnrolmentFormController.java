@@ -19,6 +19,8 @@ import lk.ijse.culinaryacademy.bo.custom.StudentBO;
 import lk.ijse.culinaryacademy.dto.EnrolmentDTO;
 import lk.ijse.culinaryacademy.entity.Course;
 import lk.ijse.culinaryacademy.entity.Student;
+import lk.ijse.culinaryacademy.util.Regex;
+import lk.ijse.culinaryacademy.util.TextField;
 import lk.ijse.culinaryacademy.view.tdm.EnrolmentTm;
 
 import java.sql.Date;
@@ -368,18 +370,26 @@ public class EnrolmentFormController {
     // ---------------------------------------- ON KEY RELEASED ----------------------------------------
     @FXML
     void txtEnrolledDateOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.DATE, txtEnrolledDate);
     }
 
     @FXML
     void txtEnrolmentIdOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.ENROLMENTID, txtEnrolmentId);
     }
 
 
     // ---------------------------------------- VALIDATION ----------------------------------------
     public String isValid() {
-        return null;
+        String message = "";
+
+        if (!Regex.setTextColor(TextField.ENROLMENTID, txtEnrolmentId))
+            message += "Enrolment ID must be starts with 'E' and exactly three digits.\n\n";
+
+        if (!Regex.setTextColor(TextField.DATE, txtEnrolledDate))
+            message += "Enrolled Date must be in yyyy-MM-dd format.\n\n";
+
+        return message.isEmpty() ? null : message;
     }
 
 }

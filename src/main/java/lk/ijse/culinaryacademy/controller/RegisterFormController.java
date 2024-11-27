@@ -13,6 +13,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.UserBO;
+import lk.ijse.culinaryacademy.util.Regex;
+import lk.ijse.culinaryacademy.util.TextField;
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,19 +47,6 @@ public class RegisterFormController {
 
     // --------------------------------- MAIN FUNCTIONS ---------------------------------
     @FXML
-    void btnCancelOnAction(ActionEvent event) throws IOException {
-        URL resource = getClass().getResource("/view/loginForm.fxml");
-        assert resource != null;
-        Parent load = FXMLLoader.load(resource);
-        adminRegisterPane.getChildren().clear();
-        adminRegisterPane.getChildren().add(load);
-        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), adminRegisterPane);
-        transition.setFromX(load.getScene().getWidth());
-        transition.setToX(0);
-        transition.play();
-    }
-
-    @FXML
     void btnSignUpOnAction(ActionEvent event) throws Exception {
         String username = txtUsername.getText();
         String name = txtName.getText();
@@ -66,6 +55,13 @@ public class RegisterFormController {
         String confirmPassword = txtConfirmPassword.getText();
 
         String role = "Admin";
+
+        String errorMessage = isValid();
+
+        if (errorMessage != null) {
+            new Alert(Alert.AlertType.ERROR, errorMessage).show();
+            return;
+        }
 
         try {
             boolean isTrue = userBO.checkRegisterCredential(username, name, email, password, confirmPassword, role);
@@ -76,6 +72,19 @@ public class RegisterFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Incorrect Register Details.").show();
         }
+    }
+
+    @FXML
+    void btnCancelOnAction(ActionEvent event) throws IOException {
+        URL resource = getClass().getResource("/view/loginForm.fxml");
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        adminRegisterPane.getChildren().clear();
+        adminRegisterPane.getChildren().add(load);
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), adminRegisterPane);
+        transition.setFromX(load.getScene().getWidth());
+        transition.setToX(0);
+        transition.play();
     }
 
 
@@ -109,32 +118,50 @@ public class RegisterFormController {
     // --------------------------------- ON KEY RELEASED ---------------------------------
     @FXML
     void txtUsernameOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.USERNAME, txtUsername);
     }
 
     @FXML
     void txtNameOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.NAME, txtName);
     }
 
     @FXML
     void txtEmailOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.EMAIL, txtEmail);
     }
 
     @FXML
     void txtPasswordOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.PASSWORD, txtPassword);
     }
 
     @FXML
     void txtConfirmPasswordOnKeyReleased(KeyEvent event) {
-
+        Regex.setTextColor(TextField.PASSWORD, txtConfirmPassword);
     }
 
 
     // --------------------------------- VALIDATION ---------------------------------
     public String isValid() {
-        return null;
+        String message = "";
+
+        if (!Regex.setTextColor(TextField.USERNAME,txtUsername))
+            message += "Username must be between 3 and 16 characters long.\n\n";
+
+        if (!Regex.setTextColor(TextField.NAME,txtName))
+            message += "Name must be at least 3 letters.\n\n";
+
+        if (!Regex.setTextColor(TextField.EMAIL,txtEmail))
+            message += "Enter valid email address.\n\n";
+
+        if (!Regex.setTextColor(TextField.PASSWORD,txtPassword))
+            message += """
+                    Please enter password following type,
+                    \t* Contains at least one alphabetic character and one digit.
+                    \t* Include special characters such as @$!%*?&.
+                    \t* Password at least 8 characters long.""";
+
+        return message.isEmpty() ? null : message;
     }
 }
