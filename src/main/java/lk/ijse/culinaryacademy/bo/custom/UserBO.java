@@ -19,7 +19,7 @@ public interface UserBO extends SuperBO {
 
     boolean changePassword(String currentPassword, String newPassword) throws Exception;
 
-    UserDTO searchByName(String name) throws Exception;
+    UserDTO searchByUsername(String username) throws Exception;
 
     User checkLoginCredential(String username) throws Exception;
 

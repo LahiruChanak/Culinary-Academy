@@ -48,6 +48,7 @@ public class AdminMainFormController {
     @FXML
     private Pane subPane;
 
+
     @FXML
     void initialize() throws IOException {
         setButtonActive(btnHome);
@@ -58,12 +59,8 @@ public class AdminMainFormController {
         subPane.getChildren().clear();
         subPane.getChildren().add(registerPane);
 
-        setRole();
     }
 
-    private void setRole() {
-        String role = UserBOImpl.role;
-    }
 
     // ---------------------------- Button Actions ----------------------------
     @FXML

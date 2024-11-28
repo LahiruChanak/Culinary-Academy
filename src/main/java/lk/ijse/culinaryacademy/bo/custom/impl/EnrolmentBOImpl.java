@@ -49,6 +49,11 @@ public class EnrolmentBOImpl implements EnrolmentBO {
     @Override
     public EnrolmentDTO searchByEnrolmentId(String enrolmentId) throws Exception {
         Enrolment e = enrolmentDAO.searchById(enrolmentId);
+
+        if (e == null) {
+            return null;
+        }
+
         return new EnrolmentDTO(
                 e.getEnrolmentId(),
                 e.getStudentId(),

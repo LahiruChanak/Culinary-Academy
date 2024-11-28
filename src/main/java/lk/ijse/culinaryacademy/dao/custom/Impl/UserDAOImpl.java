@@ -143,6 +143,19 @@ public class UserDAOImpl implements UserDAO {
             Transaction transaction = session.beginTransaction();
 
             try {
+                // Check if an admin already exists in the database
+                if ("Admin".equalsIgnoreCase(role)) {
+                    String hql = "SELECT COUNT(*) FROM User WHERE role = :adminRole";
+                    Long adminCount = (Long) session.createQuery(hql)
+                            .setParameter("adminRole", "admin")
+                            .uniqueResult();    // Use Long data type to avoid NullPointerException in Hibernate
+
+                    if (adminCount != null && adminCount > 0) {
+                        throw new Exception("An admin user already exists. Only one admin can be registered.");
+                    }
+                }
+
+                // Proceed with user registration
                 User user = new User();
                 user.setUsername(username);
                 user.setName(name);
@@ -160,12 +173,13 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
+
     @Override
-    public User searchByName(String name) throws Exception {
+    public User searchByUsername(String username) throws Exception {
         try (Session session = SessionFactoryConfig.getInstance().getSession()) {
-            String hql = "SELECT u FROM User u WHERE u.name = :name";
+            String hql = "SELECT u FROM User u WHERE u.username = :username";
             Query<User> query = session.createQuery(hql, User.class);
-            query.setParameter("name", name);
+            query.setParameter("username", username);
             return query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();

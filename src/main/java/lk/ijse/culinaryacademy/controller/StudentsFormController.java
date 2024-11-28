@@ -1,8 +1,5 @@
 package lk.ijse.culinaryacademy.controller;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,8 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
+import javafx.scene.layout.Pane;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.StudentBO;
 import lk.ijse.culinaryacademy.dto.StudentDTO;
@@ -24,7 +20,6 @@ import lk.ijse.culinaryacademy.util.CustomException;
 import lk.ijse.culinaryacademy.util.Regex;
 import lk.ijse.culinaryacademy.util.TextField;
 import lk.ijse.culinaryacademy.view.tdm.StudentTm;
-import org.hibernate.HibernateException;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -81,14 +76,16 @@ public class StudentsFormController {
     @FXML
     private JFXTextField txtSearch;
 
+    @FXML
+    private Pane studentInputPane;
+
     private List<StudentDTO> studentList = new ArrayList<>();
 
     // Objects
     StudentBO studentBO = (StudentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.STUDENT);
 
-    CustomAlert customAlert = new CustomAlert();
-
     Enrolment enrolment = new Enrolment();
+
     Payment payment = new Payment();
 
 
@@ -276,16 +273,15 @@ public class StudentsFormController {
 
                 txtSearch.clear();
             } else {
-                // Display a more informative alert
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Search Result");
                 alert.setHeaderText("Student Not Found");
-                alert.setContentText("No student with ID " + studentId + " was found.");
+                alert.setContentText("No Student with ID " + "\" " + studentId + " \" " + " was found.");
                 alert.showAndWait();
             }
         } catch (Exception e) {
             // Handle the not found exception
-            CustomException.handleException(new CustomException("Student Not Found in the Database" ));
+            CustomException.handleException(new CustomException("Student Not Found in the Database"));
         }
     }
 
@@ -344,6 +340,13 @@ public class StudentsFormController {
         colEnrolledDate.setCellValueFactory(new PropertyValueFactory<>("enrolledDate"));
     }
 
+    public void disableFields() {
+        if (studentInputPane != null) {
+            studentInputPane.setDisable(true);
+        } else {
+            System.err.println("studentInputPane is null! Check your FXML file.");
+        }
+    }
 
     // -------------------------------- ON KEY RELEASED METHODS --------------------------------
     @FXML

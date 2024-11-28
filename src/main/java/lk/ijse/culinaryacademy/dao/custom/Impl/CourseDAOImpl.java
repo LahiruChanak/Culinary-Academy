@@ -99,11 +99,6 @@ public class CourseDAOImpl implements CourseDAO {
     }
 
     @Override
-    public Course searchByName(String courseId) throws Exception {
-        return null;
-    }
-
-    @Override
     public int getCount() throws Exception {
         try (Session session = SessionFactoryConfig.getInstance().getSession()) {
             String hql = "SELECT COUNT(c.courseId) FROM Course c";

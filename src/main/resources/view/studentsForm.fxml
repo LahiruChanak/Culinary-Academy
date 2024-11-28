@@ -23,7 +23,7 @@
          </font>
       </Text>
       <!-- Pane for student details -->
-      <Pane layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="785.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
+      <Pane fx:id="studentInputPane" layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="785.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
          <children>
             <JFXTextField fx:id="txtStudentId" labelFloat="true" layoutX="40.0" layoutY="35.0" onKeyReleased="#txtStudentIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Student ID" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
                <font>

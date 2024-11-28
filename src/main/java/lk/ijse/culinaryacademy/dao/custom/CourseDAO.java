@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface CourseDAO extends CrudDAO<Course> {
 
-    Course searchByName(String courseId) throws Exception;
-
     int getCount() throws Exception;
+
 }

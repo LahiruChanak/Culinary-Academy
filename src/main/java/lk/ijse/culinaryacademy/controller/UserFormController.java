@@ -15,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.UserBO;
 import lk.ijse.culinaryacademy.dto.UserDTO;
+import lk.ijse.culinaryacademy.util.CustomException;
 import lk.ijse.culinaryacademy.util.Regex;
 import lk.ijse.culinaryacademy.util.TextField;
 import lk.ijse.culinaryacademy.view.tdm.UserTm;
@@ -129,14 +130,14 @@ public class UserFormController {
         String password = txtPassword.getText();
         String confirmPassword = txtConfirmPassword.getText();
 
-        UserDTO dto = new UserDTO(userId, name, email, role, password);
-
         if (!password.equals(confirmPassword)) {
             new Alert(Alert.AlertType.ERROR, "Password Mismatched.").show();
             return;
         }
 
-        String errorMessage = isValid();
+        UserDTO dto = new UserDTO(userId, name, email, role);  // Pass the hashed password
+
+        String errorMessage = isValidUpdate();
 
         if (errorMessage != null) {
             new Alert(Alert.AlertType.ERROR, errorMessage).show();
@@ -147,10 +148,10 @@ public class UserFormController {
             boolean isAdded = userBO.updateUser(dto);
 
             if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "User Updated Successfully.").show();
+                new Alert(Alert.AlertType.INFORMATION, "User Updated Successfully.").show();
                 clearField();
                 refreshTable();
-//                loadNextUserId();
+//            loadNextUserId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -211,10 +212,10 @@ public class UserFormController {
 
     @FXML
     private void txtSearchOnAction(ActionEvent event) throws Exception {
-        String name = txtSearch.getText();
+        String username = txtSearch.getText();
 
         try {
-            UserDTO dto = userBO.searchByName(name);
+            UserDTO dto = userBO.searchByUsername(username);
 
             if (dto != null) {
                 txtUsername.setText(dto.getUsername());
@@ -227,33 +228,17 @@ public class UserFormController {
 
                 txtSearch.clear();
             } else {
-                new Alert(Alert.AlertType.INFORMATION, "User not found.").show();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Search Result");
+                alert.setHeaderText("User Not Found");
+                alert.setContentText("No user with ID " + username + " was found.");
+                alert.showAndWait();
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            CustomException.handleException(new CustomException("User Not Found in the Database"));
         }
     }
 
-//    private void loadNextUserId() throws Exception {
-//        try {
-//            String currentId = userBO.currentUserId();
-//            String nextId = nextId(currentId);
-//
-//            txtUsername.setText(nextId);
-//
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-//
-//    private String nextId(String currentId) {
-//        if (currentId != null) {
-//            String[] split = currentId.split("U");
-//            int id = Integer.parseInt(split[1]);
-//            return "U" + String.format("%03d", ++id);
-//        }
-//        return "U001";
-//    }
 
     private void loadUserTable() {
         ObservableList<UserTm> tmList = FXCollections.observableArrayList();
@@ -331,6 +316,21 @@ public class UserFormController {
                     \t* Contains at least one alphabetic character and one digit.
                     \t* Include special characters such as @$!%*?&.
                     \t* Password at least 8 characters long.""";
+
+        return message.isEmpty() ? null : message;
+    }
+
+    public String isValidUpdate() {
+        String message = "";
+
+        if (!Regex.setTextColor(TextField.USERNAME, txtUsername))
+            message += "Username must be between 3 and 16 characters long.\n\n";
+
+        if (!Regex.setTextColor(TextField.NAME, txtName))
+            message += "Name must be at least 3 letters.\n\n";
+
+        if (!Regex.setTextColor(TextField.EMAIL, txtEmail))
+            message += "Enter valid email address.\n\n";
 
         return message.isEmpty() ? null : message;
     }

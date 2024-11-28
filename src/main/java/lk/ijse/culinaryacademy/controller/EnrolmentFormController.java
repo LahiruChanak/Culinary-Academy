@@ -19,6 +19,7 @@ import lk.ijse.culinaryacademy.bo.custom.StudentBO;
 import lk.ijse.culinaryacademy.dto.EnrolmentDTO;
 import lk.ijse.culinaryacademy.entity.Course;
 import lk.ijse.culinaryacademy.entity.Student;
+import lk.ijse.culinaryacademy.util.CustomException;
 import lk.ijse.culinaryacademy.util.Regex;
 import lk.ijse.culinaryacademy.util.TextField;
 import lk.ijse.culinaryacademy.view.tdm.EnrolmentTm;
@@ -239,16 +240,22 @@ public class EnrolmentFormController {
 
             if (dto != null) {
                 txtEnrolmentId.setText(dto.getEnrolmentId());
-                cmbStudentId.getSelectionModel().select(Integer.parseInt(dto.getStudentId()));
-                cmbCourseId.getSelectionModel().select(Integer.parseInt(dto.getCourseId()));
+                cmbStudentId.setValue(dto.getStudentId());
+                txtStudentName.setText(dto.getStudentName());
+                cmbCourseId.setValue(dto.getCourseId());
+                txtCourseName.setText(dto.getCourseName());
                 txtEnrolledDate.setText(dto.getEnrolledDate().toString());
 
                 txtSearch.clear();
             } else {
-                new Alert(Alert.AlertType.INFORMATION, "Enrolment not found.").show();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Search Result");
+                alert.setHeaderText("Enrolment Not Found");
+                alert.setContentText("No Enrolment with ID " + "\" " + enrolmentId + " \" " + " was found.");
+                alert.showAndWait();
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            CustomException.handleException(new CustomException("Enrolment Not Found in the Database"));
         }
     }
 

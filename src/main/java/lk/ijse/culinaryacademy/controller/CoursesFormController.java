@@ -15,6 +15,7 @@ import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.CourseBO;
 import lk.ijse.culinaryacademy.bo.custom.UserBO;
 import lk.ijse.culinaryacademy.dto.CourseDTO;
+import lk.ijse.culinaryacademy.util.CustomException;
 import lk.ijse.culinaryacademy.util.Regex;
 import lk.ijse.culinaryacademy.util.TextField;
 import lk.ijse.culinaryacademy.view.tdm.CourseTm;
@@ -237,12 +238,17 @@ public class CoursesFormController {
 
                 txtSearch.clear();
             } else {
-                new Alert(Alert.AlertType.INFORMATION, "Course not found.").show();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Search Result");
+                alert.setHeaderText("Course Not Found");
+                alert.setContentText("No Course with ID " + "\" " + courseId + " \" " + " was found.");
+                alert.showAndWait();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (Exception e) {
+            CustomException.handleException(new CustomException("Course Not Found in the Database"));
         }
     }
+
 
     private void loadNextCourseId() throws Exception {
         try {

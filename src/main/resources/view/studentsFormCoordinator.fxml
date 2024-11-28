@@ -23,7 +23,7 @@
          </font>
       </Text>
       <!-- Pane for student details -->
-      <Pane fx:id="studentInputPane" layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="785.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
+      <Pane fx:id="studentInputPane" disable="true" layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="785.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
          <children>
             <JFXTextField fx:id="txtStudentId" labelFloat="true" layoutX="40.0" layoutY="35.0" onKeyReleased="#txtStudentIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Student ID" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
                <font>
@@ -81,7 +81,7 @@
          </columns>
       </TableView>
 
-                                             <VBox layoutX="860.0" layoutY="90.0" prefHeight="126.0" prefWidth="100.0" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 5;">
+                                             <VBox disable="true" layoutX="860.0" layoutY="90.0" prefHeight="126.0" prefWidth="100.0" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 5;">
          <children>
             <JFXButton alignment="BASELINE_LEFT" graphicTextGap="5.0" onAction="#btnSaveOnAction" prefWidth="100.0" ripplerFill="#0882e1" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Save">
                <graphic>

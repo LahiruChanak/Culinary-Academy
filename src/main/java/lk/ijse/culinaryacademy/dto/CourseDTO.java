@@ -16,6 +16,5 @@ public class CourseDTO {
     private int duration;
     private double fee;
     private String courseLevel;
-
 }
 

@@ -70,7 +70,7 @@ public class StudentDAOImpl implements StudentDAO {
     public List<Student> getAll() throws Exception {
         ArrayList<Student> students = new ArrayList<>();
         try(Session session = SessionFactoryConfig.getInstance().getSession()){
-            students = (ArrayList<Student>) session.createQuery("FROM Student").list();
+            students = (ArrayList<Student>) session.createQuery("FROM Student s ORDER BY s.studentId").list();
         }catch (Exception e){
             e.printStackTrace();
         }

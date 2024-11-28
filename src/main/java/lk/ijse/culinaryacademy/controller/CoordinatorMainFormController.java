@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class CoordinatorMainFormController {
 
@@ -56,31 +57,79 @@ public class CoordinatorMainFormController {
     }
 
     @FXML
-    void btnHomeOnAction(ActionEvent event) {
+    void btnHomeOnAction(ActionEvent event) throws IOException {
+        setButtonActive(btnHome);
 
+        URL resource = getClass().getResource("/view/dashboardForm.fxml");
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        subPane.getChildren().clear();
+        subPane.getChildren().add(load);
+
+        pageTransition(load);
     }
 
     @FXML
-    void btnStudentOnAction(ActionEvent event) {
+    void btnStudentOnAction(ActionEvent event) throws IOException {
+        setButtonActive(btnStudent);
 
+        URL resource = getClass().getResource("/view/studentsFormCoordinator.fxml");
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        subPane.getChildren().clear();
+        subPane.getChildren().add(load);
+
+        pageTransition(load);
     }
 
-    public void btnEnrolmentOnAction(ActionEvent actionEvent) {
+    public void btnEnrolmentOnAction(ActionEvent actionEvent) throws IOException {
+        setButtonActive(btnEnrolment);
 
+        URL resource = getClass().getResource("/view/enrolmentFormCoordinator.fxml");
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        subPane.getChildren().clear();
+        subPane.getChildren().add(load);
+
+        pageTransition(load);
     }
 
-    public void btnCourseOnAction(ActionEvent actionEvent) {
+    public void btnCourseOnAction(ActionEvent actionEvent) throws IOException {
+        setButtonActive(btnCourse);
 
+        URL resource = getClass().getResource("/view/coursesFormCoordinator.fxml");
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        subPane.getChildren().clear();
+        subPane.getChildren().add(load);
+
+        pageTransition(load);
     }
 
     @FXML
-    void btnPaymentOnAction(ActionEvent event) {
+    void btnPaymentOnAction(ActionEvent event) throws IOException {
+        setButtonActive(btnCourse);
 
+        URL resource = getClass().getResource("/view/paymentsFormCoordinator.fxml");
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        subPane.getChildren().clear();
+        subPane.getChildren().add(load);
+
+        pageTransition(load);
     }
 
     @FXML
-    void btnSettingsOnAction(ActionEvent event) {
+    void btnSettingsOnAction(ActionEvent event) throws IOException {
+        setButtonActive(btnSettings);
 
+        URL resource = getClass().getResource("/view/settingsForm.fxml");
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        subPane.getChildren().clear();
+        subPane.getChildren().add(load);
+
+        pageTransition(load);
     }
 
     @FXML
@@ -91,6 +140,7 @@ public class CoordinatorMainFormController {
         stage.setTitle("Login Form");
         stage.centerOnScreen();
     }
+
 
     // ---------------------------- Pane Transition ----------------------------
     private void pageTransition(Parent load) {

@@ -13,10 +13,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.UserBO;
+import lk.ijse.culinaryacademy.util.CustomException;
 import lk.ijse.culinaryacademy.util.Regex;
 import lk.ijse.culinaryacademy.util.TextField;
 import org.mindrot.jbcrypt.BCrypt;
 
+import javax.security.auth.login.CredentialException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -30,7 +32,8 @@ public class RegisterFormController {
     private MFXTextField txtUsername;
 
     @FXML
-    private MFXTextField txtEmail; ;
+    private MFXTextField txtEmail;
+    ;
 
     @FXML
     private MFXPasswordField txtConfirmPassword;
@@ -48,17 +51,17 @@ public class RegisterFormController {
 
     // --------------------------------- MAIN FUNCTIONS ---------------------------------
     @FXML
-    void btnSignUpOnAction(ActionEvent event) throws Exception {
+    void btnSignUpOnAction(ActionEvent event) {
+        // Get user inputs
         String username = txtUsername.getText();
         String name = txtName.getText();
         String email = txtEmail.getText();
         String password = txtPassword.getText();
         String confirmPassword = txtConfirmPassword.getText();
-
         String role = "Admin";
 
+        // Validate inputs
         String errorMessage = isValid();
-
         if (errorMessage != null) {
             new Alert(Alert.AlertType.ERROR, errorMessage).show();
             return;
@@ -66,7 +69,7 @@ public class RegisterFormController {
 
         // Check if passwords match
         if (!password.equals(confirmPassword)) {
-            new Alert(Alert.AlertType.ERROR, "Passwords do not match.").show();
+            new Alert(Alert.AlertType.ERROR, "Password Mismatch.").show();
             return;
         }
 
@@ -74,13 +77,17 @@ public class RegisterFormController {
             // Encrypt the password
             String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
-            boolean isTrue = userBO.checkRegisterCredential(username, name, email, hashedPassword, role);
-            if (isTrue) {
-                new Alert(Alert.AlertType.INFORMATION, "Registration Successful.").show();
-                clearField();
+            // Call the business logic method
+            boolean isRegistered = userBO.checkRegisterCredential(username, name, email, hashedPassword, role);
+
+            if (isRegistered) {
+                new Alert(Alert.AlertType.INFORMATION, "Registration successful.").show();
+                clearField(); // Clear fields only after successful registration
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Registration failed.").show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, "Error occurred while registering: " + e.getMessage()).show();
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "" + e.getMessage()).show();
         }
     }
 
@@ -108,22 +115,31 @@ public class RegisterFormController {
         txtConfirmPassword.clear();
     }
 
-
     // --------------------------------- ON ACTION ---------------------------------
     @FXML
-    void txUsernameOnAction(ActionEvent event) { txtName.requestFocus(); }
+    void txUsernameOnAction(ActionEvent event) {
+        txtName.requestFocus();
+    }
 
     @FXML
-    void txtNameOnAction(ActionEvent event) { txtEmail.requestFocus(); }
+    void txtNameOnAction(ActionEvent event) {
+        txtEmail.requestFocus();
+    }
 
     @FXML
-    void txtEmailOnAction(ActionEvent event) { txtPassword.requestFocus(); }
+    void txtEmailOnAction(ActionEvent event) {
+        txtPassword.requestFocus();
+    }
 
     @FXML
-    void txtPasswordOnAction(ActionEvent event) { txtConfirmPassword.requestFocus(); }
+    void txtPasswordOnAction(ActionEvent event) {
+        txtConfirmPassword.requestFocus();
+    }
 
     @FXML
-    void txtConfirmPasswordOnAction(ActionEvent event) throws Exception { btnSignUpOnAction(event); }
+    void txtConfirmPasswordOnAction(ActionEvent event) throws Exception {
+        btnSignUpOnAction(event);
+    }
 
 
     // --------------------------------- ON KEY RELEASED ---------------------------------
@@ -157,16 +173,16 @@ public class RegisterFormController {
     public String isValid() {
         String message = "";
 
-        if (!Regex.setTextColor(TextField.USERNAME,txtUsername))
+        if (!Regex.setTextColor(TextField.USERNAME, txtUsername))
             message += "Username must be between 3 and 16 characters long.\n\n";
 
-        if (!Regex.setTextColor(TextField.NAME,txtName))
+        if (!Regex.setTextColor(TextField.NAME, txtName))
             message += "Name must be at least 3 letters.\n\n";
 
-        if (!Regex.setTextColor(TextField.EMAIL,txtEmail))
+        if (!Regex.setTextColor(TextField.EMAIL, txtEmail))
             message += "Enter valid email address.\n\n";
 
-        if (!Regex.setTextColor(TextField.PASSWORD,txtPassword))
+        if (!Regex.setTextColor(TextField.PASSWORD, txtPassword))
             message += """
                     Please enter password following type,
                     \t* Contains at least one alphabetic character and one digit.

@@ -31,7 +31,7 @@ public class Regex {
 
             case NAME -> "^[A-z|\\s]{3,}$";
 
-            case EMAIL -> "^([A-z0-9]|[-/,.@+]|\\s){4,}$";
+            case EMAIL -> "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
 
             case PASSWORD -> "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d@$!%*?&]{8,}$";
 
@@ -40,7 +40,7 @@ public class Regex {
 
             case DESCRIPTION -> "^([\\w\\s.,!?()-]+)$";
 
-            case FEE -> "^([0-9]{1,3})$";
+            case FEE -> "^(\\d+(\\.\\d{1,2})?)$";
 
         };
 

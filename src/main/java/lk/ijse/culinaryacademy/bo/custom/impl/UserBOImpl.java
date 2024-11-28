@@ -28,15 +28,13 @@ public class UserBOImpl implements UserBO {
         );
     }
 
-    @Override
     public boolean updateUser(UserDTO dto) throws Exception {
         return userDAO.update(new User(
                 dto.getUsername(),
                 dto.getName(),
                 dto.getEmail(),
-                dto.getRole(),
-                dto.getPassword())
-        );
+                dto.getRole()
+        ));
     }
 
     @Override
@@ -85,8 +83,13 @@ public class UserBOImpl implements UserBO {
     }
 
     @Override
-    public UserDTO searchByName(String name) throws Exception {
-        User u = userDAO.searchByName(name);
+    public UserDTO searchByUsername(String username) throws Exception {
+        User u = userDAO.searchByUsername(username);
+
+        if (u == null) {
+            return null;
+        }
+
         return new UserDTO(
                 u.getUsername(),
                 u.getName(),

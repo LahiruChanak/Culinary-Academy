@@ -15,4 +15,11 @@ public class UserDTO {
     private String email;
     private String role;
     private String password;
+
+    public UserDTO(String userId, String name, String email, String role) {
+        this.username = userId;
+        this.name = name;
+        this.email = email;
+        this.role = role;
+    }
 }

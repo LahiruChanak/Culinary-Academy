@@ -20,6 +20,7 @@ import lk.ijse.culinaryacademy.bo.custom.CourseBO;
 import lk.ijse.culinaryacademy.bo.custom.PaymentBO;
 import lk.ijse.culinaryacademy.bo.custom.StudentBO;
 import lk.ijse.culinaryacademy.dto.PaymentDTO;
+import lk.ijse.culinaryacademy.util.CustomException;
 import lk.ijse.culinaryacademy.util.Regex;
 import lk.ijse.culinaryacademy.util.TextField;
 import lk.ijse.culinaryacademy.view.tdm.PaymentTm;
@@ -262,10 +263,14 @@ public class PaymentsFormController {
 
                 txtSearch.clear();
             } else {
-                new Alert(Alert.AlertType.INFORMATION, "Payment not found.").show();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Search Result");
+                alert.setHeaderText("Payment Not Found");
+                alert.setContentText("No Payment with ID " + "\" " + paymentId + " \" " + " was found.");
+                alert.showAndWait();
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            CustomException.handleException(new CustomException("Payment Not Found in the Database"));
         }
     }
 
@@ -370,18 +375,34 @@ public class PaymentsFormController {
         if (cmbStatus.getValue() != null && cmbCourseId.getValue() != null) {
             setPaymentFee();
         } else {
-//            new Alert(Alert.AlertType.ERROR, "Please select both Course and Payment status.").show();
+            new Alert(Alert.AlertType.ERROR, "Please select both Course and Payment status.").show();
         }
     }
+
+    private static final String INVALID_UPFRONT_MESSAGE = "Invalid upfront payment amount. Please enter a valid number.";
+    private static final String UPFRONT_TOO_LOW_MESSAGE = "Upfront payment must be %.2f or more.";
+    private static final String UPFRONT_TOO_HIGH_MESSAGE = "Upfront payment exceeds total fee. Please check.";
+    private static final String EMPTY_UPFRONT_MESSAGE = "Please enter an upfront payment amount.";
+    private static final String ERROR_COURSE_FEE_MESSAGE = "Error retrieving course fee: ";
 
     private void setPaymentFee() {
         String paymentStatus = cmbStatus.getValue();
         String courseId = cmbCourseId.getValue();
 
+        // Validate if courseId or paymentStatus is null or empty
+        if (paymentStatus == null || paymentStatus.trim().isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Please select a payment status.").show();
+            return;
+        }
+        if (courseId == null || courseId.trim().isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Please select a course.").show();
+            return;
+        }
+
         try {
             double fee = courseBO.searchByCourseId(courseId).getFee();
 
-            // If it's Full Payment, set fee and disable editing
+            // If Full Payment, set fee and disable editing
             if (paymentStatus.equals("Full Payment")) {
                 txtFee.setText(String.valueOf(fee));
             } else {
@@ -389,7 +410,7 @@ public class PaymentsFormController {
 
                 // Check if upfront fee is entered
                 if (upfrontFeeText.isEmpty()) {
-                    new Alert(Alert.AlertType.ERROR, "Please enter an upfront payment amount.").show();
+                    new Alert(Alert.AlertType.ERROR, EMPTY_UPFRONT_MESSAGE).show();
                     return;
                 }
 
@@ -397,21 +418,25 @@ public class PaymentsFormController {
                     double upfrontFee = Double.parseDouble(upfrontFeeText);
 
                     // Validate the upfront payment (must be at least 10% of total fee)
-                    if (upfrontFee < 0 || upfrontFee < fee / 10) {
-                        new Alert(Alert.AlertType.ERROR, "Upfront payment must be " + fee / 10 + " or more.").show();
+                    if (upfrontFee < fee / 10) {
+                        new Alert(Alert.AlertType.ERROR, String.format(UPFRONT_TOO_LOW_MESSAGE, fee / 10)).show();
+                    } else if (upfrontFee < 0) {
+                        new Alert(Alert.AlertType.ERROR, INVALID_UPFRONT_MESSAGE).show();
                     } else if (upfrontFee <= fee) {
+                        // Only set fee if upfront is valid
                         txtFee.setText(String.valueOf(fee - upfrontFee));
                     } else {
-                        new Alert(Alert.AlertType.ERROR, "Upfront payment exceeds total fee. Please check.").show();
+                        new Alert(Alert.AlertType.ERROR, UPFRONT_TOO_HIGH_MESSAGE).show();
                     }
                 } catch (NumberFormatException e) {
-                    new Alert(Alert.AlertType.ERROR, "Invalid upfront payment amount. Please enter a valid number.").show();
+                    new Alert(Alert.AlertType.ERROR, INVALID_UPFRONT_MESSAGE).show();
                 }
             }
         } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, "Error retrieving course fee: " + e.getMessage()).show();
+            new Alert(Alert.AlertType.ERROR, ERROR_COURSE_FEE_MESSAGE + e.getMessage()).show();
         }
     }
+
 
 
     // ------------------------------------ ON KEY RELEASED ------------------------------------

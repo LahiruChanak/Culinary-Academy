@@ -78,6 +78,7 @@ public class StudentBOImpl implements StudentBO {
     @Override
     public StudentDTO searchByStudentId(String studentId) throws Exception {
         Student s = studentDAO.searchById(studentId);
+
         return new StudentDTO(
                 s.getStudentId(),
                 s.getName(),
