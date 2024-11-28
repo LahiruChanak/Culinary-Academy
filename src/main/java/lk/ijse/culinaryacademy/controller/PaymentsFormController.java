@@ -20,7 +20,6 @@ import lk.ijse.culinaryacademy.bo.custom.CourseBO;
 import lk.ijse.culinaryacademy.bo.custom.PaymentBO;
 import lk.ijse.culinaryacademy.bo.custom.StudentBO;
 import lk.ijse.culinaryacademy.dto.PaymentDTO;
-import lk.ijse.culinaryacademy.util.CustomException;
 import lk.ijse.culinaryacademy.util.Regex;
 import lk.ijse.culinaryacademy.util.TextField;
 import lk.ijse.culinaryacademy.view.tdm.PaymentTm;
@@ -100,18 +99,15 @@ public class PaymentsFormController {
     // ------------------------------------ CRUD OPERATIONS ------------------------------------
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        // Get input data from the form
         String paymentId = txtPaymentId.getText();
         String studentId = cmbStudentId.getValue();
         String courseId = cmbCourseId.getValue();
         String feeText = txtFee.getText();
         String status = cmbStatus.getValue();
 
-        // Auto-generate the current date and time
         LocalDateTime paymentDate = LocalDateTime.now();
         double fee = 0;
 
-        // Validate and parse the fee input
         try {
             fee = Double.parseDouble(feeText);
         } catch (NumberFormatException e) {
@@ -119,23 +115,20 @@ public class PaymentsFormController {
             return;
         }
 
-        // Check if ComboBox values are selected
-        if (courseId == null || status == null) {
-            new Alert(Alert.AlertType.ERROR, "Please select both Course and Payment status.").show();
+        if (paymentId.isEmpty() || studentId.isEmpty() || courseId.isEmpty() || feeText.isEmpty() || status.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Please fill both Student ID and Course ID s.").show();
             return;
         }
 
-        // Create a PaymentDTO object
         PaymentDTO paymentDTO = new PaymentDTO(paymentId, studentId, courseId, paymentDate, fee, status);
 
-        // Validate fields
         String errorMessage = isValid();
+
         if (errorMessage != null) {
             new Alert(Alert.AlertType.ERROR, errorMessage).show();
             return;
         }
 
-        // Try to add the payment to the database
         try {
             boolean isAdded = paymentBO.addPayment(paymentDTO);
             if (isAdded) {
@@ -168,6 +161,11 @@ public class PaymentsFormController {
             fee = Double.parseDouble(feeText);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Invalid Input").show();
+            return;
+        }
+
+        if (paymentId.isEmpty() || studentId.isEmpty() || courseId.isEmpty() || paymentDateText.isEmpty() || feeText.isEmpty() || status.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Please fill both Student ID and Course ID s.").show();
             return;
         }
 
@@ -382,8 +380,6 @@ public class PaymentsFormController {
 
         if (cmbStatus.getValue() != null && cmbCourseId.getValue() != null) {
             setPaymentFee();
-        } else {
-            new Alert(Alert.AlertType.ERROR, "Please select both Course and Payment status.").show();
         }
     }
 

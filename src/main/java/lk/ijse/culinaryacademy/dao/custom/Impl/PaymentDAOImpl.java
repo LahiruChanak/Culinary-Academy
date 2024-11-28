@@ -61,7 +61,6 @@ public class PaymentDAOImpl implements PaymentDAO {
         }
     }
 
-
     @Override
     public String currentId() throws Exception {
         try (Session session = SessionFactoryConfig.getInstance().getSession()) {
