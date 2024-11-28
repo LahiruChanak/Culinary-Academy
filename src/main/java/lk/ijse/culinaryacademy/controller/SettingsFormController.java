@@ -13,25 +13,24 @@ import lk.ijse.culinaryacademy.bo.custom.UserBO;
 import lk.ijse.culinaryacademy.util.Regex;
 import lk.ijse.culinaryacademy.util.TextField;
 
-import java.sql.SQLException;
 import java.util.Optional;
 
 public class SettingsFormController {
 
     @FXML
-    private TitledPane titledPaneEmail;
+    private TitledPane titledPaneUsername;
 
     @FXML
     private TitledPane titledPanePassword;
 
     @FXML
-    private JFXTextField txtCurrentEmail;
+    private JFXTextField txtCurrentUsername;
 
     @FXML
-    private JFXTextField txtNewEmail;
+    private JFXTextField txtNewUsername;
 
     @FXML
-    private JFXTextField txtConfirmEmail;
+    private JFXTextField txtConfirmUsername;
 
     @FXML
     private JFXPasswordField txtCurrentPassword;
@@ -49,11 +48,11 @@ public class SettingsFormController {
     @FXML
     public void initialize() {
         // Set the expanded property for both TitledPanes
-        titledPaneEmail.setExpanded(false);
+        titledPaneUsername.setExpanded(false);
         titledPanePassword.setExpanded(false);
 
         // Add listeners to the expanded property of both TitledPanes
-        titledPaneEmail.expandedProperty().addListener((observable, oldValue, newValue) -> {
+        titledPaneUsername.expandedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 titledPanePassword.setExpanded(false);
             }
@@ -61,20 +60,20 @@ public class SettingsFormController {
 
         titledPanePassword.expandedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                titledPaneEmail.setExpanded(false);
+                titledPaneUsername.setExpanded(false);
             }
         });
     }
 
 
-    // ------------------------------------ EMAIL & PASSWORD CHANGE BUTTONS ------------------------------------
+    // ------------------------------------ Username & PASSWORD CHANGE BUTTONS ------------------------------------
     @FXML
-    void btnEmailChangeOnAction(ActionEvent event) {
-        String currentEmail = txtCurrentEmail.getText();
-        String newEmail = txtNewEmail.getText();
-        String confirmEmail = txtConfirmEmail.getText();
+    void btnUsernameChangeOnAction(ActionEvent event) {
+        String currentUsername = txtCurrentUsername.getText();
+        String newUsername = txtNewUsername.getText();
+        String confirmUsername = txtConfirmUsername.getText();
 
-        String errorMessage = isValid();
+        String errorMessage = isValid("Username");
 
         if (errorMessage != null) {
             new Alert(Alert.AlertType.ERROR, errorMessage).show();
@@ -83,27 +82,27 @@ public class SettingsFormController {
 
         // Confirmation Alert
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmationAlert.setTitle("Confirm Email Change");
-        confirmationAlert.setHeaderText("Are you sure you want to change your email?");
+        confirmationAlert.setTitle("Confirm Username Change");
+        confirmationAlert.setHeaderText("Are you sure you want to change your Username?");
 
         Optional<ButtonType> result = confirmationAlert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             try {
-                boolean isAdded = userBO.changeEmail(currentEmail, newEmail, confirmEmail);
+                boolean isAdded = userBO.changeUsername(currentUsername, newUsername, confirmUsername);
 
                 if (isAdded) {
-                    new Alert(Alert.AlertType.INFORMATION, "Email Changed Successfully.").show();
+                    new Alert(Alert.AlertType.INFORMATION, "Username Changed Successfully.").show();
                     clearField();
                 }
             } catch (IllegalArgumentException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             } catch (Exception e) {
-                new Alert(Alert.AlertType.ERROR, "An error occurred while changing the email.").show();
+                new Alert(Alert.AlertType.ERROR, "An error occurred while changing the Username.").show();
                 e.printStackTrace();
             }
         } else {
-            // User chose CANCEL or closed the dialog
-            new Alert(Alert.AlertType.INFORMATION, "Email change cancelled.").show();
+            // User chooses CANCEL or closed the dialogue
+            new Alert(Alert.AlertType.INFORMATION, "Username change cancelled.").show();
         }
     }
 
@@ -113,7 +112,12 @@ public class SettingsFormController {
         String newPassword = txtNewPassword.getText();
         String confirmPassword = txtConfirmPassword.getText();
 
-        String errorMessage = isValid();
+        if (!newPassword.equals(confirmPassword)) {
+            new Alert(Alert.AlertType.ERROR, "Password Mismatched.").show();
+            return;
+        }
+
+        String errorMessage = isValid("Password");
 
         if (errorMessage != null) {
             new Alert(Alert.AlertType.ERROR, errorMessage).show();
@@ -128,9 +132,9 @@ public class SettingsFormController {
         Optional<ButtonType> result = confirmationAlert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             try {
-                boolean isAdded = userBO.changePassword(currentPassword, newPassword, confirmPassword);
+                boolean isChanged = userBO.changePassword(currentPassword, newPassword);
 
-                if (isAdded) {
+                if (isChanged) {
                     new Alert(Alert.AlertType.INFORMATION, "Password Changed Successfully.").show();
                     clearField();
                 }
@@ -141,7 +145,7 @@ public class SettingsFormController {
                 e.printStackTrace();
             }
         } else {
-            // User chose CANCEL or closed the dialog
+            // User chose CANCEL or closed the dialogue
             new Alert(Alert.AlertType.INFORMATION, "Password change cancelled.").show();
         }
     }
@@ -149,9 +153,9 @@ public class SettingsFormController {
 
     // ------------------------------------ OTHER METHODS ------------------------------------
     private void clearField() {
-        txtCurrentEmail.clear();
-        txtNewEmail.clear();
-        txtConfirmEmail.clear();
+        txtCurrentUsername.clear();
+        txtNewUsername.clear();
+        txtConfirmUsername.clear();
         txtCurrentPassword.clear();
         txtNewPassword.clear();
         txtConfirmPassword.clear();
@@ -159,23 +163,8 @@ public class SettingsFormController {
 
     // ------------------------------------ ON KEY RELEASE ------------------------------------
     @FXML
-    void txtCurrentEmailOnKeyReleased(KeyEvent event) {
-        Regex.setTextColor(TextField.EMAIL, txtCurrentEmail);
-    }
-
-    @FXML
-    void txtNewEmailOnKeyReleased(KeyEvent event) {
-        Regex.setTextColor(TextField.EMAIL, txtNewEmail);
-    }
-
-    @FXML
-    void txtConfirmEmailOnKeyReleased(KeyEvent event) {
-        Regex.setTextColor(TextField.EMAIL, txtConfirmEmail);
-    }
-
-    @FXML
-    void txtCurrentPasswordOnKeyReleased(KeyEvent event) {
-        Regex.setTextColor(TextField.PASSWORD, txtCurrentPassword);
+    void txtNewUsernameOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(TextField.USERNAME, txtNewUsername);
     }
 
     @FXML
@@ -183,24 +172,23 @@ public class SettingsFormController {
         Regex.setTextColor(TextField.PASSWORD, txtNewPassword);
     }
 
-    @FXML
-    void txtConfirmPasswordOnKeyReleased(KeyEvent event) {
-        Regex.setTextColor(TextField.PASSWORD, txtConfirmPassword);
-    }
-
     // ------------------------------------ VALIDATION ------------------------------------
-    public String isValid() {
+    public String isValid(String type) {
         String message = "";
 
-        if (!Regex.setTextColor(TextField.EMAIL, txtCurrentEmail))
-            message += "Enter valid email address.\n\n";
+        if ("username".equals(type)) {
+            if (!Regex.setTextColor(TextField.USERNAME, txtNewUsername))
+                message += "Enter valid username.\n\n";
+        }
 
-        if (!Regex.setTextColor(TextField.PASSWORD, txtCurrentPassword))
-            message += """
-                    Please enter password following type,
+        if ("password".equals(type)) {
+            if (!Regex.setTextColor(TextField.PASSWORD, txtNewPassword))
+                message += """
+                    Please enter a password following these rules:
                     \t* Contains at least one alphabetic character and one digit.
-                    \t* Include special characters such as @$!%*?&.
-                    \t* Password at least 8 characters long.""";
+                    \t* Includes special characters such as @$!%*?&.
+                    \t* Password must be at least 8 characters long.""";
+        }
 
         return message.isEmpty() ? null : message;
     }

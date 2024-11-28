@@ -5,35 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fdd9856-eb1f-460f-9cc9-c2f9d0707040" name="Changes" comment="orm coursework codes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/util/Regex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/util/TextField.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/css/validation.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/util/CustomAlert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/images/confirmation.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/images/error.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/images/information.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/alertForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/CoursesFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/CoursesFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/EnrolmentFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/EnrolmentFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/bo/custom/UserBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/bo/custom/UserBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/bo/custom/impl/UserBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/bo/custom/impl/UserBOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/LoginFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/LoginFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/PaymentsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/PaymentsFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/RegisterFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/RegisterFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/SettingsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/SettingsFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/StudentsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/StudentsFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/UserFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/UserFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/dao/custom/Impl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/dao/custom/Impl/UserDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/dao/custom/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/dao/custom/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/util/CustomException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/util/CustomException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/loginForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/loginForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/paymentsForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/paymentsForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/registerForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/registerForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/userForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/userForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/assets/images/hide-password.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/assets/images/show-password.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/settingsForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/settingsForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/studentsForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/studentsForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/bo/custom/UserBO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/bo/custom/UserBO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/bo/custom/impl/UserBOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/bo/custom/impl/UserBOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/CoordinatorMainFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/CoordinatorMainFormController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/LoginFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/LoginFormController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/RegisterFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/RegisterFormController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/SettingsFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/SettingsFormController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/StudentsFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/StudentsFormController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/UserFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/UserFormController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/dao/custom/Impl/UserDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/dao/custom/Impl/UserDAOImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/dao/custom/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/dao/custom/UserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/util/CustomException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/util/CustomException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/adminMainForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/adminMainForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/coordinatorMainForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/coordinatorMainForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +46,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -63,7 +67,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -85,13 +89,16 @@
     "com.codeium.enabled": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Lenovo/IdeaProjects/Culinary-Academy/src/main/java/lk/ijse/culinaryacademy/util",
+    "last_opened_file_path": "C:/Users/Lenovo/Downloads/WhatsApp Downloads/Culinary-Academy-Dilsara",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.4402299",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   },
@@ -103,8 +110,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\java\lk\ijse\culinaryacademy\util" />
       <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\resources\assets\images" />
+      <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\java\lk\ijse\culinaryacademy\util" />
     </key>
   </component>
   <component name="RunManager">
@@ -147,7 +154,9 @@
       <workItem from="1732679484475" duration="17912000" />
       <workItem from="1732704119810" duration="19000" />
       <workItem from="1732705983950" duration="413000" />
-      <workItem from="1732711998008" duration="17308000" />
+      <workItem from="1732711998008" duration="22396000" />
+      <workItem from="1732765195009" duration="52000" />
+      <workItem from="1732765264579" duration="18996000" />
     </task>
     <task id="LOCAL-00001" summary="orm coursework codes">
       <option name="closed" value="true" />
@@ -181,7 +190,31 @@
       <option name="project" value="LOCAL" />
       <updated>1732719655991</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="orm coursework codes">
+      <option name="closed" value="true" />
+      <created>1732732769738</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1732732769738</updated>
+    </task>
+    <task id="LOCAL-00006" summary="orm coursework codes">
+      <option name="closed" value="true" />
+      <created>1732732786606</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1732732786606</updated>
+    </task>
+    <task id="LOCAL-00007" summary="orm coursework codes">
+      <option name="closed" value="true" />
+      <created>1732732794953</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1732732794953</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

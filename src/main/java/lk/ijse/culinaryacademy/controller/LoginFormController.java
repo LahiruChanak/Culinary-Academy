@@ -9,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -18,6 +17,8 @@ import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.UserBO;
 import lk.ijse.culinaryacademy.bo.custom.impl.UserBOImpl;
 import lk.ijse.culinaryacademy.entity.User;
+import lk.ijse.culinaryacademy.util.CustomException;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.net.URL;
@@ -59,24 +60,29 @@ public class LoginFormController {
         }
 
         try {
-            User user = userBO.checkLoginCredential(username, password);
+            User user = userBO.checkLoginCredential(username);
             if (user != null) {
-                UserBOImpl.userName = user.getUsername(); // get the username of the logged-in user
-                String role = user.getRole(); // get the user's role for the which dashboard to navigate
+                // Verify the password using BCrypt
+                if (BCrypt.checkpw(password, user.getPassword())) {
+                    UserBOImpl.userName = user.getUsername(); // get the username of the logged-in user
+                    String role = user.getRole(); // get the user's role for which dashboard to navigate
 
-                // Navigate based on the user's role
-                if ("Admin".equalsIgnoreCase(role)) {
-                    navigateToDashboard("/view/adminMainForm.fxml"); // navigate to the admin dashboard
-                } else if ("Coordinator".equalsIgnoreCase(role)) {
-                    navigateToDashboard("/view/coordinatorMainForm.fxml"); // navigate to the coordinator dashboard
+                    // Navigate based on the user's role
+                    if ("Admin".equalsIgnoreCase(role)) {
+                        navigateToDashboard("/view/adminMainForm.fxml"); // navigate to the admin dashboard
+                    } else if ("Coordinator".equalsIgnoreCase(role)) {
+                        navigateToDashboard("/view/coordinatorMainForm.fxml"); // navigate to the coordinator dashboard
+                    } else {
+                        new Alert(Alert.AlertType.ERROR, "Unknown role: " + role).show();
+                    }
                 } else {
-                    new Alert(Alert.AlertType.ERROR, "Unknown role: " + role).show();
+                    new Alert(Alert.AlertType.ERROR, "Invalid username or password. Please try again.").show();
                 }
             } else {
                 new Alert(Alert.AlertType.ERROR, "Invalid username or password. Please try again.").show();
             }
         } catch (SQLException | IOException e) {
-            new Alert(Alert.AlertType.ERROR, "An error occurred while checking login details: " + e.getMessage()).show();
+            CustomException.handleException(new CustomException("An error occurred while checking login details: ", e));
             e.printStackTrace();
         }
     }

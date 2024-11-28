@@ -1,23 +1,30 @@
 package lk.ijse.culinaryacademy.controller;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.StudentBO;
 import lk.ijse.culinaryacademy.dto.StudentDTO;
 import lk.ijse.culinaryacademy.entity.Enrolment;
 import lk.ijse.culinaryacademy.entity.Payment;
+import lk.ijse.culinaryacademy.util.CustomAlert;
+import lk.ijse.culinaryacademy.util.CustomException;
 import lk.ijse.culinaryacademy.util.Regex;
 import lk.ijse.culinaryacademy.util.TextField;
 import lk.ijse.culinaryacademy.view.tdm.StudentTm;
+import org.hibernate.HibernateException;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -25,8 +32,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class StudentsFormController {
+
+    @FXML
+    private AnchorPane paneStudent;
 
     @FXML
     private TableView<StudentTm> tblStudent;
@@ -75,6 +86,8 @@ public class StudentsFormController {
     // Objects
     StudentBO studentBO = (StudentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.STUDENT);
 
+    CustomAlert customAlert = new CustomAlert();
+
     Enrolment enrolment = new Enrolment();
     Payment payment = new Payment();
 
@@ -104,7 +117,7 @@ public class StudentsFormController {
         try {
             enrolledDate = Date.valueOf(enrolledDateText);
         } catch (IllegalAccessError e) {
-            new Alert(Alert.AlertType.ERROR, "Incorrect Enrolled Date.").show();
+            CustomException.handleException(new CustomException("Incorrect Enrolled Date."));
             return;
         }
 
@@ -113,7 +126,7 @@ public class StudentsFormController {
         String errorMessage = isValid();
 
         if (errorMessage != null) {
-            new Alert(Alert.AlertType.ERROR, errorMessage).show();
+            CustomException.handleException(new CustomException(errorMessage));
             return;
         }
 
@@ -146,7 +159,7 @@ public class StudentsFormController {
         try {
             enrolledDate = Date.valueOf(enrolledDateText);
         } catch (IllegalAccessError e) {
-            new Alert(Alert.AlertType.ERROR, "Incorrect Enrolled Date.").show();
+            CustomException.handleException(new CustomException("Incorrect Enrolled Date."));
             return;
         }
 
@@ -155,7 +168,7 @@ public class StudentsFormController {
         String errorMessage = isValid();
 
         if (errorMessage != null) {
-            new Alert(Alert.AlertType.ERROR, errorMessage).show();
+            CustomException.handleException(new CustomException(errorMessage));
             return;
         }
 
@@ -163,7 +176,7 @@ public class StudentsFormController {
             boolean isUpdated = studentBO.updateStudent(dto);
 
             if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Student Updated Successfully.").show();
+                new Alert(Alert.AlertType.INFORMATION, "Student Updated Successfully.").show();
                 clearField();
                 refreshTable();
                 loadNextStudentId();
@@ -178,20 +191,38 @@ public class StudentsFormController {
     void btnDeleteOnAction(ActionEvent event) throws Exception {
         String studentId = txtStudentId.getText();
 
-        try {
-            boolean isDeleted = studentBO.deleteStudent(studentId);
+        // Create a confirmation dialogue
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setTitle("Delete Confirmation");
+        confirmationAlert.setHeaderText("Are you sure want to delete student " + studentId + "?");
+        confirmationAlert.setContentText("This action cannot be undone.");
 
-            if (isDeleted) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Student Deleted Successfully.").show();
-                clearField();
-                refreshTable();
-                loadNextStudentId();
-                setEnrolledDate();
+        // Add a custom button for "Yes" and "No"
+        ButtonType yesButton = new ButtonType("Delete", ButtonBar.ButtonData.OK_DONE);
+        ButtonType noButton = new ButtonType("Dismiss", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        confirmationAlert.getButtonTypes().setAll(yesButton, noButton);
+
+        // Show the dialogue and wait for user input
+        Optional<ButtonType> result = confirmationAlert.showAndWait();
+
+        if (result.isPresent() && result.get() == yesButton) {
+            try {
+                boolean isDeleted = studentBO.deleteStudent(studentId);
+
+                if (isDeleted) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Student Deleted Successfully.").show();
+                    clearField();
+                    refreshTable();
+                    loadNextStudentId();
+                    setEnrolledDate();
+                }
+            } catch (SQLException e) {
+                CustomException.handleException(new CustomException(e.getMessage()));
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
+
 
     @FXML
     void btnClearOnAction(ActionEvent event) throws Exception {
@@ -228,13 +259,14 @@ public class StudentsFormController {
     }
 
     @FXML
-    private void txtSearchOnAction(ActionEvent event) throws Exception {
+    private void txtSearchOnAction(ActionEvent event) {
         String studentId = txtSearch.getText();
 
         try {
             StudentDTO dto = studentBO.searchByStudentId(studentId);
 
             if (dto != null) {
+                // Populate fields with student data
                 txtStudentId.setText(dto.getStudentId());
                 txtName.setText(dto.getName());
                 txtEmail.setText(dto.getEmail());
@@ -244,10 +276,16 @@ public class StudentsFormController {
 
                 txtSearch.clear();
             } else {
-                new Alert(Alert.AlertType.INFORMATION, "Student not found.").show();
+                // Display a more informative alert
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Search Result");
+                alert.setHeaderText("Student Not Found");
+                alert.setContentText("No student with ID " + studentId + " was found.");
+                alert.showAndWait();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (Exception e) {
+            // Handle the not found exception
+            CustomException.handleException(new CustomException("Student Not Found in the Database" ));
         }
     }
 
@@ -259,7 +297,7 @@ public class StudentsFormController {
             txtStudentId.setText(nextId);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            CustomException.handleException(new CustomException(e.getMessage()));
         }
     }
 

@@ -23,16 +23,16 @@
             <VBox layoutX="30.0" layoutY="30.0" prefWidth="600.0" spacing="30.0">
 
                 <!-- Email Change Dropdown -->
-                <TitledPane fx:id="titledPaneEmail" expanded="false" styleClass="titledPane" stylesheets="@../assets/css/settingsPage.css" text="Change Email">
+                <TitledPane fx:id="titledPaneUsername" expanded="false" styleClass="titledPane" stylesheets="@../assets/css/settingsPage.css" text="Change Username">
                     <VBox spacing="10.0" style="-fx-padding: 15;">
                   <VBox spacing="35.0" style="-fx-padding: 10 0;">
                      <children>
-                              <JFXTextField fx:id="txtCurrentEmail" onKeyReleased="#txtCurrentEmailOnKeyReleased" promptText="Enter current email" />
-                              <JFXTextField fx:id="txtNewEmail" onKeyPressed="#txtNewEmailOnKeyReleased" onKeyReleased="#txtNewEmailOnKeyReleased" promptText="Enter new email" />
-                              <JFXTextField fx:id="txtConfirmEmail" onKeyReleased="#txtConfirmEmailOnKeyReleased" promptText="Re-enter new email" />
+                              <JFXTextField fx:id="txtCurrentUsername" promptText="Enter current Username" />
+                              <JFXTextField fx:id="txtNewUsername" onKeyReleased="#txtNewUsernameOnKeyReleased" promptText="Enter new Username" />
+                              <JFXTextField fx:id="txtConfirmUsername" promptText="Re-enter new Username" />
                      </children>
                   </VBox>
-                        <JFXButton onAction="#btnEmailChangeOnAction" style="-fx-background-color: #2196f3; -fx-text-fill: white; -fx-border-radius: 5; -fx-background-radius: 5;" text="Change" />
+                        <JFXButton onAction="#btnUsernameChangeOnAction" style="-fx-background-color: #2196f3; -fx-text-fill: white; -fx-border-radius: 5; -fx-background-radius: 5;" text="Change" />
                     </VBox>
                     <font>
                         <Font name="Segoe UI Bold" size="12.0" />
@@ -44,9 +44,9 @@
                     <VBox spacing="10.0" style="-fx-padding: 15;">
                   <VBox spacing="35.0" style="-fx-padding: 10 0;">
                      <children>
-                              <JFXPasswordField fx:id="txtCurrentPassword" onKeyReleased="#txtCurrentPasswordOnKeyReleased" promptText="Enter current password" />
+                              <JFXPasswordField fx:id="txtCurrentPassword" promptText="Enter current password" />
                               <JFXPasswordField fx:id="txtNewPassword" onKeyReleased="#txtNewPasswordOnKeyReleased" promptText="Enter new password" />
-                              <JFXPasswordField fx:id="txtConfirmPassword" onKeyReleased="#txtConfirmPasswordOnKeyReleased" promptText="Re-enter new password" />
+                              <JFXPasswordField fx:id="txtConfirmPassword" promptText="Re-enter new password" />
                      </children>
                   </VBox>
                         <JFXButton onAction="#btnPWChangeOnAction" style="-fx-background-color: #ff5722; -fx-text-fill: white; -fx-border-radius: 5; -fx-background-radius: 5;" text="Change" />

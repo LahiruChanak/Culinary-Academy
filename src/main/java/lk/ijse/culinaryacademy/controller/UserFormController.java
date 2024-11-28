@@ -18,6 +18,7 @@ import lk.ijse.culinaryacademy.dto.UserDTO;
 import lk.ijse.culinaryacademy.util.Regex;
 import lk.ijse.culinaryacademy.util.TextField;
 import lk.ijse.culinaryacademy.view.tdm.UserTm;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -88,8 +89,6 @@ public class UserFormController {
         String password = txtPassword.getText();
         String confirmPassword = txtConfirmPassword.getText();
 
-        UserDTO dto = new UserDTO(userId, name, email, role, password);
-
         if (!password.equals(confirmPassword)) {
             new Alert(Alert.AlertType.ERROR, "Password Mismatched.").show();
             return;
@@ -102,14 +101,19 @@ public class UserFormController {
             return;
         }
 
+        // Hash the password before creating the UserDTO
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+
+        UserDTO dto = new UserDTO(userId, name, email, role, hashedPassword);
+
         try {
-            boolean isAdded = userBO.addUser(dto);
+            boolean isAdded = userBO.addUser (dto);
 
             if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "User Added Successfully.").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "User  Added Successfully.").show();
                 clearField();
                 refreshTable();
-//                loadNextUserId();
+                // loadNextUser Id(); // Uncomment if you have a method to load the next user ID
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

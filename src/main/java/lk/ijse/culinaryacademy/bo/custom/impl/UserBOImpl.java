@@ -5,6 +5,7 @@ import lk.ijse.culinaryacademy.dao.DAOFactory;
 import lk.ijse.culinaryacademy.dao.custom.UserDAO;
 import lk.ijse.culinaryacademy.dto.UserDTO;
 import lk.ijse.culinaryacademy.entity.User;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 public class UserBOImpl implements UserBO {
 
     public static String userName;
+    public static String role;
 
     UserDAO userDAO = (UserDAO) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.USER);
 
@@ -59,19 +61,27 @@ public class UserBOImpl implements UserBO {
         return allUsers;
     }
 
-    @Override
-    public String currentUserId() throws Exception {
-        return userDAO.currentId();
+    public boolean changeUsername(String currentUsername, String newUsername, String confirmUsername) throws Exception {
+        return userDAO.changeUsername(currentUsername, newUsername, confirmUsername);
     }
 
     @Override
-    public boolean changeEmail(String currentEmail, String newEmail, String confirmEmail) throws Exception {
-        return userDAO.changeEmail(currentEmail, newEmail, confirmEmail);
-    }
+    public boolean changePassword(String currentPassword, String newPassword) throws Exception {
+        // Get the current user's username or ID (assuming you have a method to get the logged-in user)
+        String username = UserBOImpl.userName; // or however you manage the logged-in user
 
-    @Override
-    public boolean changePassword(String currentPassword, String newPassword, String confirmPassword) throws Exception {
-        return userDAO.changePassword(currentPassword, newPassword, confirmPassword);
+        // First, retrieve the user from the database
+        User user = userDAO.getUserByUsername(username);
+        if (user == null) {
+            throw new IllegalArgumentException("User not found.");
+        }
+
+        // Verify the current password
+        if (!BCrypt.checkpw(currentPassword, user.getPassword())) {
+            throw new IllegalArgumentException("Current password is incorrect.");
+        }
+
+        return userDAO.changePassword(username, newPassword);
     }
 
     @Override
@@ -87,17 +97,12 @@ public class UserBOImpl implements UserBO {
     }
 
     @Override
-    public User checkLoginCredential(String username, String password) throws Exception {
-        return userDAO.checkLogin(username, password);
+    public User checkLoginCredential(String username) throws Exception {
+        return userDAO.checkLogin(username);
     }
 
     @Override
-    public String getUsrName(String username) throws Exception {
-        return userDAO.getUsrName(username);
-    }
-
-    @Override
-    public boolean checkRegisterCredential(String username, String name, String email, String password, String confirmPassword, String role) throws Exception {
-        return userDAO.checkRegister(username, name, email, password, confirmPassword, role);
+    public boolean checkRegisterCredential(String username, String name, String email, String hashedPassword, String role) throws Exception {
+        return userDAO.checkRegister(username, name, email, hashedPassword, role);
     }
 }

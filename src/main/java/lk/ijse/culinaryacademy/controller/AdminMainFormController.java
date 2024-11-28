@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.culinaryacademy.bo.custom.impl.UserBOImpl;
 
 import java.io.IOException;
 import java.net.URL;
@@ -47,7 +48,6 @@ public class AdminMainFormController {
     @FXML
     private Pane subPane;
 
-
     @FXML
     void initialize() throws IOException {
         setButtonActive(btnHome);
@@ -57,6 +57,12 @@ public class AdminMainFormController {
         Pane registerPane = fxmlLoader.load();
         subPane.getChildren().clear();
         subPane.getChildren().add(registerPane);
+
+        setRole();
+    }
+
+    private void setRole() {
+        String role = UserBOImpl.role;
     }
 
     // ---------------------------- Button Actions ----------------------------

@@ -15,6 +15,7 @@ import lk.ijse.culinaryacademy.bo.BOFactory;
 import lk.ijse.culinaryacademy.bo.custom.UserBO;
 import lk.ijse.culinaryacademy.util.Regex;
 import lk.ijse.culinaryacademy.util.TextField;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.net.URL;
@@ -63,16 +64,26 @@ public class RegisterFormController {
             return;
         }
 
+        // Check if passwords match
+        if (!password.equals(confirmPassword)) {
+            new Alert(Alert.AlertType.ERROR, "Passwords do not match.").show();
+            return;
+        }
+
         try {
-            boolean isTrue = userBO.checkRegisterCredential(username, name, email, password, confirmPassword, role);
+            // Encrypt the password
+            String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+
+            boolean isTrue = userBO.checkRegisterCredential(username, name, email, hashedPassword, role);
             if (isTrue) {
-                new Alert(Alert.AlertType.INFORMATION, "Registration Successfully.").show();
+                new Alert(Alert.AlertType.INFORMATION, "Registration Successful.").show();
                 clearField();
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, "Incorrect Register Details.").show();
+            new Alert(Alert.AlertType.ERROR, "Error occurred while registering: " + e.getMessage()).show();
         }
     }
+
 
     @FXML
     void btnCancelOnAction(ActionEvent event) throws IOException {

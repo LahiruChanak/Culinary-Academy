@@ -7,6 +7,7 @@ module lk.ijse.culinaryacademy {
     requires java.persistence;
     requires MaterialFX;
     requires java.management;
+    requires jbcrypt;
 
     opens lk.ijse.culinaryacademy to javafx.fxml, javafx.graphics;
     opens lk.ijse.culinaryacademy.controller to javafx.fxml;
