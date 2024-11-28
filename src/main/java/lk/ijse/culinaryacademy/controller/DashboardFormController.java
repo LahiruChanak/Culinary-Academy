@@ -4,6 +4,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -43,6 +44,10 @@ public class DashboardFormController {
     @FXML
     private Label userName;
 
+    @FXML
+    private LineChart<String, Double> paymentLineChart;
+
+
     // Objects
     StudentBO studentBO = (StudentBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.STUDENT);
     CourseBO courseBO = (CourseBO) BOFactory.getBOFactory().getBO(BOFactory.BOTypes.COURSE);
@@ -60,6 +65,7 @@ public class DashboardFormController {
             studentCount = studentBO.getStudentCount();
             courseCount = courseBO.getCourseCount();
             paymentsTotal = paymentBO.getTotalPayments();
+            paymentBO.monthlyFeeChart(paymentLineChart);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -104,6 +110,8 @@ public class DashboardFormController {
     // ---------------------------- USER FUNCTIONS ----------------------------
     public void setUserName() {
         userName.setText(UserBOImpl.userName);
+
+        imgUser.setImage(new Image(getClass().getResourceAsStream("/assets/images/admin.png")));
     }
 
 }

@@ -5,11 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fdd9856-eb1f-460f-9cc9-c2f9d0707040" name="Changes" comment="orm coursework codes">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/images/admin.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/PaymentsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/PaymentsFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/bo/custom/PaymentBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/bo/custom/PaymentBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/bo/custom/impl/PaymentBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/bo/custom/impl/PaymentBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/DashboardFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/DashboardFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/dao/custom/Impl/PaymentDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/dao/custom/Impl/PaymentDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/dao/custom/PaymentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/dao/custom/PaymentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/images/coordinator.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/images/user.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/adminMainForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/adminMainForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/dashboardForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/dashboardForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/assets/images/coordinator.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/bo/custom/PaymentBO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/bo/custom/PaymentBO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/bo/custom/impl/PaymentBOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/bo/custom/impl/PaymentBOImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/DashboardFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/DashboardFormController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/PaymentsFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/PaymentsFormController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/dao/custom/Impl/PaymentDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/dao/custom/Impl/PaymentDAOImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/dao/custom/Impl/PaymentDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/dao/custom/PaymentDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/dao/custom/PaymentDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/adminMainForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/adminMainForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,39 +66,39 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.LauncherWrapper.executor": "Run",
-    "Maven.culinary-academy-system [clean].executor": "Run",
-    "Maven.culinary-academy-system [compile].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Lenovo/IdeaProjects/Culinary-Academy/src/main/resources/view",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4402299",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.LauncherWrapper.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.culinary-academy-system [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.culinary-academy-system [compile].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/IdeaProjects/Culinary-Academy/src/main/resources/assets/images&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4402299&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\resources\view" />
       <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\resources\assets\images" />
+      <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\resources\view" />
       <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\java\lk\ijse\culinaryacademy\util" />
     </key>
   </component>
@@ -131,7 +144,8 @@
       <workItem from="1732705983950" duration="413000" />
       <workItem from="1732711998008" duration="22396000" />
       <workItem from="1732765195009" duration="52000" />
-      <workItem from="1732765264579" duration="39581000" />
+      <workItem from="1732765264579" duration="40746000" />
+      <workItem from="1732812112569" duration="601000" />
     </task>
     <task id="LOCAL-00001" summary="orm coursework codes">
       <option name="closed" value="true" />
@@ -221,7 +235,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732809234943</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="orm coursework codes">
+      <option name="closed" value="true" />
+      <created>1732811093436</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1732811093436</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

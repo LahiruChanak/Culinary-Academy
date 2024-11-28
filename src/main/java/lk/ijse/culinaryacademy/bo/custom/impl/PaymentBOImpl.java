@@ -1,5 +1,6 @@
 package lk.ijse.culinaryacademy.bo.custom.impl;
 
+import javafx.scene.chart.LineChart;
 import lk.ijse.culinaryacademy.bo.custom.PaymentBO;
 import lk.ijse.culinaryacademy.dao.DAOFactory;
 import lk.ijse.culinaryacademy.dao.custom.PaymentDAO;
@@ -95,5 +96,10 @@ public class PaymentBOImpl implements PaymentBO {
     @Override
     public double getTotalPayments() throws Exception {
         return paymentDAO.getTotalPayments();
+    }
+
+    @Override
+    public void monthlyFeeChart(LineChart<String, Double> paymentLineChart) throws Exception {
+        paymentDAO.monthlyFeeChart(paymentLineChart);
     }
 }

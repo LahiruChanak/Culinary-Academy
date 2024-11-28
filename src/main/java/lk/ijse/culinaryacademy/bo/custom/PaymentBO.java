@@ -1,11 +1,13 @@
 package lk.ijse.culinaryacademy.bo.custom;
 
+import javafx.scene.chart.LineChart;
 import lk.ijse.culinaryacademy.bo.SuperBO;
 import lk.ijse.culinaryacademy.dto.PaymentDTO;
 
 import java.util.List;
 
 public interface PaymentBO extends SuperBO {
+
     boolean addPayment(PaymentDTO paymentDTO) throws Exception;
 
     boolean updatePayment(PaymentDTO paymentDTO) throws Exception;
@@ -19,4 +21,7 @@ public interface PaymentBO extends SuperBO {
     PaymentDTO searchByPaymentId(String paymentId) throws Exception;
 
     double getTotalPayments() throws Exception;
+
+    void monthlyFeeChart(LineChart<String, Double> paymentLineChart) throws Exception;
+
 }

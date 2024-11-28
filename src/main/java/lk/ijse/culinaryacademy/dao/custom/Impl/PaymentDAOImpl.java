@@ -1,6 +1,8 @@
 package lk.ijse.culinaryacademy.dao.custom.Impl;
 
 
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import lk.ijse.culinaryacademy.config.SessionFactoryConfig;
 import lk.ijse.culinaryacademy.dao.custom.PaymentDAO;
 import lk.ijse.culinaryacademy.entity.Payment;
@@ -8,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,9 +80,9 @@ public class PaymentDAOImpl implements PaymentDAO {
     @Override
     public List<Payment> getAll() throws Exception {
         ArrayList<Payment> payments = new ArrayList<>();
-        try(Session session = SessionFactoryConfig.getInstance().getSession()){
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
             payments = (ArrayList<Payment>) session.createQuery("FROM Payment p ORDER BY p.paymentId").list();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return payments;
@@ -108,4 +111,34 @@ public class PaymentDAOImpl implements PaymentDAO {
             return 0;
         }
     }
+
+    @Override
+    public void monthlyFeeChart(LineChart<String, Double> paymentLineChart) throws Exception {
+        // Ensure the chart has a series to hold the data
+        XYChart.Series<String, Double> series = new XYChart.Series<>();
+        series.setName("Monthly Fees");
+
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            String hql = "SELECT MONTH(p.paymentDate), SUM(p.fee) FROM Payment p GROUP BY MONTH(p.paymentDate)";
+            Query<Object[]> query = session.createQuery(hql, Object[].class);
+            List<Object[]> list = query.list();
+
+            for (Object[] objects : list) {
+                Integer month = (Integer) objects[0];
+                Double totalFee = (Double) objects[1];
+
+                // Convert month to a readable format
+                String monthName = Month.of(month).name(); // java.time.Month enum
+
+                // Add data to the series
+                series.getData().add(new XYChart.Data<>(monthName, totalFee));
+            }
+
+            paymentLineChart.getData().add(series);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error occurred while generating the monthly fee chart", e);
+        }
+    }
+
 }
