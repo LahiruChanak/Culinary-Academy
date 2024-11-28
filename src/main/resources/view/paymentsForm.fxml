@@ -47,13 +47,13 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXComboBox>
-      
+
                 <JFXTextField fx:id="txtFee" labelFloat="true" layoutX="295.0" layoutY="110.0" onKeyReleased="#txtFeeOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Payment Fee">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </JFXTextField>
-      
+
                             <JFXTextField fx:id="txtPaymentDate" editable="false" labelFloat="true" layoutX="555.0" layoutY="110.0" prefHeight="36.0" prefWidth="200.0" promptText="Payment Date">
                     <font>
                         <Font size="14.0" />

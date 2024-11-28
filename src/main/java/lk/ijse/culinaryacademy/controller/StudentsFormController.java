@@ -1,6 +1,7 @@
 package lk.ijse.culinaryacademy.controller;
 
 import com.jfoenix.controls.JFXTextField;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -56,25 +57,25 @@ public class StudentsFormController {
     private TableColumn<?, ?> colName;
 
     @FXML
-    private JFXTextField txtAddress;
+    private MFXTextField txtAddress;
 
     @FXML
-    private JFXTextField txtContact;
+    private MFXTextField txtContact;
 
     @FXML
-    private JFXTextField txtEmail;
+    private MFXTextField txtEmail;
 
     @FXML
-    private JFXTextField txtEnrolledDate;
+    private MFXTextField txtEnrolledDate;
 
     @FXML
-    private JFXTextField txtStudentId;
+    private MFXTextField txtStudentId;
 
     @FXML
-    private JFXTextField txtName;
+    private MFXTextField txtName;
 
     @FXML
-    private JFXTextField txtSearch;
+    private MFXTextField txtSearch;
 
     @FXML
     private Pane studentInputPane;

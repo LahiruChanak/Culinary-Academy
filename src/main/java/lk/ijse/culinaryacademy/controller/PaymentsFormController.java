@@ -1,7 +1,7 @@
 package lk.ijse.culinaryacademy.controller;
 
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import io.github.palexdev.materialfx.controls.MFXComboBox;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -34,13 +34,13 @@ import java.util.List;
 public class PaymentsFormController {
 
     @FXML
-    private JFXComboBox<String> cmbCourseId;
+    private MFXComboBox<String> cmbCourseId;
 
     @FXML
-    private JFXComboBox<String> cmbStatus;
+    private MFXComboBox<String> cmbStatus;
 
     @FXML
-    private JFXComboBox<String> cmbStudentId;
+    private MFXComboBox<String> cmbStudentId;
 
     @FXML
     private TableColumn<?, ?> colCourseId;
