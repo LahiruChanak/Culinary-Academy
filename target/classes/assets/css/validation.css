@@ -1,0 +1,17 @@
+/* --------------------------------- Valid TextField -------------------------------- */
+.valid-field {
+    -fx-border-color: lightgreen;
+    -fx-text-inner-color: green;
+}
+.valid-field:focused {
+    -fx-border-color: green;
+}
+
+/* -------------------------------- Invalid TextField -------------------------------- */
+.invalid-field {
+    -fx-border-color: lightcoral;
+    -fx-text-inner-color: red;
+}
+.invalid-field:focused {
+    -fx-border-color: red;
+}
