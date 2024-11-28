@@ -69,7 +69,7 @@ public class CourseDAOImpl implements CourseDAO {
     public List<Course> getAll() {
         ArrayList<Course> courses = new ArrayList<>();
         try(Session session = SessionFactoryConfig.getInstance().getSession()){
-            courses = (ArrayList<Course>) session.createQuery("FROM Course").list();
+            courses = (ArrayList<Course>) session.createQuery("FROM Course c ORDER BY c.courseId").list();
         }catch (Exception e){
             e.printStackTrace();
         }

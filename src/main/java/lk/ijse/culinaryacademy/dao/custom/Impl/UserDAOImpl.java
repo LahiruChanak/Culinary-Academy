@@ -191,7 +191,7 @@ public class UserDAOImpl implements UserDAO {
     public List<User> getAll() throws Exception {
         ArrayList<User> users = new ArrayList<>();
         try(Session session = SessionFactoryConfig.getInstance().getSession()){
-            users = (ArrayList<User>) session.createQuery("FROM User").list();
+            users = (ArrayList<User>) session.createQuery("FROM User ORDER BY role").list();
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -76,19 +76,19 @@ public class PaymentBOImpl implements PaymentBO {
 
     @Override
     public PaymentDTO searchByPaymentId(String paymentId) throws Exception {
-        Payment s = paymentDAO.searchById(paymentId);
+        Payment payment = paymentDAO.searchById(paymentId);
 
-        if (s == null) {
+        if (payment == null) {
             return null;
         }
 
         return new PaymentDTO(
-                s.getPaymentId(),
-                s.getStudentId(),
-                s.getCourseId(),
-                s.getPaymentDate(),
-                s.getFee(),
-                s.getStatus()
+                payment.getPaymentId(),
+                payment.getStudentId(),
+                payment.getCourseId(),
+                payment.getPaymentDate(),
+                payment.getFee(),
+                payment.getStatus()
         );
     }
 

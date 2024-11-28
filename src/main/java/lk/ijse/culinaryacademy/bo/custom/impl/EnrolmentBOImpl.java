@@ -17,6 +17,7 @@ public class EnrolmentBOImpl implements EnrolmentBO {
     private Student student;
     private Course course;
 
+
     @Override
     public boolean addEnrolment(EnrolmentDTO dto) throws Exception {
         return enrolmentDAO.add(new Enrolment(
@@ -56,30 +57,38 @@ public class EnrolmentBOImpl implements EnrolmentBO {
 
         return new EnrolmentDTO(
                 e.getEnrolmentId(),
-                e.getStudentId(),
-                e.getCourseId(),
+                e.getStudent().getStudentId(),
+                e.getStudent().getName(),
+                e.getCourse().getCourseId(),
+                e.getCourse().getCourseName(),
                 e.getEnrolledDate()
         );
     }
+
 
     @Override
     public String currentEnrolmentId() throws Exception {
         return enrolmentDAO.currentId();
     }
 
-    @Override
-    public List<EnrolmentDTO> getAllEnrolments() throws Exception {
-        List<EnrolmentDTO> allEnrolments = new ArrayList<>();
-        List<Enrolment> all = enrolmentDAO.getAll();
-
-        for (Enrolment e : all) {
-            allEnrolments.add(new EnrolmentDTO(
-                    e.getEnrolmentId(),
-                    e.getStudentId(),
-                    e.getCourseId(),
-                    e.getEnrolledDate()
-            ));
+    public List<EnrolmentDTO> getAllEnrolments() {
+        List<EnrolmentDTO> enrolmentsList = new ArrayList<>();
+        try {
+            List<Enrolment> enrolments = enrolmentDAO.getAll();
+            for (Enrolment e : enrolments) {
+                enrolmentsList.add(new EnrolmentDTO(
+                        e.getEnrolmentId(),
+                        e.getStudent().getStudentId(),
+                        e.getStudent().getName(),  // Fetching student name
+                        e.getCourse().getCourseId(),
+                        e.getCourse().getCourseName(),  // Fetching course name
+                        e.getEnrolledDate()
+                ));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        return allEnrolments;
+        return enrolmentsList;
     }
+
 }

@@ -241,9 +241,9 @@ public class EnrolmentFormController {
             if (dto != null) {
                 txtEnrolmentId.setText(dto.getEnrolmentId());
                 cmbStudentId.setValue(dto.getStudentId());
-                txtStudentName.setText(dto.getStudentName());
+                txtStudentName.setText(dto.getStudentName());  // Updated field
                 cmbCourseId.setValue(dto.getCourseId());
-                txtCourseName.setText(dto.getCourseName());
+                txtCourseName.setText(dto.getCourseName());    // Updated field
                 txtEnrolledDate.setText(dto.getEnrolledDate().toString());
 
                 txtSearch.clear();
@@ -258,6 +258,7 @@ public class EnrolmentFormController {
             CustomException.handleException(new CustomException("Enrolment Not Found in the Database"));
         }
     }
+
 
     private void loadNextEnrolmentId() throws Exception {
         try {

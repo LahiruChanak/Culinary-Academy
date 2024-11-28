@@ -54,14 +54,13 @@ public class PaymentDAOImpl implements PaymentDAO {
 
     @Override
     public Payment searchById(String paymentId) throws Exception {
-        try(Session session = SessionFactoryConfig.getInstance().getSession()){
-            System.out.println(session.get(Payment.class, paymentId));
-            return session.get(Payment.class, paymentId);
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            return session.get(Payment.class, paymentId); // Returns null if not found
+        } catch (Exception e) {
+            throw new Exception("Error fetching Payment with ID: " + paymentId, e);
         }
     }
+
 
     @Override
     public String currentId() throws Exception {
@@ -80,7 +79,7 @@ public class PaymentDAOImpl implements PaymentDAO {
     public List<Payment> getAll() throws Exception {
         ArrayList<Payment> payments = new ArrayList<>();
         try(Session session = SessionFactoryConfig.getInstance().getSession()){
-            payments = (ArrayList<Payment>) session.createQuery("FROM Payment").list();
+            payments = (ArrayList<Payment>) session.createQuery("FROM Payment p ORDER BY p.paymentId").list();
         }catch (Exception e){
             e.printStackTrace();
         }

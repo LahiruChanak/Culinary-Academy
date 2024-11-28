@@ -247,7 +247,7 @@ public class PaymentsFormController {
     }
 
     @FXML
-    private void txtSearchOnAction(ActionEvent event) throws Exception {
+    private void txtSearchOnAction(ActionEvent event) {
         String paymentId = txtSearch.getText();
 
         try {
@@ -260,19 +260,27 @@ public class PaymentsFormController {
                 txtPaymentDate.setText(dto.getPaymentDate().toString());
                 txtFee.setText(String.valueOf(dto.getFee()));
                 cmbStatus.setValue(dto.getStatus());
-
                 txtSearch.clear();
             } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Search Result");
-                alert.setHeaderText("Payment Not Found");
-                alert.setContentText("No Payment with ID " + "\" " + paymentId + " \" " + " was found.");
-                alert.showAndWait();
+                showAlert("Search Result", "Payment Not Found",
+                        "No Payment with ID \"" + paymentId + "\" was found.");
             }
-        } catch (SQLException e) {
-            CustomException.handleException(new CustomException("Payment Not Found in the Database"));
+        } catch (Exception e) {
+            showAlert("Error", "Database Error",
+                    "An error occurred while searching for the payment. " +
+                            "Please try again later.");
+            e.printStackTrace();
         }
     }
+
+    private void showAlert(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
 
     private void loadNextPaymentId() throws Exception {
         try {
@@ -436,7 +444,6 @@ public class PaymentsFormController {
             new Alert(Alert.AlertType.ERROR, ERROR_COURSE_FEE_MESSAGE + e.getMessage()).show();
         }
     }
-
 
 
     // ------------------------------------ ON KEY RELEASED ------------------------------------
