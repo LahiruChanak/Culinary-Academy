@@ -1,6 +1,9 @@
 package lk.ijse.culinaryacademy.controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.FadeTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +18,9 @@ import lk.ijse.culinaryacademy.bo.custom.impl.UserBOImpl;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class AdminMainFormController {
 
@@ -173,17 +179,17 @@ public class AdminMainFormController {
 
     // ---------------------------- Active Button Styles ----------------------------
     private void setButtonActive(JFXButton button) {
-        btnHome.getStyleClass().removeAll("jfx-active-button");
-        btnCourse.getStyleClass().removeAll("jfx-active-button");
-        btnStudent.getStyleClass().removeAll("jfx-active-button");
-        btnEnrolment.getStyleClass().removeAll("jfx-active-button");
-        btnUser.getStyleClass().removeAll("jfx-active-button");
-        btnPayment.getStyleClass().removeAll("jfx-active-button");
-        btnSettings.getStyleClass().removeAll("jfx-active-button");
-        btnLogOut.getStyleClass().removeAll("jfx-active-button");
+        btnHome.getStyleClass().removeAll("active");
+        btnCourse.getStyleClass().removeAll("active");
+        btnStudent.getStyleClass().removeAll("active");
+        btnEnrolment.getStyleClass().removeAll("active");
+        btnUser.getStyleClass().removeAll("active");
+        btnPayment.getStyleClass().removeAll("active");
+        btnSettings.getStyleClass().removeAll("active");
+        btnLogOut.getStyleClass().removeAll("active");
 
         // Add Style
-        button.getStyleClass().add("jfx-active-button");
+        button.getStyleClass().add("active");
     }
 
 }

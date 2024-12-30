@@ -2,6 +2,8 @@ package lk.ijse.culinaryacademy.controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import io.github.palexdev.materialfx.controls.MFXComboBox;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,10 +36,10 @@ import java.util.List;
 public class EnrolmentFormController {
 
     @FXML
-    private JFXComboBox<String> cmbCourseId;
+    private MFXComboBox<String> cmbCourseId;
 
     @FXML
-    private JFXComboBox<String> cmbStudentId;
+    private MFXComboBox<String> cmbStudentId;
 
     @FXML
     private TableColumn<?, ?> colCourseId;
@@ -67,13 +69,13 @@ public class EnrolmentFormController {
     private Text txtCourseName;
 
     @FXML
-    private JFXTextField txtEnrolledDate;
+    private MFXTextField txtEnrolledDate;
 
     @FXML
-    private JFXTextField txtEnrolmentId;
+    private MFXTextField txtEnrolmentId;
 
     @FXML
-    private JFXTextField txtSearch;
+    private MFXTextField txtSearch;
 
     private List<EnrolmentDTO> enrolmentList = new ArrayList<>();
 
@@ -216,8 +218,8 @@ public class EnrolmentFormController {
     // ---------------------------------------- OTHER METHODS ----------------------------------------
     private void clearField() throws Exception {
         txtEnrolmentId.clear();
-        cmbStudentId.getSelectionModel().clearSelection();
-        cmbCourseId.getSelectionModel().clearSelection();
+        cmbStudentId.clear();
+        cmbCourseId.clear();
         txtStudentName.setText("Student Name");
         txtCourseName.setText("Course Name");
         txtEnrolledDate.clear();

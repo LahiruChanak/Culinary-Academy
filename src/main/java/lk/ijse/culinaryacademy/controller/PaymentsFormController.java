@@ -1,7 +1,7 @@
 package lk.ijse.culinaryacademy.controller;
 
-import com.jfoenix.controls.JFXTextField;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -64,16 +64,16 @@ public class PaymentsFormController {
     private TableView<PaymentTm> tblPayment;
 
     @FXML
-    private JFXTextField txtFee;
+    private MFXTextField txtFee;
 
     @FXML
-    private JFXTextField txtPaymentDate;
+    private MFXTextField txtPaymentDate;
 
     @FXML
-    private JFXTextField txtPaymentId;
+    private MFXTextField txtPaymentId;
 
     @FXML
-    private JFXTextField txtSearch;
+    private MFXTextField txtSearch;
 
     private List<PaymentDTO> paymentList = new ArrayList<>();
 
@@ -229,11 +229,11 @@ public class PaymentsFormController {
     // ------------------------------------ OTHER OPERATIONS ------------------------------------
     private void clearField() throws Exception {
         txtPaymentId.clear();
-        cmbStudentId.getSelectionModel().clearSelection();
-        cmbCourseId.getSelectionModel().clearSelection();
+        cmbStudentId.clear();
+        cmbCourseId.clear();
         txtPaymentDate.clear();
         txtFee.clear();
-        cmbStatus.getSelectionModel().clearSelection();
+        cmbStatus.clear();
 
         loadNextPaymentId();
         setPaymentDate();
@@ -337,7 +337,6 @@ public class PaymentsFormController {
             tmList.add(paymentTm);
         }
         tblPayment.setItems(tmList);
-        tblPayment.getSelectionModel().getSelectedItem();
     }
 
     private void loadStudentIds() throws Exception {

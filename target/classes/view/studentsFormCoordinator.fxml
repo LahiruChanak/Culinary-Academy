@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
@@ -25,40 +25,12 @@
       <!-- Pane for student details -->
       <Pane fx:id="studentInputPane" disable="true" layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="785.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
          <children>
-            <JFXTextField fx:id="txtStudentId" labelFloat="true" layoutX="40.0" layoutY="35.0" onKeyReleased="#txtStudentIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Student ID" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </JFXTextField>
-
-                                    <JFXTextField fx:id="txtName" labelFloat="true" layoutX="295.0" layoutY="35.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Student Name" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </JFXTextField>
-
-                                    <JFXTextField fx:id="txtContact" labelFloat="true" layoutX="40.0" layoutY="110.0" onKeyReleased="#txtContactOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Contact" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </JFXTextField>
-
-                                    <JFXTextField fx:id="txtEnrolledDate" labelFloat="true" layoutX="550.0" layoutY="110.0" onKeyReleased="#txtEnrolledDateOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Enrollment Date" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </JFXTextField>
-
-                                    <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="550.0" layoutY="35.0" onKeyReleased="#txtEmailOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Email" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </JFXTextField>
-            <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="295.0" layoutY="110.0" onKeyReleased="#txtAddressOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Address" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </JFXTextField>
+            <MFXTextField fx:id="txtStudentId" floatMode="BORDER" floatingText="Student ID" layoutX="40.0" layoutY="25.0" onKeyReleased="#txtStudentIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" stylesheets="@../assets/css/validation.css" />
+            <MFXTextField fx:id="txtName" floatMode="BORDER" floatingText="Student Name" layoutX="295.0" layoutY="25.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="36.0" prefWidth="200.0" stylesheets="@../assets/css/validation.css" />
+            <MFXTextField fx:id="txtContact" floatMode="BORDER" floatingText="Contact" layoutX="40.0" layoutY="100.0" onKeyReleased="#txtContactOnKeyReleased" prefHeight="36.0" prefWidth="200.0" stylesheets="@../assets/css/validation.css" />
+            <MFXTextField fx:id="txtEnrolledDate" floatMode="BORDER" floatingText="Enrollment Date" layoutX="550.0" layoutY="100.0" onKeyReleased="#txtEnrolledDateOnKeyReleased" prefHeight="36.0" prefWidth="200.0" stylesheets="@../assets/css/validation.css" />
+            <MFXTextField fx:id="txtEmail" floatMode="BORDER" floatingText="Email" layoutX="550.0" layoutY="25.0" onKeyReleased="#txtEmailOnKeyReleased" prefHeight="36.0" prefWidth="200.0" stylesheets="@../assets/css/validation.css" />
+            <MFXTextField fx:id="txtAddress" floatMode="BORDER" floatingText="Address" layoutX="295.0" layoutY="100.0" onKeyReleased="#txtAddressOnKeyReleased" prefHeight="36.0" prefWidth="200.0" stylesheets="@../assets/css/validation.css" />
          </children>
          <effect>
             <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
@@ -69,7 +41,7 @@
          </effect>
       </Pane>
 
-                                    <!-- Table for displaying students -->
+      <!-- Table for displaying students -->
       <TableView fx:id="tblStudent" layoutX="50.0" layoutY="285.0" prefHeight="335.0" prefWidth="910.0" stylesheets="@../assets/css/table.css">
          <columns>
             <TableColumn fx:id="colId" prefWidth="100.0" text="Student ID" />
@@ -81,7 +53,8 @@
          </columns>
       </TableView>
 
-                                             <VBox disable="true" layoutX="860.0" layoutY="90.0" prefHeight="126.0" prefWidth="100.0" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 5;">
+      <!-- Buttons -->
+      <VBox disable="true" layoutX="860.0" layoutY="90.0" prefHeight="126.0" prefWidth="100.0" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 5;">
          <children>
             <JFXButton alignment="BASELINE_LEFT" graphicTextGap="5.0" onAction="#btnSaveOnAction" prefWidth="100.0" ripplerFill="#0882e1" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Save">
                <graphic>
@@ -128,9 +101,11 @@
             </DropShadow>
          </effect>
       </VBox>
+
+      <!-- Search Box -->
       <HBox layoutX="635.0" layoutY="30.0" spacing="5.0" styleClass="hBox" stylesheets="@../assets/css/search.css">
          <children>
-            <JFXTextField fx:id="txtSearch" onAction="#txtSearchOnAction" prefHeight="25.0" promptText="Enter Search" />
+            <MFXTextField fx:id="txtSearch" floatMode="DISABLED" floatingText="Enter Search" onAction="#txtSearchOnAction" prefHeight="25.0" />
             <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" onAction="#txtSearchOnAction" ripplerFill="GREY" styleClass="search-button" stylesheets="@../assets/css/search.css">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">

@@ -4,7 +4,63 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6fdd9856-eb1f-460f-9cc9-c2f9d0707040" name="Changes" comment="orm coursework codes" />
+    <list default="true" id="5e87a759-f11f-486c-ac2d-1e2cf0285c2a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/cssdialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/css/inputFields.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9fb88373-768a-4e67-b544-2f5f7f4d1e13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9fb88373-768a-4e67-b544-2f5f7f4d1e13/storage_v2/_src_/schema/culinaryacademy.oz0NJQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9fb88373-768a-4e67-b544-2f5f7f4d1e13/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9fb88373-768a-4e67-b544-2f5f7f4d1e13/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9fb88373-768a-4e67-b544-2f5f7f4d1e13/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9fb88373-768a-4e67-b544-2f5f7f4d1e13/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/AdminMainFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/AdminMainFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/CoursesFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/CoursesFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/EnrolmentFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/EnrolmentFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/PaymentsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/PaymentsFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/StudentsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/StudentsFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/UserFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/controller/UserFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/css/button.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/css/button.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/css/search.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/css/search.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/css/table.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/css/table.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/css/textField.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/css/validation.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/css/validation.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/adminMainForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/adminMainForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/coursesForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/coursesForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/enrolmentForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/enrolmentForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/loginForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/loginForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/paymentsForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/paymentsForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/registerForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/registerForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/studentsForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/studentsForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/studentsFormCoordinator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/studentsFormCoordinator.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/userForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/userForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/assets/css/button.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/assets/css/button.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/assets/css/table.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/assets/css/table.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/assets/css/textField.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/assets/css/validation.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/assets/css/validation.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/Launcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/Launcher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/AdminMainFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/AdminMainFormController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/CoursesFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/CoursesFormController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/EnrolmentFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/EnrolmentFormController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/PaymentsFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/PaymentsFormController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/StudentsFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/StudentsFormController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/UserFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/ijse/culinaryacademy/controller/UserFormController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/adminMainForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/adminMainForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/coursesForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/coursesForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/enrolmentForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/enrolmentForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/loginForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/loginForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/paymentsForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/paymentsForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/studentsForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/studentsForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/studentsFormCoordinator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/studentsFormCoordinator.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/userForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/userForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,8 +70,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="FxmlFile" />
-        <option value="Class" />
       </list>
     </option>
   </component>
@@ -34,14 +88,15 @@
     &quot;accountId&quot;: &quot;76395e42-ba9d-4a30-b032-ff887f93e535&quot;
   }
 }</component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/bo/custom/impl/CourseBOImpl.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/lk/ijse/culinaryacademy/entity/Student.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
 }</component>
-  <component name="ProjectId" id="2pOGnNUvs6Jv5Yw9UOuX1z2boOn" />
+  <component name="ProjectId" id="2pWA2oJFHCs02ygqdxRefSvtbUM" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -50,24 +105,20 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.LauncherWrapper.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.culinary-academy-system [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.culinary-academy-system [compile].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;com.codeium.enabled&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/IdeaProjects/Culinary-Academy/src/main/resources/assets/images&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/IdeaProjects/book-worm&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.4402299&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;application.passwordSafe&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -76,17 +127,10 @@
     ]
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\resources\assets\images" />
-      <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\resources\view" />
-      <recent name="C:\Users\Lenovo\IdeaProjects\Culinary-Academy\src\main\java\lk\ijse\culinaryacademy\util" />
-    </key>
-  </component>
   <component name="RunManager">
     <configuration name="LauncherWrapper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lk.ijse.culinaryacademy.LauncherWrapper" />
-      <module name="culinary-academy-system" />
+      <module name="CulinaryAcademy" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="lk.ijse.culinaryacademy.*" />
@@ -106,172 +150,34 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6fdd9856-eb1f-460f-9cc9-c2f9d0707040" name="Changes" comment="" />
-      <created>1732629875274</created>
+      <changelist id="5e87a759-f11f-486c-ac2d-1e2cf0285c2a" name="Changes" comment="" />
+      <created>1732871255093</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1732629875274</updated>
-      <workItem from="1732629876473" duration="16188000" />
-      <workItem from="1732679484475" duration="17912000" />
-      <workItem from="1732704119810" duration="19000" />
-      <workItem from="1732705983950" duration="413000" />
-      <workItem from="1732711998008" duration="22396000" />
-      <workItem from="1732765195009" duration="52000" />
-      <workItem from="1732765264579" duration="40746000" />
-      <workItem from="1732812112569" duration="2845000" />
+      <updated>1732871255093</updated>
+      <workItem from="1732871256630" duration="119000" />
+      <workItem from="1732934805666" duration="590000" />
+      <workItem from="1732937300747" duration="8286000" />
+      <workItem from="1732952851430" duration="459000" />
+      <workItem from="1732985986597" duration="6469000" />
+      <workItem from="1733028590582" duration="7313000" />
+      <workItem from="1733161721219" duration="11000" />
+      <workItem from="1735192311312" duration="889000" />
+      <workItem from="1735194194136" duration="1969000" />
+      <workItem from="1735283455667" duration="1276000" />
+      <workItem from="1735569065933" duration="4756000" />
     </task>
-    <task id="LOCAL-00001" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732631687768</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1732631687768</updated>
-    </task>
-    <task id="LOCAL-00002" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732644536871</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1732644536871</updated>
-    </task>
-    <task id="LOCAL-00003" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732690171559</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1732690171559</updated>
-    </task>
-    <task id="LOCAL-00004" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732719655991</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1732719655991</updated>
-    </task>
-    <task id="LOCAL-00005" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732732769738</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1732732769738</updated>
-    </task>
-    <task id="LOCAL-00006" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732732786606</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1732732786606</updated>
-    </task>
-    <task id="LOCAL-00007" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732732794953</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1732732794953</updated>
-    </task>
-    <task id="LOCAL-00008" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732786884097</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1732786884097</updated>
-    </task>
-    <task id="LOCAL-00009" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732786897461</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1732786897461</updated>
-    </task>
-    <task id="LOCAL-00010" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732806962862</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1732806962863</updated>
-    </task>
-    <task id="LOCAL-00011" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732809234943</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1732809234943</updated>
-    </task>
-    <task id="LOCAL-00012" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732811093436</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1732811093436</updated>
-    </task>
-    <task id="LOCAL-00013" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732812999614</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1732812999614</updated>
-    </task>
-    <task id="LOCAL-00014" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732813012980</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1732813012980</updated>
-    </task>
-    <task id="LOCAL-00015" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732813017299</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1732813017299</updated>
-    </task>
-    <task id="LOCAL-00016" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732813041946</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1732813041946</updated>
-    </task>
-    <task id="LOCAL-00017" summary="orm coursework codes">
-      <option name="closed" value="true" />
-      <created>1732814919186</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1732814919186</updated>
-    </task>
-    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="orm coursework codes" />
-    <option name="LAST_COMMIT_MESSAGE" value="orm coursework codes" />
   </component>
 </project>

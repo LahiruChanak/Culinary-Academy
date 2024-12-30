@@ -1,7 +1,7 @@
 package lk.ijse.culinaryacademy.controller;
 
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
+import io.github.palexdev.materialfx.controls.MFXComboBox;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,7 +27,7 @@ import java.util.List;
 public class CoursesFormController {
 
     @FXML
-    private JFXComboBox<String> cmbCourseLevel;
+    private MFXComboBox<String> cmbCourseLevel;
 
     @FXML
     private TableColumn<?, ?> colDescription;
@@ -51,22 +51,22 @@ public class CoursesFormController {
     private TableView<CourseTm> tblCourse;
 
     @FXML
-    private JFXTextField txtCourseId;
+    private MFXTextField txtCourseId;
 
     @FXML
-    private JFXTextField txtDescription;
+    private MFXTextField txtDescription;
 
     @FXML
-    private JFXTextField txtFee;
+    private MFXTextField txtFee;
 
     @FXML
-    private JFXTextField txtName;
+    private MFXTextField txtName;
 
     @FXML
-    private JFXTextField txtDuration;
+    private MFXTextField txtDuration;
 
     @FXML
-    private JFXTextField txtSearch;
+    private MFXTextField txtSearch;
 
     private List<CourseDTO> courseList = new ArrayList<>();
 
@@ -211,7 +211,7 @@ public class CoursesFormController {
         txtDescription.clear();
         txtDuration.clear();
         txtFee.clear();
-        cmbCourseLevel.getSelectionModel().clearSelection();
+        cmbCourseLevel.clear();
 
         loadNextCourseId();
     }
@@ -293,7 +293,6 @@ public class CoursesFormController {
         }
 
         tblCourse.setItems(tmList);
-        tblCourse.getSelectionModel().getSelectedItem();
     }
 
     private void setCellValueFactory() {

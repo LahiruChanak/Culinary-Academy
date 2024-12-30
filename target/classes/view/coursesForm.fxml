@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -27,39 +27,22 @@
 
         <Pane layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="780.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
             <children>
+                <MFXTextField fx:id="txtCourseId" floatMode="BORDER" floatingText="Course ID" layoutX="35.0" layoutY="25.0" onKeyReleased="#txtCourseIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css" />
 
-                <JFXTextField fx:id="txtCourseId" labelFloat="true" layoutX="40.0" layoutY="35.0" onKeyReleased="#txtCourseIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Course ID">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </JFXTextField>
+                <MFXTextField fx:id="txtName" floatMode="BORDER" floatingText="Course Name" layoutX="290.0" layoutY="25.0" onKeyReleased="#txtCourseNameOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css" />
 
-                <JFXTextField fx:id="txtName" labelFloat="true" layoutX="295.0" layoutY="35.0" onKeyReleased="#txtCourseNameOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Course Name">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </JFXTextField>
+                <MFXTextField fx:id="txtDescription" floatMode="BORDER" floatingText="Description" layoutX="545.0" layoutY="25.0" onKeyReleased="#txtDescriptionOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css" />
 
-                <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="550.0" layoutY="35.0" onKeyReleased="#txtDescriptionOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Description">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </JFXTextField>
-                <JFXTextField fx:id="txtFee" labelFloat="true" layoutX="295.0" layoutY="110.0" onKeyReleased="#txtFeeOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Course Fee">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </JFXTextField>
-            <JFXComboBox fx:id="cmbCourseLevel" labelFloat="true" layoutX="555.0" layoutY="110.0" prefHeight="36.0" prefWidth="200.0" promptText="Course Level">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXComboBox>
-            <JFXTextField fx:id="txtDuration" labelFloat="true" layoutX="40.0" layoutY="110.0" onKeyReleased="#txtDurationOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Duration (Months)">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </JFXTextField>
+                <MFXTextField fx:id="txtFee" floatMode="BORDER" floatingText="Course Fee" layoutX="290.0" layoutY="100.0" onKeyReleased="#txtFeeOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css" />
+
+                <MFXComboBox fx:id="cmbCourseLevel" floatMode="BORDER" floatingText="Course Level" layoutX="545.0" layoutY="100.0" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </MFXComboBox>
+
+                <MFXTextField fx:id="txtDuration" floatMode="BORDER" floatingText="Duration (Months)" layoutX="35.0" layoutY="100.0" onKeyReleased="#txtDurationOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css" />
+
             </children>
             <effect>
                 <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
@@ -129,7 +112,7 @@
       </VBox>
       <HBox layoutX="635.0" layoutY="30.0" spacing="5.0" styleClass="hBox" stylesheets="@../assets/css/search.css">
          <children>
-            <JFXTextField fx:id="txtSearch" onAction="#txtSearchOnAction" prefHeight="25.0" promptText="Enter Search" />
+            <MFXTextField fx:id="txtSearch" floatMode="DISABLED" floatingText="Enter Search" onAction="#txtSearchOnAction" prefHeight="25.0" prefWidth="90.0" promptText="Enter Search" styleClass="search-field" stylesheets="@../assets/css/search.css" />
             <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" onAction="#txtSearchOnAction" ripplerFill="GREY" styleClass="search-button" stylesheets="@../assets/css/search.css">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">

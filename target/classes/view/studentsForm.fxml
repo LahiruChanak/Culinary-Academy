@@ -22,15 +22,15 @@
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Text>
-      <!-- Pane for student details -->
+
       <Pane fx:id="studentInputPane" layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="785.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
          <children>
-            <MFXTextField fx:id="txtStudentId" floatMode="BORDER" floatingText="Student ID" layoutX="40.0" layoutY="25.0" onKeyReleased="#txtStudentIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" stylesheets="@../assets/css/validation.css" />
-            <MFXTextField fx:id="txtName" floatMode="BORDER" floatingText="Student Name" layoutX="295.0" layoutY="25.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="36.0" prefWidth="200.0" stylesheets="@../assets/css/validation.css" />
-            <MFXTextField fx:id="txtContact" floatMode="BORDER" floatingText="Contact" layoutX="40.0" layoutY="100.0" onKeyReleased="#txtContactOnKeyReleased" prefHeight="36.0" prefWidth="200.0" stylesheets="@../assets/css/validation.css" />
-            <MFXTextField fx:id="txtEnrolledDate" floatMode="BORDER" floatingText="Enrollment Date" layoutX="550.0" layoutY="100.0" onKeyReleased="#txtEnrolledDateOnKeyReleased" prefHeight="36.0" prefWidth="200.0" stylesheets="@../assets/css/validation.css" />
-            <MFXTextField fx:id="txtEmail" floatMode="BORDER" floatingText="Email" layoutX="550.0" layoutY="25.0" onKeyReleased="#txtEmailOnKeyReleased" prefHeight="36.0" prefWidth="200.0" stylesheets="@../assets/css/validation.css" />
-            <MFXTextField fx:id="txtAddress" floatMode="BORDER" floatingText="Address" layoutX="295.0" layoutY="100.0" onKeyReleased="#txtAddressOnKeyReleased" prefHeight="36.0" prefWidth="200.0" stylesheets="@../assets/css/validation.css" />
+            <MFXTextField fx:id="txtStudentId" floatMode="BORDER" floatingText="Student ID" layoutX="40.0" layoutY="25.0" onKeyReleased="#txtStudentIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css" />
+            <MFXTextField fx:id="txtName" floatMode="BORDER" floatingText="Student Name" layoutX="295.0" layoutY="25.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css" />
+            <MFXTextField fx:id="txtContact" floatMode="BORDER" floatingText="Contact" layoutX="40.0" layoutY="100.0" onKeyReleased="#txtContactOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css" />
+            <MFXTextField fx:id="txtEnrolledDate" floatMode="BORDER" floatingText="Enrollment Date" layoutX="550.0" layoutY="100.0" onKeyReleased="#txtEnrolledDateOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css" />
+            <MFXTextField fx:id="txtEmail" floatMode="BORDER" floatingText="Email" layoutX="550.0" layoutY="25.0" onKeyReleased="#txtEmailOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css" />
+            <MFXTextField fx:id="txtAddress" floatMode="BORDER" floatingText="Address" layoutX="295.0" layoutY="100.0" onKeyReleased="#txtAddressOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css" />
          </children>
          <effect>
             <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
@@ -42,7 +42,7 @@
       </Pane>
 
       <!-- Table for displaying students -->
-      <TableView fx:id="tblStudent" layoutX="50.0" layoutY="285.0" prefHeight="335.0" prefWidth="910.0" stylesheets="@../assets/css/table.css">
+      <TableView fx:id="tblStudent" layoutX="50.0" layoutY="285.0" prefHeight="335.0" prefWidth="910.0" stylesheets="@../assets/css/table.css" tableMenuButtonVisible="true">
          <columns>
             <TableColumn fx:id="colId" prefWidth="100.0" text="Student ID" />
             <TableColumn fx:id="colName" prefWidth="150.0" text="Name" />
@@ -51,9 +51,11 @@
             <TableColumn fx:id="colAddress" prefWidth="223.2" text="Address" />
             <TableColumn fx:id="colEnrolledDate" prefWidth="174.39999999999998" text="Enrollment Date" />
          </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
 
-      <!-- Buttons -->
       <VBox layoutX="860.0" layoutY="90.0" prefHeight="126.0" prefWidth="100.0" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 5;">
          <children>
             <JFXButton alignment="BASELINE_LEFT" graphicTextGap="5.0" onAction="#btnSaveOnAction" prefWidth="100.0" ripplerFill="#0882e1" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Save">
@@ -102,10 +104,9 @@
          </effect>
       </VBox>
 
-      <!-- Search Box -->
       <HBox layoutX="635.0" layoutY="30.0" spacing="5.0" styleClass="hBox" stylesheets="@../assets/css/search.css">
          <children>
-            <MFXTextField fx:id="txtSearch" floatMode="DISABLED" floatingText="Enter Search" onAction="#txtSearchOnAction" prefHeight="25.0" />
+            <MFXTextField fx:id="txtSearch" floatMode="DISABLED" floatingText="Enter Search" onAction="#txtSearchOnAction" prefHeight="25.0" prefWidth="90.0" promptText="Enter Search" styleClass="search-field" stylesheets="@../assets/css/search.css" />
             <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" onAction="#txtSearchOnAction" ripplerFill="GREY" styleClass="search-button" stylesheets="@../assets/css/search.css">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">

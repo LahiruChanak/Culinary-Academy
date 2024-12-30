@@ -1,8 +1,8 @@
 package lk.ijse.culinaryacademy.controller;
 
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
+import io.github.palexdev.materialfx.controls.MFXComboBox;
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,7 +28,7 @@ import java.util.List;
 public class UserFormController {
 
     @FXML
-    private JFXComboBox<String> cmbRole;
+    private MFXComboBox<String> cmbRole;
 
     @FXML
     private TableColumn<?, ?> colEmail;
@@ -46,22 +46,22 @@ public class UserFormController {
     private TableView<UserTm> tblUser;
 
     @FXML
-    private JFXPasswordField txtConfirmPassword;
+    private MFXPasswordField txtConfirmPassword;
 
     @FXML
-    private JFXTextField txtEmail;
+    private MFXTextField txtEmail;
 
     @FXML
-    private JFXTextField txtName;
+    private MFXTextField txtName;
 
     @FXML
-    private JFXPasswordField txtPassword;
+    private MFXPasswordField txtPassword;
 
     @FXML
-    private JFXTextField txtUsername;
+    private MFXTextField txtUsername;
 
     @FXML
-    private JFXTextField txtSearch;
+    private MFXTextField txtSearch;
 
     private List<UserDTO> userList = new ArrayList<>();
 
@@ -72,7 +72,6 @@ public class UserFormController {
     // ---------------------------- Initialize Method ----------------------------
     @FXML
     void initialize() throws Exception {
-//        loadNextUserId();
         loadRoles();
         this.userList = getAllUsers();
         loadUserTable();
@@ -91,15 +90,13 @@ public class UserFormController {
         String confirmPassword = txtConfirmPassword.getText();
 
         if (!password.equals(confirmPassword)) {
-            new Alert(Alert.AlertType.ERROR, "Password Mismatched.").show();
-            return;
+            throw new CustomException("Password Mismatched.");
         }
 
         String errorMessage = isValid();
 
         if (errorMessage != null) {
-            new Alert(Alert.AlertType.ERROR, errorMessage).show();
-            return;
+            throw new CustomException(errorMessage);
         }
 
         // Hash the password before creating the UserDTO
@@ -108,16 +105,15 @@ public class UserFormController {
         UserDTO dto = new UserDTO(userId, name, email, role, hashedPassword);
 
         try {
-            boolean isAdded = userBO.addUser (dto);
+            boolean isAdded = userBO.addUser(dto);
 
             if (isAdded) {
-                new Alert(Alert.AlertType.CONFIRMATION, "User  Added Successfully.").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "User Added Successfully.").show();
                 clearField();
                 refreshTable();
-                // loadNextUser Id(); // Uncomment if you have a method to load the next user ID
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            throw new CustomException(e.getMessage());
         }
     }
 
@@ -131,8 +127,7 @@ public class UserFormController {
         String confirmPassword = txtConfirmPassword.getText();
 
         if (!password.equals(confirmPassword)) {
-            new Alert(Alert.AlertType.ERROR, "Password Mismatched.").show();
-            return;
+            throw new CustomException("Password Mismatched.");
         }
 
         UserDTO dto = new UserDTO(userId, name, email, role);  // Pass the hashed password
@@ -140,21 +135,19 @@ public class UserFormController {
         String errorMessage = isValidUpdate();
 
         if (errorMessage != null) {
-            new Alert(Alert.AlertType.ERROR, errorMessage).show();
-            return;
+            throw new CustomException(errorMessage);
         }
 
         try {
-            boolean isAdded = userBO.updateUser(dto);
+            boolean isUpdated = userBO.updateUser(dto);
 
-            if (isAdded) {
+            if (isUpdated) {
                 new Alert(Alert.AlertType.INFORMATION, "User Updated Successfully.").show();
                 clearField();
                 refreshTable();
-//            loadNextUserId();
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            throw new CustomException(e.getMessage());
         }
     }
 
@@ -169,10 +162,9 @@ public class UserFormController {
                 new Alert(Alert.AlertType.CONFIRMATION, "User Deleted Successfully.").show();
                 clearField();
                 refreshTable();
-//                loadNextUserId();
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            throw new CustomException(e.getMessage());
         }
     }
 
@@ -202,7 +194,6 @@ public class UserFormController {
 
         txtPassword.setDisable(false);
         txtConfirmPassword.setDisable(false);
-//        loadNextUserId();
     }
 
     private void refreshTable() {
@@ -235,7 +226,7 @@ public class UserFormController {
                 alert.showAndWait();
             }
         } catch (SQLException e) {
-            CustomException.handleException(new CustomException("User Not Found in the Database"));
+            throw new CustomException("User Not Found in the Database");
         }
     }
 
@@ -266,7 +257,7 @@ public class UserFormController {
     }
 
     private void loadRoles() {
-        ObservableList<String> roles = FXCollections.observableArrayList("Admin", "Coordinator");
+        ObservableList<String> roles = FXCollections.observableArrayList("Coordinator");
         cmbRole.setItems(roles);
     }
 

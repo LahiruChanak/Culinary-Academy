@@ -41,11 +41,11 @@
       </Text>
       <VBox layoutX="56.0" layoutY="270.0" prefWidth="300.0" spacing="40.0">
          <children>
-            <MFXTextField fx:id="txtUsername" floatMode="BORDER" floatingText="Username" onAction="#txUsernameOnAction" prefWidth="300.0">
+            <MFXTextField fx:id="txtUsername" floatMode="BORDER" floatingText="Username" onAction="#txUsernameOnAction" prefWidth="300.0" styleClass="credentials-input-field" stylesheets="@../assets/css/inputFields.css">
                <textFill>
                   <Color red="0.07058823853731155" green="0.07058823853731155" blue="0.07058823853731155" opacity="0.8700000047683716" />
                </textFill></MFXTextField>
-            <MFXPasswordField fx:id="txtPassword" allowPaste="true" floatMode="BORDER" floatingText="Password" onAction="#txtPasswordOnAction" prefWidth="300.0">
+            <MFXPasswordField fx:id="txtPassword" allowPaste="true" floatMode="BORDER" floatingText="Password" onAction="#txtPasswordOnAction" prefWidth="300.0" styleClass="credentials-input-field" stylesheets="@../assets/css/inputFields.css">
                <textFill>
                   <Color red="0.07058823853731155" green="0.07058823853731155" blue="0.07058823853731155" opacity="0.8700000047683716" />
                </textFill></MFXPasswordField>

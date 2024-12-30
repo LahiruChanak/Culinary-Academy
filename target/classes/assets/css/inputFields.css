@@ -1,0 +1,42 @@
+/* --------------------------------- Default & Focused styles -------------------------------- */
+.input-field {
+    -mfx-main: #aaa;
+    -fx-border-color: #aaa;
+    -fx-text-inner-color: #222;
+}
+.input-field:focused {
+    -mfx-main: #72777c;
+    -fx-border-color: #72777c;
+}
+
+.credentials-input-field {
+    -mfx-main: #6cafe1;
+    -fx-border-color: #6cafe1;
+    -fx-text-inner-color: #222;
+}
+.credentials-input-field:focused {
+    -mfx-main: #0984e3;
+    -fx-border-color: #0984e3;
+}
+
+/* --------------------------------- Valid TextField -------------------------------- */
+.valid-field {
+    -mfx-main: lightgreen;  /* this is use for change the floating label color */
+    -fx-border-color: lightgreen;
+    -fx-text-inner-color: seagreen;
+}
+.valid-field:focused {
+    -mfx-main: seaGreen;
+    -fx-border-color: seagreen;
+}
+
+/* -------------------------------- Invalid TextField -------------------------------- */
+.invalid-field {
+    -mfx-main: lightcoral;
+    -fx-border-color: lightcoral;
+    -fx-text-inner-color: red;
+}
+.invalid-field:focused {
+    -mfx-main: red;
+    -fx-border-color: red;
+}

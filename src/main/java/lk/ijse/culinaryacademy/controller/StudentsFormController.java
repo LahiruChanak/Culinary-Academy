@@ -1,6 +1,5 @@
 package lk.ijse.culinaryacademy.controller;
 
-import com.jfoenix.controls.JFXTextField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,7 +15,6 @@ import lk.ijse.culinaryacademy.bo.custom.StudentBO;
 import lk.ijse.culinaryacademy.dto.StudentDTO;
 import lk.ijse.culinaryacademy.entity.Enrolment;
 import lk.ijse.culinaryacademy.entity.Payment;
-import lk.ijse.culinaryacademy.util.CustomAlert;
 import lk.ijse.culinaryacademy.util.CustomException;
 import lk.ijse.culinaryacademy.util.Regex;
 import lk.ijse.culinaryacademy.util.TextField;
@@ -329,7 +327,6 @@ public class StudentsFormController {
         }
 
         tblStudent.setItems(tmList);
-        tblStudent.getSelectionModel().getSelectedItem();
     }
 
     private void setCellValueFactory() {

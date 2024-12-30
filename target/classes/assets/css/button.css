@@ -16,7 +16,7 @@
 }
 
 .dashboard-button.active {
-    -fx-background-color: #27a4ff;
+    -fx-background-color: #bbb;
     -fx-translate-x: 15;
 }
 
@@ -33,6 +33,10 @@
 
 .options-button:hover {
     -fx-background-color: #ddd;
+}
+
+.options-button.active {
+    -fx-background-color: #bbb;
 }
 
 /* -------------------------- CRUD OPERATIONS BUTTONS --------------------------- */

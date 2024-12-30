@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXPasswordField?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -25,33 +25,36 @@
                 <Font name="Arial Bold" size="24.0" />
             </font>
         </Text>
-        <!-- Pane for student details -->
-        <Pane layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="785.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
+        <Pane focusTraversable="true" layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="785.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
             <children>
-                <JFXTextField fx:id="txtUsername" labelFloat="true" layoutX="40.0" layoutY="35.0" onKeyReleased="#txtUsernameOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Username">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </JFXTextField>
-
-                <JFXTextField fx:id="txtName" labelFloat="true" layoutX="295.0" layoutY="35.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Name">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </JFXTextField>
-
-                <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="550.0" layoutY="35.0" onKeyReleased="#txtEmailOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Email">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </JFXTextField>
-            <JFXComboBox fx:id="cmbRole" labelFloat="true" layoutX="40.0" layoutY="110.0" prefHeight="36.0" prefWidth="200.0" promptText="Role">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXComboBox>
-            <JFXPasswordField fx:id="txtPassword" layoutX="295.0" layoutY="110.0" onKeyReleased="#txtPasswordOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Password" />
-            <JFXPasswordField fx:id="txtConfirmPassword" layoutX="550.0" layoutY="110.0" onKeyReleased="#txtConfirmPasswordOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Confirm Password" />
+                <MFXTextField fx:id="txtUsername" floatMode="BORDER" floatingText="Username" layoutX="38.0" layoutY="26.0" onKeyReleased="#txtUsernameOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css">
+               <textFill>
+                  <Color red="0.07000000029802322" green="0.07000000029802322" blue="0.07000000029802322" opacity="0.8700000047683716" />
+               </textFill></MFXTextField>
+                <MFXTextField fx:id="txtName" floatMode="BORDER" floatingText="Name" layoutX="293.0" layoutY="26.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css">
+               <textFill>
+                  <Color red="0.07000000029802322" green="0.07000000029802322" blue="0.07000000029802322" opacity="0.8700000047683716" />
+               </textFill></MFXTextField>
+                <MFXTextField fx:id="txtEmail" floatMode="BORDER" floatingText="Email" layoutX="548.0" layoutY="26.0" onKeyReleased="#txtEmailOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css">
+               <textFill>
+                  <Color red="0.07000000029802322" green="0.07000000029802322" blue="0.07000000029802322" opacity="0.8700000047683716" />
+               </textFill></MFXTextField>
+                <MFXComboBox fx:id="cmbRole" floatMode="BORDER" floatingText="Role" layoutX="38.0" layoutY="101.0" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+               <textFill>
+                  <Color red="0.07058823853731155" green="0.07058823853731155" blue="0.07058823853731155" opacity="0.8700000047683716" />
+               </textFill>
+                </MFXComboBox>
+                <MFXPasswordField fx:id="txtPassword" floatMode="BORDER" floatingText="Password" layoutX="293.0" layoutY="101.0" onKeyReleased="#txtPasswordOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css">
+               <textFill>
+                  <Color red="0.07058823853731155" green="0.07058823853731155" blue="0.07058823853731155" opacity="0.8700000047683716" />
+               </textFill></MFXPasswordField>
+                <MFXPasswordField fx:id="txtConfirmPassword" floatMode="BORDER" floatingText="Confirm Password" layoutX="548.0" layoutY="101.0" onKeyReleased="#txtConfirmPasswordOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css">
+               <textFill>
+                  <Color red="0.07058823853731155" green="0.07058823853731155" blue="0.07058823853731155" opacity="0.8700000047683716" />
+               </textFill></MFXPasswordField>
             </children>
             <effect>
                 <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
@@ -74,7 +77,7 @@
 
         <VBox layoutX="860.0" layoutY="90.0" prefHeight="126.0" prefWidth="100.0" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 5;">
             <children>
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="5.0" onAction="#btnSaveOnAction" prefWidth="100.0" ripplerFill="#0882e1" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Save">
+                <MFXButton alignment="BASELINE_LEFT" graphicTextGap="5.0" onAction="#btnSaveOnAction" prefWidth="100.0" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Save">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -82,8 +85,8 @@
                             </image>
                         </ImageView>
                     </graphic>
-                </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" onAction="#btnUpdateOnAction" prefWidth="100.0" ripplerFill="#0882e1" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Update">
+                </MFXButton>
+                <MFXButton alignment="BASELINE_LEFT" onAction="#btnUpdateOnAction" prefWidth="100.0" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Update">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -91,8 +94,8 @@
                             </image>
                         </ImageView>
                     </graphic>
-                </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" onAction="#btnDeleteOnAction" prefWidth="100.0" ripplerFill="#0882e1" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Delete">
+                </MFXButton>
+                <MFXButton alignment="BASELINE_LEFT" onAction="#btnDeleteOnAction" prefWidth="100.0" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Delete">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -100,8 +103,8 @@
                             </image>
                         </ImageView>
                     </graphic>
-                </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" onAction="#btnClearOnAction" prefWidth="100.0" ripplerFill="#0882e1" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Clear">
+                </MFXButton>
+                <MFXButton alignment="BASELINE_LEFT" onAction="#btnClearOnAction" prefWidth="100.0" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Clear">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -109,7 +112,7 @@
                             </image>
                         </ImageView>
                     </graphic>
-                </JFXButton>
+                </MFXButton>
             </children>
             <effect>
                 <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
@@ -119,19 +122,22 @@
                 </DropShadow>
             </effect>
         </VBox>
-      <HBox layoutX="640.0" layoutY="30.0" spacing="5.0" styleClass="hBox" stylesheets="@../assets/css/search.css">
-         <children>
-            <JFXTextField fx:id="txtSearch" onAction="#txtSearchOnAction" prefHeight="25.0" promptText="Enter Search" />
-            <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" onAction="#txtSearchOnAction" ripplerFill="GREY" styleClass="search-button" stylesheets="@../assets/css/search.css">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/images/search.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-         </children>
-      </HBox>
+        <HBox layoutX="640.0" layoutY="30.0" spacing="5.0" styleClass="hBox" stylesheets="@../assets/css/search.css">
+            <children>
+                <MFXTextField fx:id="txtSearch" floatMode="DISABLED" onAction="#txtSearchOnAction" prefHeight="30.0" prefWidth="90.0" promptText="Enter Search" styleClass="search-field" stylesheets="@../assets/css/search.css">
+               <textFill>
+                  <Color red="0.07058823853731155" green="0.07058823853731155" blue="0.07058823853731155" opacity="0.8700000047683716" />
+               </textFill></MFXTextField>
+                <MFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" onAction="#txtSearchOnAction" styleClass="search-button" stylesheets="@../assets/css/search.css">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/images/search.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </MFXButton>
+            </children>
+        </HBox>
     </children>
 </AnchorPane>
