@@ -208,6 +208,15 @@ public class UserFormController {
         try {
             UserDTO dto = userBO.searchByUsername(username);
 
+            if (dto == null) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Search Result");
+                alert.setHeaderText("Search Field Empty");
+                alert.setContentText("Please enter a Username to search.");
+                alert.showAndWait();
+                return;
+            }
+
             if (dto != null) {
                 txtUsername.setText(dto.getUsername());
                 txtName.setText(dto.getName());

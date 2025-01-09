@@ -13,6 +13,7 @@ import java.util.List;
 public class UserBOImpl implements UserBO {
 
     public static String userName;
+    public static String name;
     public static String role;
 
     UserDAO userDAO = (UserDAO) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.USER);

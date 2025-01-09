@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
@@ -23,43 +23,6 @@
                 <Font name="Arial Bold" size="24.0" />
             </font>
         </Text>
-        <!-- Pane for student details -->
-        <Pane disable="true" layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="785.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
-            <children>
-
-                <JFXTextField fx:id="txtEnrolmentId" labelFloat="true" layoutX="35.0" layoutY="35.0" onKeyReleased="#txtEnrolmentIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Enrolment ID" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </JFXTextField>
-            <JFXComboBox fx:id="cmbStudentId" labelFloat="true" layoutX="290.0" layoutY="35.0" onAction="#cmbStudentIdOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Student ID" />
-            <JFXComboBox fx:id="cmbCourseId" labelFloat="true" layoutX="545.0" layoutY="35.0" onAction="#cmbCourseIdOnAction" prefHeight="36.0" prefWidth="200.0" promptText="Course ID" />
-            <Text fx:id="txtStudentName" disable="true" fill="#4d4d4d" focusTraversable="true" layoutX="290.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" textAlignment="CENTER" wrappingWidth="200.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
-            <Text fx:id="txtCourseName" disable="true" fill="#4d4d4d" focusTraversable="true" layoutX="545.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" textAlignment="CENTER" wrappingWidth="200.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
-            <JFXTextField fx:id="txtEnrolledDate" labelFloat="true" layoutX="35.0" layoutY="107.0" onKeyReleased="#txtEnrolledDateOnKeyReleased" prefHeight="36.0" prefWidth="200.0" promptText="Enrolled Date" styleClass="jfx-text-field" stylesheets="@../assets/css/textField.css">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </JFXTextField>
-            </children>
-            <effect>
-                <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
-                    <color>
-                        <Color red="0.6666666865348816" green="0.6666666865348816" blue="0.6666666865348816" />
-                    </color>
-                </DropShadow>
-            </effect>
-        </Pane>
-
-        <!-- Table for displaying students -->
         <TableView fx:id="tblEnrolment" layoutX="50.0" layoutY="285.0" prefHeight="335.0" prefWidth="910.0" stylesheets="@../assets/css/table.css">
             <columns>
                 <TableColumn fx:id="colEnrolmentId" prefWidth="100.0" text="Enrolment ID" />
@@ -70,10 +33,9 @@
                 <TableColumn fx:id="colEnrolledDate" prefWidth="174.39999999999998" text="Enrolled Date" />
             </columns>
         </TableView>
-
         <VBox disable="true" layoutX="860.0" layoutY="90.0" prefHeight="126.0" prefWidth="100.0" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 5;">
             <children>
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="5.0" onAction="#btnSaveOnAction" prefWidth="100.0" ripplerFill="#0882e1" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Save">
+                <MFXButton alignment="BASELINE_LEFT" graphicTextGap="5.0" onAction="#btnSaveOnAction" prefWidth="100.0" text="Save">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -81,8 +43,8 @@
                             </image>
                         </ImageView>
                     </graphic>
-                </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" onAction="#btnUpdateOnAction" prefWidth="100.0" ripplerFill="#0882e1" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Update">
+                </MFXButton>
+                <MFXButton alignment="BASELINE_LEFT" onAction="#btnUpdateOnAction" prefWidth="100.0" text="Update">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -90,8 +52,8 @@
                             </image>
                         </ImageView>
                     </graphic>
-                </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" onAction="#btnDeleteOnAction" prefWidth="100.0" ripplerFill="#0882e1" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Delete">
+                </MFXButton>
+                <MFXButton alignment="BASELINE_LEFT" onAction="#btnDeleteOnAction" prefWidth="100.0" text="Delete">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -99,8 +61,8 @@
                             </image>
                         </ImageView>
                     </graphic>
-                </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" onAction="#btnClearOnAction" prefWidth="100.0" ripplerFill="#0882e1" styleClass="crud-button" stylesheets="@../assets/css/button.css" text="Clear">
+                </MFXButton>
+                <MFXButton alignment="BASELINE_LEFT" onAction="#btnClearOnAction" prefWidth="100.0" text="Clear">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -108,7 +70,7 @@
                             </image>
                         </ImageView>
                     </graphic>
-                </JFXButton>
+                </MFXButton>
             </children>
             <effect>
                 <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
@@ -120,8 +82,8 @@
         </VBox>
         <HBox layoutX="635.0" layoutY="30.0" spacing="5.0" styleClass="hBox" stylesheets="@../assets/css/search.css">
             <children>
-                <JFXTextField fx:id="txtSearch" onAction="#txtSearchOnAction" prefHeight="25.0" promptText="Enter Search" />
-                <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" onAction="#txtSearchOnAction" ripplerFill="GREY" styleClass="search-button" stylesheets="@../assets/css/search.css">
+                <MFXTextField fx:id="txtSearch" floatMode="DISABLED" onAction="#txtSearchOnAction" prefHeight="25.0" prefWidth="90.0" promptText="Enter Search" styleClass="search-field" stylesheets="@../assets/css/search.css" />
+                <MFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" onAction="#txtSearchOnAction">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -129,8 +91,38 @@
                             </image>
                         </ImageView>
                     </graphic>
-                </JFXButton>
+                </MFXButton>
             </children>
         </HBox>
+        <Pane disable="true" layoutX="50.0" layoutY="90.0" prefHeight="165.0" prefWidth="785.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
+            <children>
+                <MFXTextField fx:id="txtEnrolmentId" floatMode="BORDER" floatingText="Enrolment ID" layoutX="35.0" layoutY="28.0" onKeyReleased="#txtEnrolmentIdOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css" />
+
+                <MFXComboBox fx:id="cmbStudentId" floatMode="BORDER" floatingText="Student ID" layoutX="290.0" layoutY="28.0" onAction="#cmbStudentIdOnAction" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css" />
+
+                <MFXComboBox fx:id="cmbCourseId" floatMode="BORDER" floatingText="Course ID" layoutX="545.0" layoutY="28.0" onAction="#cmbCourseIdOnAction" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css" />
+
+                <Text fx:id="txtStudentName" fill="#72777c" focusTraversable="true" layoutX="290.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Name" textAlignment="CENTER" wrappingWidth="200.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Text>
+
+                <Text fx:id="txtCourseName" fill="#72777c" focusTraversable="true" layoutX="545.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" textAlignment="CENTER" wrappingWidth="200.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Text>
+
+                <MFXTextField fx:id="txtEnrolledDate" floatMode="BORDER" floatingText="Enrolled Date" layoutX="35.0" layoutY="100.0" onKeyReleased="#txtEnrolledDateOnKeyReleased" prefHeight="36.0" prefWidth="200.0" styleClass="input-field" stylesheets="@../assets/css/inputFields.css" />
+            </children>
+            <effect>
+                <DropShadow blurType="GAUSSIAN" offsetX="-1.0" offsetY="2.0" spread="0.12">
+                    <color>
+                        <Color red="0.6666666865348816" green="0.6666666865348816" blue="0.6666666865348816" />
+                    </color>
+                </DropShadow>
+            </effect>
+        </Pane>
     </children>
 </AnchorPane>

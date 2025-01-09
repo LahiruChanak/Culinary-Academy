@@ -248,6 +248,15 @@ public class PaymentsFormController {
     private void txtSearchOnAction(ActionEvent event) {
         String paymentId = txtSearch.getText();
 
+        if (paymentId.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Search Result");
+            alert.setHeaderText("Search Field Empty");
+            alert.setContentText("Please enter a Payment ID to search.");
+            alert.showAndWait();
+            return;
+        }
+
         try {
             PaymentDTO dto = paymentBO.searchByPaymentId(paymentId);
 

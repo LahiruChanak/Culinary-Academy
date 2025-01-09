@@ -65,6 +65,7 @@ public class LoginFormController {
                 // Verify the password using BCrypt
                 if (BCrypt.checkpw(password, user.getPassword())) {
                     UserBOImpl.userName = user.getUsername();
+                    UserBOImpl.name = user.getName();
                     UserBOImpl.role = user.getRole(); // get the username of the logged-in user
                     String role = user.getRole(); // get the user's role for which dashboard to navigate
 

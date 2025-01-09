@@ -237,6 +237,15 @@ public class EnrolmentFormController {
     private void txtSearchOnAction(ActionEvent event) throws Exception {
         String enrolmentId = txtSearch.getText();
 
+        if (enrolmentId.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Search Result");
+            alert.setHeaderText("Search Field Empty");
+            alert.setContentText("Please enter a Enrolment ID to search.");
+            alert.showAndWait();
+            return;
+        }
+
         try {
             EnrolmentDTO dto = enrolmentBO.searchByEnrolmentId(enrolmentId);
 

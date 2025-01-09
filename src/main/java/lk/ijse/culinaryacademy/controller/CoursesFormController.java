@@ -225,6 +225,15 @@ public class CoursesFormController {
     private void txtSearchOnAction(ActionEvent event) throws Exception {
         String courseId = txtSearch.getText();
 
+        if (courseId.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Search Result");
+            alert.setHeaderText("Search Field Empty");
+            alert.setContentText("Please enter a Course ID to search.");
+            alert.showAndWait();
+            return;
+        }
+
         try {
             CourseDTO dto = courseBO.searchByCourseId(courseId);
 

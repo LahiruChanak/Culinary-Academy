@@ -258,6 +258,15 @@ public class StudentsFormController {
     private void txtSearchOnAction(ActionEvent event) {
         String studentId = txtSearch.getText();
 
+        if (studentId.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Search Result");
+            alert.setHeaderText("Search Field Empty");
+            alert.setContentText("Please enter a Student ID to search.");
+            alert.showAndWait();
+            return;
+        }
+
         try {
             StudentDTO dto = studentBO.searchByStudentId(studentId);
 

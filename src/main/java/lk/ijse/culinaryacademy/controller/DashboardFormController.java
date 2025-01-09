@@ -109,9 +109,13 @@ public class DashboardFormController {
 
     // ---------------------------- USER FUNCTIONS ----------------------------
     public void setUserName() {
-        userName.setText(UserBOImpl.userName);
+        userName.setText(UserBOImpl.name);
 
-        imgUser.setImage(new Image(getClass().getResourceAsStream("/assets/images/admin.png")));
+
+        imgUser.setImage(new Image(getClass().getResourceAsStream(
+                UserBOImpl.role.equalsIgnoreCase("Admin") ? "/assets/images/admin.png" : "/assets/images/coordinator.png"
+        )));
+
     }
 
 }
